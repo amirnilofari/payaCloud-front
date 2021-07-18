@@ -18,7 +18,7 @@
               class="text-center mb-3"
             >
               <h6
-                class="text-primary text-lg font-bold"
+                class="text-primary text-xl font-bold"
               >
                 Sign in
               </h6>
@@ -43,12 +43,11 @@
                   v-model="email"
                   required
                   type="email"
-                  class="border border-secondary px-3 py-3 placeholder-background text-H1 bg-background
+                  class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-background
                    rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                   placeholder="Email"
                 />
               </div>
-
               <div
                 class="relative w-full mb-5"
               >
@@ -61,7 +60,7 @@
                   v-model="password"
                   required
                   type="password"
-                  class="border border-secondary px-3 py-3 placeholder-background text-H1 bg-background
+                  class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-background
                    rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                   placeholder="Password"
                 />
@@ -79,13 +78,12 @@
                     class="form-checkbox border-0 w-5 h-5 ease-linear transition-all duration-150 rounded"
                   />
                   <span
-                    class="ml-2 text-sm font-bold text-primary"
+                    class="ml-2 text-sm font-medium text-primary"
                   >
                   Remember me
                 </span>
                 </label>
               </div>
-
               <div
                 class="text-center mt-6"
               >
