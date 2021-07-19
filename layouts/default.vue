@@ -1,5 +1,5 @@
 <template>
-  <div class="font-body justify-center">
+  <div class="justify-center font-body bg-background">
     <Nuxt />
   </div>
 </template>
