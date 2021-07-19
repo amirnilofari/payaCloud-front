@@ -1,8 +1,8 @@
 <template>
-  <div class="container">
+  <div class="container bg-background">
     <div>
       <Logo />
-      <h1 class="text-H1 text-3xl">
+      <h1 class="text-3xl text-H1">
         payacloud-front
       </h1>
       <div class="links">
@@ -10,7 +10,7 @@
           href="https://nuxtjs.org/"
           target="_blank"
           rel="noopener noreferrer"
-          class="rounded border-2 border-primary px-2 py-2 justify-center"
+          class="justify-center px-2 py-2 border-2 rounded border-primary"
         >
           Documentation
         </a>
