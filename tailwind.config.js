@@ -21,6 +21,7 @@ module.exports = {
       H3: '#6f6f70',
       positive: '#79c325',
       negative: '#ca0036',
+      white: '#ffffff'
     },
     fontFamily: {
       body: ['Poppins']
