@@ -21,11 +21,7 @@
         createMachine
       },
       mounted () {
-        this.$axios.$get('candy/machine/index', {
-          headers: {
-            token: 'v0JOPrdkJMWnYgFp'
-          }
-        })
+        this.$axios.$get('candy/machine/index')
         //   .then(response)
         // {
         //   console.log('hi', response)
