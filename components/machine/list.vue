@@ -34,7 +34,12 @@
         <th
           class="text-sm px-6 align-middle border border-primary py-3 text-primary uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
         >
-          Name
+          Template
+        </th>
+        <th
+          class="text-sm px-6 align-middle border border-primary py-3 text-primary uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+        >
+          UserName
         </th>
         <th
           class="text-sm px-6 align-middle border border-primary py-3 text-primary uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
@@ -66,6 +71,8 @@
       <tbody>
       <tr
         v-for="machine in machines"
+        @click="onClickMachine(machine.id)"
+        class="cursor-pointer hover:bg-background"
       >
         <td
           class="font-bold text-H3 border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
@@ -86,6 +93,11 @@
               {{machine.template.name}}
             </span>
         </th>
+        <td
+          class="text-H3 border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+        >
+          {{machine.template.username}}
+        </td>
         <td
           class="text-H3 border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
         >
@@ -113,21 +125,19 @@
             v-if="machine.status === 'active'"
             class="bg-positive rounded-full text-white p-2 hover:shadow-lg mr-5 pointer-events-none"
           >
-            {{machine.status}}
-<!--            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"-->
-<!--                 stroke="currentColor">-->
-<!--              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>-->
-<!--            </svg>-->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                 stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
           </button>
           <button
             v-else
             class="bg-negative rounded-full text-white p-2 hover:shadow-lg mr-5 pointer-events-none"
           >
-            {{machine.status}}
-            <!--            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"-->
-<!--                 stroke="currentColor">-->
-<!--              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>-->
-<!--            </svg>-->
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+               stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
           </button>
         </td>
       </tr>
@@ -146,7 +156,14 @@
       loading,
       emptyState
     },
-    props: ['isLoading', 'machines']
+    props: ['isLoading', 'machines'],
+    methods: {
+      onClickMachine (id) {
+        this.$nuxt.$emit('getMachine', id)
+        // $nuxt.$emit('getMachine', id)
+        // this.$emit('getMachine', id)
+      }
+    }
   }
 </script>
 
