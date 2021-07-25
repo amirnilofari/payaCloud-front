@@ -1,17 +1,18 @@
 <template>
   <div
-    class="mx-auto bg-secondary h-full p-8"
+    class="mx-auto bg-secondary h-screen p-8"
   >
     <h2
       class="text-3xl uppercase text-white mb-10 font-bold"
     >
       Machines
     </h2>
-    <create-machine></create-machine>
+    <create-modal
+      v-if="showCreateModal"
+    ></create-modal>
     <machine-list
       :is-loading="isLoading"
       :machines="machines"
-      class="mt-14"
     ></machine-list>
     <modal
       v-if="showModal"
@@ -23,13 +24,14 @@
 
 <script>
   import machineList from '/components/machine/list'
-  import createMachine from '/components/machine/create-form'
+  import createModal from '/components/machine/create-modal'
   import modal from '/components/machine/datails-modal'
   export default {
     data() {
       return {
         machines: [],
         isLoading: false,
+        showCreateModal: false,
         showModal: false,
         selectedMachine: {
           id: 0
@@ -38,7 +40,7 @@
     },
     components: {
       machineList,
-      createMachine,
+      createModal,
       modal
     },
     created () {
@@ -49,6 +51,9 @@
       })
       this.$nuxt.$on('closeModal', () => {
         this.toggleModal()
+      })
+      this.$nuxt.$on('toggleCreateModal', () => {
+        this.toggleCreateModal()
       })
     },
     methods: {
@@ -69,6 +74,9 @@
       },
       toggleModal () {
         this.showModal = !this.showModal
+      },
+      toggleCreateModal () {
+        this.showCreateModal = !this.showCreateModal
       }
     }
   }

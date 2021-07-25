@@ -36,13 +36,18 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/toast'
   ],
   axios: {
     baseURL: 'http://sandbox.autovm.net',
     headers: {
       token: 'v0JOPrdkJMWnYgFp',
     }
+  },
+  toast: {
+    position: 'top-center',
+    duration: 3000
   },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
