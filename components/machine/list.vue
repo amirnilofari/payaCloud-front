@@ -2,12 +2,19 @@
   <div>
     <div class="rounded-t mb-0 px-4 py-6 border-0 bg-white">
       <div class="flex flex-wrap items-center">
-        <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+        <div class="flex flex-wrap items-center w-full px-4 max-w-full">
           <h3
-            class="font-semibold text-lg text-primary"
+            class="font-semibold text-lg text-primary inline"
           >
             Machines List
           </h3>
+          <button
+            @click="close"
+            type="button"
+            class="mt-3 right-16 absolute justify-center bg-primary w-full inline-flex justify-center rounded-md shadow-sm px-10 py-2 text-base font-medium text-background
+              focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+            create machine
+          </button>
         </div>
       </div>
     </div>
@@ -160,8 +167,9 @@
     methods: {
       onClickMachine (id) {
         this.$nuxt.$emit('getMachine', id)
-        // $nuxt.$emit('getMachine', id)
-        // this.$emit('getMachine', id)
+      },
+      close () {
+        this.$nuxt.$emit('toggleCreateModal')
       }
     }
   }

@@ -5,7 +5,7 @@
       <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center w-full sm:block sm:p-0">
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
         <div class="inline-block align-bottom bg-white rounded-lg text-left
-        shadow-xl transform transition-all sm:mt-4 sm:align-middle sm:max-w-6xl sm:w-full">
+        shadow-xl transform transition-all sm:mt-20 mb-10 sm:align-middle sm:max-w-6xl sm:w-full">
           <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <div class="flex flex-wrap justify-center">
               <div class="w-full flex justify-center image-cont">
@@ -264,11 +264,11 @@
               </table>
             </div>
           </div>
-          <div class="px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+          <div class="px-4 py-3 sm:px-6 sm:flow-root sm:flex-row-reverse">
             <button
               @click="close"
               type="button"
-              class="mt-3 justify-center bg-primary w-full inline-flex justify-center rounded-md shadow-sm px-10 py-2 text-base font-medium text-background
+              class="float-left mt-3 justify-center bg-primary w-full inline-flex justify-center rounded-md shadow-sm px-10 py-2 text-base font-medium text-background
               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
               Back
             </button>
