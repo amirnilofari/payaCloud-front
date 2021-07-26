@@ -343,7 +343,7 @@
         formdata.append('clue', this.clue)
         formdata.append('status', this.status)
 
-        this.$axios.$post('candy/machine/create',
+        this.$axios.$post('backend/machine/create',
           formdata)
           .then(response => {
             if (response.status === 200) {

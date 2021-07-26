@@ -59,14 +59,14 @@
     methods: {
       loadData () {
         this.isLoading = true
-        this.$axios.$get('candy/machine/index')
+        this.$axios.$get('backend/machine/index')
           .then(response => {
             this.machines = response.data
             this.isLoading = false
           })
       },
       getMachineInfo (id) {
-        this.$axios.$get('candy/machine/show/'+id)
+        this.$axios.$get('backend/machine/show/'+id)
           .then(response => {
             this.selectedMachine = response.data
             this.toggleModal()
