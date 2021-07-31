@@ -1,142 +1,134 @@
 <template>
   <transition name="slide">
     <div
-      class="fixed z-10 inset-0 overflow-y-auto details-modal" role="dialog" aria-modal="true">
-      <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center w-full sm:block sm:p-0">
+      class="fixed inset-0 z-10 overflow-y-auto details-modal" role="dialog" aria-modal="true">
+      <div class="flex items-end justify-center w-full min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-        <div class="inline-block align-bottom bg-white rounded-lg text-left
-        shadow-xl transform transition-all sm:mt-4 sm:align-middle sm:max-w-6xl sm:w-full">
+        <div class="inline-block text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl sm:mt-4 sm:align-middle sm:max-w-6xl sm:w-full">
           <form
             class="p-6"
           >
-            <h3 class="font-semibold mb-6 text-H3 text-xl">New Machine</h3>
+            <h3 class="mb-6 text-xl font-semibold text-H3">New Machine</h3>
             <div class="flex flex-wrap">
-              <div class="w-full lg:w-6/12 px-4 mb-2">
+              <div class="w-full px-4 mb-2 lg:w-6/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block uppercase text-primary text-xs font-bold mb-2"
+                    class="block mb-2 text-xs font-bold uppercase text-primary"
                   >
                     Name
                   </label>
                   <input
                     v-model="name"
                     type="text"
-                    class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
-                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-H1 focus:outline-none focus:ring"
                     placeholder="Name"
                   />
                 </div>
               </div>
-              <div class="w-full lg:w-6/12 px-4 mb-2">
+              <div class="w-full px-4 mb-2 lg:w-6/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block uppercase text-primary text-xs font-bold mb-2"
+                    class="block mb-2 text-xs font-bold uppercase text-primary"
                   >
                     Clue
                   </label>
                   <input
                     v-model="clue"
                     type="text"
-                    class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
-                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-H1 focus:outline-none focus:ring"
                     placeholder="Clue"
                   />
                 </div>
               </div>
-              <div class="w-full lg:w-6/12 px-4 mb-2">
+              <div class="w-full px-4 mb-2 lg:w-6/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block uppercase text-primary text-xs font-bold mb-2"
+                    class="block mb-2 text-xs font-bold uppercase text-primary"
                   >
                     Price
                   </label>
                   <input
                     v-model="price"
                     type="text"
-                    class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
-                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-H1 focus:outline-none focus:ring"
                     placeholder="Price"
                   />
                 </div>
               </div>
-              <div class="w-full lg:w-6/12 px-4 mb-2">
+              <div class="w-full px-4 mb-2 lg:w-6/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block uppercase text-primary text-xs font-bold mb-2"
+                    class="block mb-2 text-xs font-bold uppercase text-primary"
                   >
                     memorySize
                   </label>
                   <input
                     v-model="memorySize"
                     type="text"
-                    class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
-                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-H1 focus:outline-none focus:ring"
                     placeholder="Memory Size"
                   />
                 </div>
               </div>
-              <div class="w-full lg:w-4/12 px-4 mb-2">
+              <div class="w-full px-4 mb-2 lg:w-4/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block uppercase text-primary text-xs font-bold mb-2"
+                    class="block mb-2 text-xs font-bold uppercase text-primary"
                   >
                     Disk Size
                   </label>
                   <input
                     v-model="diskSize"
                     type="text"
-                    class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
-                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-H1 focus:outline-none focus:ring"
                     placeholder="Disk Size"
                   />
                 </div>
               </div>
-              <div class="w-full lg:w-4/12 px-4 mb-2">
+              <div class="w-full px-4 mb-2 lg:w-4/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block uppercase text-primary text-xs font-bold mb-2"
+                    class="block mb-2 text-xs font-bold uppercase text-primary"
                   >
                     Cpu Core
                   </label>
                   <input
                     v-model="cpuCore"
                     type="text"
-                    class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
-                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-H1 focus:outline-none focus:ring"
                     placeholder="Cpu Core"
                   />
                 </div>
               </div>
-              <div class="w-full lg:w-4/12 px-4 mb-2">
+              <div class="w-full px-4 mb-2 lg:w-4/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block uppercase text-primary text-xs font-bold mb-2"
+                    class="block mb-2 text-xs font-bold uppercase text-primary"
                   >
                     status
                   </label>
                   <div class="flex items-center mt-5">
-                    <input v-model="status" value="active" id="active" name="status" type="radio" class="focus:ring-indigo-500 h-4 w-4 text-primary border-H2">
-                    <label for="active" class="ml-3 block text-sm font-medium text-secondary">
+                    <input v-model="status" value="active" id="active" name="status" type="radio" class="w-4 h-4 focus:ring-indigo-500 text-primary border-H2">
+                    <label for="active" class="block ml-3 text-sm font-medium text-secondary">
                       Active
                     </label>
-                    <input v-model="status" value="pending" id="pending" name="status" type="radio" class="ml-5 focus:ring-indigo-500 h-4 w-4 text-primary border-H2">
-                    <label for="pending" class="ml-3 block text-sm font-medium text-secondary">
+                    <input v-model="status" value="pending" id="pending" name="status" type="radio" class="w-4 h-4 ml-5 focus:ring-indigo-500 text-primary border-H2">
+                    <label for="pending" class="block ml-3 text-sm font-medium text-secondary">
                       Pending
                     </label>
                   </div>
                 </div>
               </div>
-              <div class="w-full lg:w-3/12 px-4 mb-2">
+              <div class="w-full px-4 mb-2 lg:w-3/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block uppercase text-primary text-xs font-bold mb-2"
+                    class="block mb-2 text-xs font-bold uppercase text-primary"
                   >
                     User
                   </label>
                   <select
                     v-model="userId"
-                    class="border border-secondary px-3 py-3 placeholder-secondary text-secondary bg-white
-                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-secondary focus:outline-none focus:ring">
                     <option value="" disabled selected>User</option>
                     <option>test1</option>
                     <option>test2</option>
@@ -144,17 +136,16 @@
                   </select>
                 </div>
               </div>
-              <div class="w-full lg:w-3/12 px-4 mb-2">
+              <div class="w-full px-4 mb-2 lg:w-3/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block uppercase text-primary text-xs font-bold mb-2"
+                    class="block mb-2 text-xs font-bold uppercase text-primary"
                   >
                     section
                   </label>
                   <select
                     v-model="sectionId"
-                    class="border border-secondary px-3 py-3 placeholder-secondary text-secondary bg-white
-                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-secondary focus:outline-none focus:ring">
                     <option value="" disabled selected>section</option>
                     <option>test1</option>
                     <option>test2</option>
@@ -162,17 +153,16 @@
                   </select>
                 </div>
               </div>
-              <div class="w-full lg:w-3/12 px-4 mb-2">
+              <div class="w-full px-4 mb-2 lg:w-3/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block uppercase text-primary text-xs font-bold mb-2"
+                    class="block mb-2 text-xs font-bold uppercase text-primary"
                   >
                     storage
                   </label>
                   <select
                     v-model="storageId"
-                    class="border border-secondary px-3 py-3 placeholder-secondary text-secondary bg-white
-                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-secondary focus:outline-none focus:ring">
                     <option value="" disabled selected>Storage</option>
                     <option>test1</option>
                     <option>test2</option>
@@ -180,17 +170,16 @@
                   </select>
                 </div>
               </div>
-              <div class="w-full lg:w-3/12 px-4 mb-2">
+              <div class="w-full px-4 mb-2 lg:w-3/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block uppercase text-primary text-xs font-bold mb-2"
+                    class="block mb-2 text-xs font-bold uppercase text-primary"
                   >
                     Profile
                   </label>
                   <select
                     v-model="profileId"
-                    class="border border-secondary px-3 py-3 placeholder-secondary text-secondary bg-white
-                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-secondary focus:outline-none focus:ring">
                     <option value="" disabled selected>Profile</option>
                     <option>test1</option>
                     <option>test2</option>
@@ -198,17 +187,16 @@
                   </select>
                 </div>
               </div>
-              <div class="w-full lg:w-3/12 px-4 mb-2">
+              <div class="w-full px-4 mb-2 lg:w-3/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block uppercase text-primary text-xs font-bold mb-2"
+                    class="block mb-2 text-xs font-bold uppercase text-primary"
                   >
                     Network
                   </label>
                   <select
                     v-model="networkId"
-                    class="border border-secondary px-3 py-3 placeholder-secondary text-secondary bg-white
-                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-secondary focus:outline-none focus:ring">
                     <option value="" disabled selected>Network</option>
                     <option>test1</option>
                     <option>test2</option>
@@ -216,17 +204,16 @@
                   </select>
                 </div>
               </div>
-              <div class="w-full lg:w-3/12 px-4 mb-2">
+              <div class="w-full px-4 mb-2 lg:w-3/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block uppercase text-primary text-xs font-bold mb-2"
+                    class="block mb-2 text-xs font-bold uppercase text-primary"
                   >
                     Package
                   </label>
                   <select
                     v-model="packageId"
-                    class="border border-secondary px-3 py-3 placeholder-secondary text-secondary bg-white
-                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-secondary focus:outline-none focus:ring">
                     <option value="" disabled selected>Package</option>
                     <option>test1</option>
                     <option>test2</option>
@@ -234,17 +221,16 @@
                   </select>
                 </div>
               </div>
-              <div class="w-full lg:w-3/12 px-4 mb-2">
+              <div class="w-full px-4 mb-2 lg:w-3/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block uppercase text-primary text-xs font-bold mb-2"
+                    class="block mb-2 text-xs font-bold uppercase text-primary"
                   >
                     Address
                   </label>
                   <select
                     v-model="addressId"
-                    class="border border-secondary px-3 py-3 placeholder-secondary text-secondary bg-white
-                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-secondary focus:outline-none focus:ring">
                     <option value="" disabled selected>Address</option>
                     <option>test1</option>
                     <option>test2</option>
@@ -252,17 +238,16 @@
                   </select>
                 </div>
               </div>
-              <div class="w-full lg:w-3/12 px-4 mb-2">
+              <div class="w-full px-4 mb-2 lg:w-3/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block uppercase text-primary text-xs font-bold mb-2"
+                    class="block mb-2 text-xs font-bold uppercase text-primary"
                   >
                     Template
                   </label>
                   <select
                     v-model="templateId"
-                    class="border border-secondary px-3 py-3 placeholder-secondary text-secondary bg-white
-                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-secondary focus:outline-none focus:ring">
                     <option value="" disabled selected>Template</option>
                     <option>test1</option>
                     <option>test2</option>
@@ -270,21 +255,19 @@
                   </select>
                 </div>
               </div>
-              <div class="w-full lg:w-6/12 px-4 mb-2">
+              <div class="w-full px-4 mb-2 lg:w-6/12">
                 <div class="relative w-full mt-7">
                   <button
                     @click="close"
                     type="button"
-                    class="bg-background text-primary border border-primary text-sm font-bold uppercase px-16 py-3 rounded shadow hover:shadow-lg
-                   outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 mr-3"
+                    class="px-16 py-3 mb-1 mr-1 mr-3 text-sm font-bold uppercase transition-all duration-150 ease-linear border rounded shadow outline-none bg-background text-primary border-primary hover:shadow-lg focus:outline-none"
                   >
                     cancel
                   </button>
                   <button
                     @click="submitForm"
                     type="button"
-                    class="bg-primary text-background text-sm font-bold uppercase px-16 py-3 rounded shadow hover:shadow-lg
-                   outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+                    class="px-16 py-3 mb-1 mr-1 text-sm font-bold uppercase transition-all duration-150 ease-linear rounded shadow outline-none bg-primary text-background hover:shadow-lg focus:outline-none"
                   >
                     submit
                   </button>

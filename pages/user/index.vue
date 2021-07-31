@@ -5,50 +5,38 @@
     <h2
       class="mb-10 text-3xl font-bold uppercase text-H1"
     >
-      Machines
+      users
     </h2>
     <create-modal
       v-if="showCreateModal"
     ></create-modal>
-    <machine-list
+    <user-list
       :is-loading="isLoading"
-      :machines="machines"
-    ></machine-list>
-    <modal
-      v-if="showModal"
-      :machine="selectedMachine"
-    >
-    </modal>
+      :users="users"
+      :key="users.length"
+    ></user-list>
   </div>
 </template>
 
 <script>
-  import machineList from '/components/machine/list'
-  import createModal from '/components/machine/create-modal'
-  import modal from '/components/machine/datails-modal'
+  import userList from '/components/user/userList'
+  import createModal from '/components/user/create-modal'
   export default {
     data() {
       return {
-        machines: [],
+        users: [],
         isLoading: false,
         showCreateModal: false,
         showModal: false,
-        selectedMachine: {
-          id: 0
-        }
       }
     },
     components: {
-      machineList,
-      createModal,
-      modal
+      userList,
+      createModal
     },
     created () {
       this.loadData()
 
-      this.$nuxt.$on('getMachine', (id) => {
-        this.getMachineInfo(id)
-      })
       this.$nuxt.$on('closeModal', () => {
         this.toggleModal()
       })
@@ -59,17 +47,10 @@
     methods: {
       loadData () {
         this.isLoading = true
-        this.$axios.$get('backend/machine/index')
+        this.$axios.$get('backend/user/index')
           .then(response => {
-            this.machines = response.data
+            this.users = response.data
             this.isLoading = false
-          })
-      },
-      getMachineInfo (id) {
-        this.$axios.$get('backend/machine/show/'+id)
-          .then(response => {
-            this.selectedMachine = response.data
-            this.toggleModal()
           })
       },
       toggleModal () {
