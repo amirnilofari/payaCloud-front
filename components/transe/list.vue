@@ -1,18 +1,17 @@
 <template>
   <div>
-    <div class="rounded-t mb-0 px-4 py-6 border-0 bg-white">
+    <div class="px-4 py-6 mb-0 bg-white border-0 rounded-t">
       <div class="flex flex-wrap items-center">
-        <div class="flex flex-wrap items-center w-full px-4 max-w-full">
+        <div class="flex flex-wrap items-center w-full max-w-full px-4">
           <h3
-            class="font-semibold text-lg text-primary inline"
+            class="inline text-lg font-semibold text-primary"
           >
             Trans List
           </h3>
           <button
             @click="close"
             type="button"
-            class="mt-3 right-16 absolute justify-center bg-primary w-full inline-flex justify-center rounded-md shadow-sm px-10 py-2 text-base font-medium text-background
-              focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+            class="absolute inline-flex justify-center w-full px-10 py-2 mt-3 mr-6 text-base font-medium rounded-md shadow-sm right-16 bg-primary text-background focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
             create trans
           </button>
         </div>
@@ -27,39 +26,39 @@
     ></empty-state>
     <table
       v-else
-      class="items-center w-full bg-white border-collapse shadow-lg rounded"
+      class="items-center w-full bg-white border-collapse rounded shadow-lg"
     >
       <thead
         class="bg-background"
       >
       <tr>
         <th
-          class="text-sm px-6 align-middle border border-primary py-3 text-primary uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+          class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
         >
           Id
         </th>
         <th
-          class="text-sm px-6 align-middle border border-primary py-3 text-primary uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+          class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
         >
           Type
         </th>
         <th
-          class="text-sm px-6 align-middle border border-primary py-3 text-primary uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+          class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
         >
           Amount
         </th>
         <th
-          class="text-sm px-6 align-middle border border-primary py-3 text-primary uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+          class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
         >
           User
         </th>
         <th
-          class="text-sm px-6 align-middle border border-primary py-3 text-primary uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+          class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
         >
           Status
         </th>
         <th
-          class="text-sm px-6 align-middle border border-primary py-3 text-primary uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+          class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
         >
           Created At
         </th>
@@ -68,35 +67,36 @@
       <tbody>
       <tr
         v-for="trans in makeList"
+        :key="trans"
         class="cursor-pointer hover:bg-background"
       >
         <td
-          class="font-bold text-H3 border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          class="p-4 px-6 text-xs font-bold align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
         >
           {{trans.id}}
         </td>
         <td
-          class="text-H3 border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
         >
           {{trans.type}}
         </td>
         <td
-          class="text-H3 border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
         >
           {{trans.amount}}
         </td>
         <td
-          class="text-H3 border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
         >
           {{trans.user.name}}
         </td>
         <td
-          class="text-H3 border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
         >
           {{trans.status}}
         </td>
         <td
-          class="text-H3 border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
         >
           {{trans.createdAt}}
         </td>
@@ -104,13 +104,12 @@
       </tbody>
     </table>
     <div
-      class="text-center mt-6"
+      class="mt-6 text-center"
     >
       <button
-        v-if="listIndex < transes.length"
+        v-if=" transes.length >  listIndex"
         @click="getData"
-        class="bg-background text-primary text-sm font-semibold px-6 py-3 rounded shadow hover:shadow-lg
-                   outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+        class="px-6 py-3 mb-1 mr-1 text-sm font-semibold transition-all duration-150 ease-linear rounded shadow outline-none bg-background text-primary hover:shadow-lg focus:outline-none"
         type="submit"
       >
         Load More
