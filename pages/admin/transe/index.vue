@@ -20,7 +20,7 @@
 
 <script>
   import transeList from '/components/transe/list'
-  import createModal from '/components/machine/create-modal'
+  import createModal from '/components/transe/create-modal'
   export default {
     data() {
       return {

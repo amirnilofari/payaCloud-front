@@ -67,7 +67,7 @@
       <tbody>
       <tr
         v-for="trans in makeList"
-        :key="trans"
+        :key="trans.id"
         class="cursor-pointer hover:bg-background"
       >
         <td
@@ -144,13 +144,10 @@
       getData () {
         this.listIndex = (this.pageIndex + 1) * this.pageSize
         for(let i = (this.pageSize * this.pageIndex) ; i < this.listIndex ; i++) {
-         // console.log('transes', i)
          if (this.transes[i]) {
            this.makeList.push(this.transes[i])
          }
         }
-        // console.log('length', this.transes.length)
-        // console.log('listIndex', this.listIndex)
         this.pageIndex = this.pageIndex + 1
       }
     },

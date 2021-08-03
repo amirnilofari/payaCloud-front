@@ -16,22 +16,6 @@
                   <label
                     class="block uppercase text-primary text-xs font-bold mb-2"
                   >
-                    Name
-                  </label>
-                  <input
-                    v-model="name"
-                    type="text"
-                    class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
-                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    placeholder="Name"
-                  />
-                </div>
-              </div>
-              <div class="w-full lg:w-3/12 px-4 mb-2">
-                <div class="relative w-full mb-3">
-                  <label
-                    class="block uppercase text-primary text-xs font-bold mb-2"
-                  >
                     User
                   </label>
                   <select
@@ -43,6 +27,84 @@
                     <option>test2</option>
                     <option>test3</option>
                   </select>
+                </div>
+              </div>
+              <div class="w-full lg:w-6/12 px-4 mb-2">
+                <div class="relative w-full mb-3">
+                  <label
+                    class="block uppercase text-primary text-xs font-bold mb-2"
+                  >
+                    Amount
+                  </label>
+                  <input
+                    v-model="amount"
+                    type="text"
+                    class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
+                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    placeholder="Amount"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-wrap">
+              <div class="w-full lg:w-6/12 px-4 mb-2">
+                <div class="relative w-full mb-3">
+                  <label
+                    class="block mb-2 text-xs font-bold uppercase text-primary"
+                  >
+                    status
+                  </label>
+                  <div class="flex items-center mt-5">
+                    <input v-model="status" value="paid" id="paid" name="status" type="radio" class="w-4 h-4 focus:ring-indigo-500 text-primary border-H2">
+                    <label for="paid" class="block ml-3 text-sm font-medium text-secondary">
+                      paid
+                    </label>
+                    <input v-model="status" value="pending" id="pending" name="status" type="radio" class="w-4 h-4 ml-5 focus:ring-indigo-500 text-primary border-H2">
+                    <label for="pending" class="block ml-3 text-sm font-medium text-secondary">
+                      Pending
+                    </label>
+                    <input v-model="status" value="completed" id="completed" name="status" type="radio" class="w-4 h-4 ml-5 focus:ring-indigo-500 text-primary border-H2">
+                    <label for="completed" class="block ml-3 text-sm font-medium text-secondary">
+                      completed
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="w-full lg:w-6/12 px-4 mb-2">
+                <div class="relative w-full mb-3">
+                  <label
+                    class="block mb-2 text-xs font-bold uppercase text-primary"
+                  >
+                    type
+                  </label>
+                  <div class="flex items-center mt-5">
+                    <input v-model="type" value="balance" id="balance" name="type" type="radio" class="w-4 h-4 focus:ring-indigo-500 text-primary border-H2">
+                    <label for="balance" class="block ml-3 text-sm font-medium text-secondary">
+                      balance
+                    </label>
+                    <input v-model="type" value="gift" id="gift" name="type" type="radio" class="w-4 h-4 ml-5 focus:ring-indigo-500 text-primary border-H2">
+                    <label for="gift" class="block ml-3 text-sm font-medium text-secondary">
+                      gift
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="w-full px-4 mb-2 lg:w-6/12">
+                <div class="relative w-full mt-7">
+                  <button
+                    @click="close"
+                    type="button"
+                    class="px-16 py-3 mb-1 mr-1 mr-3 text-sm font-bold uppercase transition-all duration-150 ease-linear border rounded shadow outline-none bg-background text-primary border-primary hover:shadow-lg focus:outline-none"
+                  >
+                    cancel
+                  </button>
+                  <button
+                    @click="submitForm"
+                    type="button"
+                    class="px-16 py-3 mb-1 mr-1 text-sm font-bold uppercase transition-all duration-150 ease-linear rounded shadow outline-none bg-primary text-background hover:shadow-lg focus:outline-none"
+                  >
+                    submit
+                  </button>
                 </div>
               </div>
             </div>
@@ -59,8 +121,8 @@
       return {
         userId: '',
         amount: '',
-        type: '',
-        status: ''
+        type: 'balance',
+        status: 'paid'
       }
     },
     methods: {
@@ -69,13 +131,12 @@
       },
       submitForm () {
         let formdata = new FormData()
-        // formdata.append('userId', this.userId)
-        // formdata.append('sectionId', this.sectionId)
-        // formdata.append('storageId', this.storageId)
-        // formdata.append('profileId', this.profileId)
-        // formdata.append('networkId', this.networkId)
+        formdata.append('userId', this.userId)
+        formdata.append('amount', this.amount)
+        formdata.append('type', this.type)
+        formdata.append('status', this.status)
 
-        this.$axios.$post('backend/machine/create',
+        this.$axios.$post('backend/trans/create',
           formdata)
           .then(response => {
             if (response.status === 200) {
