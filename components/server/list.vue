@@ -113,7 +113,6 @@
   import emptyState from '/components/empty-state'
 
   export default {
-    name: "list",
     data () {
       return {
         pageSize: 10,
