@@ -29,12 +29,14 @@
         showCreateModal: false,
         showModal: false,
       }
-    },
+    }, 
+
     components: {
       userList,
       createModal
     },
     created () {
+      console.log("amir")
       this.loadData()
 
       this.$nuxt.$on('closeModal', () => {
