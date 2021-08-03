@@ -76,47 +76,64 @@
         </h6>
         <!-- Navigation -->
 
-        <ul class="flex flex-col list-none md:flex-col md:min-w-full">
-          <li class="items-center px-2 py-3 mb-2 rounded bg-primary text-background">
-            <nuxt-link
-              to="#"
-
-            >
-                Dashboard
-           
+        <ul
+          v-for="item in listPerm"
+          :key="item.name"
+          class="flex flex-col list-none md:flex-col md:min-w-full"
+        >
+          <li
+            class="items-center px-2 py-3 mb-2 rounded text-H2 "
+          >
+            <nuxt-link :to="item.link" class="flex">
+              <div v-html="item.icon" class="mr-2">
+              </div>
+              {{ item.name }}
             </nuxt-link>
           </li>
-
-          <li class="items-center px-2 py-3 ">
-            <nuxt-link
-              to="#"
-              
-            >
-            
-                Settings
-            </nuxt-link>
-          </li>
-
-        
         </ul>
-
-       
-     
-       
-       
       </div>
     </div>
   </nav>
 </template>
-); }
 
-<script> 
-import ListDropDown from "~/components/Navbar/ListDropDown.vue"; 
+<style scoped>
+  .nuxt-link-exact-active {
+    font-weight:bold;
+    color: #3d69e1 ;
+}
+</style>
+
+<script>
+import ListDropDown from "~/components/Navbar/ListDropDown.vue";
 
 export default {
   data() {
     return {
       collapseShow: "hidden",
+      listPerm: [
+        {
+          name: "Machine",
+          link: "/admin/machine",
+          icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4" />
+</svg>`
+        },
+        {
+          name: "User",
+          link: "/admin/user",
+          icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+</svg>`
+        },
+
+        {
+          name: "Trans",
+          link: "/admin/transe",
+          icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+</svg>`
+        },
+      ],
     };
   },
   methods: {
@@ -129,3 +146,4 @@ export default {
   },
 };
 </script>
+

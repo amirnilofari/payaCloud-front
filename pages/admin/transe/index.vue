@@ -1,9 +1,9 @@
 <template>
   <div
-    class="mx-auto bg-secondary h-auto p-8"
+    class="h-auto p-8 mx-auto bg-background"
   >
     <h2
-      class="text-3xl uppercase text-white mb-10 font-bold"
+      class="mb-10 text-3xl font-bold uppercase text-H1"
     >
       Transes
     </h2>

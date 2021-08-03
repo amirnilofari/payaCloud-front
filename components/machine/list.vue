@@ -1,18 +1,17 @@
 <template>
   <div>
-    <div class="rounded-t mb-0 px-4 py-6 border-0 bg-white">
+    <div class="px-4 py-6 mb-0 bg-white border-0 rounded-t">
       <div class="flex flex-wrap items-center">
-        <div class="flex flex-wrap items-center w-full px-4 max-w-full">
+        <div class="flex flex-wrap items-center w-full max-w-full px-4">
           <h3
-            class="font-semibold text-lg text-primary inline"
+            class="inline text-lg font-semibold text-primary"
           >
             Machines List
           </h3>
           <button
             @click="close"
             type="button"
-            class="mt-3 right-16 absolute justify-center bg-primary w-full inline-flex justify-center rounded-md shadow-sm px-10 py-2 text-base font-medium text-background
-              focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+            class="absolute inline-flex justify-center w-full px-10 py-2 mt-3 mr-6 text-base font-medium rounded-md shadow-sm right-16 bg-primary text-background focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
             create machine
           </button>
         </div>
@@ -27,49 +26,49 @@
     ></empty-state>
     <table
       v-else
-      class="items-center w-full bg-white border-collapse shadow-lg rounded"
+      class="items-center w-full bg-white border-collapse rounded shadow-lg"
     >
       <thead
         class="bg-background"
       >
       <tr>
         <th
-          class="text-sm px-6 align-middle border border-primary py-3 text-primary uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+          class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
         >
           Id
         </th>
         <th
-          class="text-sm px-6 align-middle border border-primary py-3 text-primary uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+          class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
         >
           Template
         </th>
         <th
-          class="text-sm px-6 align-middle border border-primary py-3 text-primary uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+          class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
         >
           UserName
         </th>
         <th
-          class="text-sm px-6 align-middle border border-primary py-3 text-primary uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+          class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
         >
           Address
         </th>
         <th
-          class="text-sm px-6 align-middle border border-primary py-3 text-primary uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+          class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
         >
           Memory Size
         </th>
         <th
-          class="text-sm px-6 align-middle border border-primary py-3 text-primary uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+          class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
         >
           Disk Size
         </th>
         <th
-          class="text-sm px-6 align-middle border border-primary py-3 text-primary uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+          class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
         >
           Cpu Core
         </th>
         <th
-          class="text-sm px-6 align-middle border border-primary py-3 text-primary uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+          class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
         >
           Status
         </th>
@@ -78,20 +77,21 @@
       <tbody>
       <tr
         v-for="machine in machines"
+        :key="machine"
         @click="onClickMachine(machine.id)"
         class="cursor-pointer hover:bg-background"
       >
         <td
-          class="font-bold text-H3 border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          class="p-4 px-6 text-xs font-bold align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
         >
           {{machine.id}}
         </td>
         <th
-          class="text-H3 border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left flex items-center"
+          class="flex items-center p-4 px-6 text-xs text-left align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
         >
           <img
             :src="machine.template.icon.address"
-            class="h-12 w-12 bg-white rounded-full border"
+            class="w-12 h-12 bg-white border rounded-full"
             alt="..."
           />
           <span
@@ -101,47 +101,47 @@
             </span>
         </th>
         <td
-          class="text-H3 border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
         >
           {{machine.template.username}}
         </td>
         <td
-          class="text-H3 border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
         >
           {{machine.address.address}}
         </td>
         <td
-          class="text-H3 border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
         >
           {{machine.memorySize}}
         </td>
         <td
-          class="text-H3 border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
         >
           {{machine.diskSize}}
         </td>
         <td
-          class="text-H3 border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
         >
           {{machine.cpuCore}}
         </td>
         <td
-          class="text-H3 border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
+          class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
         >
           <button
             v-if="machine.status === 'active'"
-            class="bg-positive rounded-full text-white p-2 hover:shadow-lg mr-5 pointer-events-none"
+            class="p-2 mr-5 text-white rounded-full pointer-events-none bg-positive hover:shadow-lg"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
                  stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
             </svg>
           </button>
           <button
             v-else
-            class="bg-negative rounded-full text-white p-2 hover:shadow-lg mr-5 pointer-events-none"
+            class="p-2 mr-5 text-white rounded-full pointer-events-none bg-negative hover:shadow-lg"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24"
                stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
             </svg>
