@@ -7,9 +7,9 @@
     >
       Servers
     </h2>
-<!--    <create-modal-->
-<!--      v-if="showCreateModal"-->
-<!--    ></create-modal>-->
+    <create-modal
+      v-if="showCreateModal"
+    ></create-modal>
     <server-list
       :is-loading="isLoading"
       :servers="servers"
@@ -20,7 +20,7 @@
 
 <script>
   import serverList from '/components/server/list'
-  // import createModal from '/components/transe/create-modal'
+  import createModal from '/components/server/create-modal'
   export default {
     data() {
       return {
@@ -35,7 +35,7 @@
     },
     components: {
       serverList,
-      // createModal
+      createModal
     },
     created () {
       this.loadData()
@@ -45,6 +45,9 @@
       })
       this.$nuxt.$on('toggleCreateModal', () => {
         this.toggleCreateModal()
+      })
+      this.$nuxt.$on('onLoadData', () => {
+        this.loadData()
       })
     },
     methods: {

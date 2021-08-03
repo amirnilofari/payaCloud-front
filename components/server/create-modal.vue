@@ -1,4 +1,4 @@
-template>
+<template>
   <transition name="slide">
     <div
       class="fixed z-10 inset-0 overflow-y-auto details-modal" role="dialog" aria-modal="true">
@@ -9,24 +9,22 @@ template>
           <form
             class="p-6"
           >
-            <h3 class="font-semibold mb-6 text-H3 text-xl">New Trans</h3>
+            <h3 class="font-semibold mb-6 text-H3 text-xl">New Server</h3>
             <div class="flex flex-wrap">
               <div class="w-full lg:w-6/12 px-4 mb-2">
                 <div class="relative w-full mb-3">
                   <label
                     class="block uppercase text-primary text-xs font-bold mb-2"
                   >
-                    User
+                    Name
                   </label>
-                  <select
-                    v-model="userId"
-                    class="border border-secondary px-3 py-3 placeholder-secondary text-secondary bg-white
-                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
-                    <option value="" disabled selected>User</option>
-                    <option>test1</option>
-                    <option>test2</option>
-                    <option>test3</option>
-                  </select>
+                  <input
+                    v-model="name"
+                    type="text"
+                    class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
+                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    placeholder="Name"
+                  />
                 </div>
               </div>
               <div class="w-full lg:w-6/12 px-4 mb-2">
@@ -34,14 +32,14 @@ template>
                   <label
                     class="block uppercase text-primary text-xs font-bold mb-2"
                   >
-                    Amount
+                    Address
                   </label>
                   <input
-                    v-model="amount"
+                    v-model="address"
                     type="text"
                     class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
                    rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    placeholder="Amount"
+                    placeholder="Address"
                   />
                 </div>
               </div>
@@ -50,46 +48,38 @@ template>
               <div class="w-full lg:w-6/12 px-4 mb-2">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block mb-2 text-xs font-bold uppercase text-primary"
+                    class="block uppercase text-primary text-xs font-bold mb-2"
                   >
-                    status
+                    Username
                   </label>
-                  <div class="flex items-center mt-5">
-                    <input v-model="status" value="paid" id="paid" name="status" type="radio" class="w-4 h-4 focus:ring-indigo-500 text-primary border-H2">
-                    <label for="paid" class="block ml-3 text-sm font-medium text-secondary">
-                      paid
-                    </label>
-                    <input v-model="status" value="pending" id="pending" name="status" type="radio" class="w-4 h-4 ml-5 focus:ring-indigo-500 text-primary border-H2">
-                    <label for="pending" class="block ml-3 text-sm font-medium text-secondary">
-                      Pending
-                    </label>
-                    <input v-model="status" value="completed" id="completed" name="status" type="radio" class="w-4 h-4 ml-5 focus:ring-indigo-500 text-primary border-H2">
-                    <label for="completed" class="block ml-3 text-sm font-medium text-secondary">
-                      completed
-                    </label>
-                  </div>
+                  <input
+                    v-model="username"
+                    type="text"
+                    class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
+                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    placeholder="Username"
+                  />
                 </div>
               </div>
               <div class="w-full lg:w-6/12 px-4 mb-2">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block mb-2 text-xs font-bold uppercase text-primary"
+                    class="block uppercase text-primary text-xs font-bold mb-2"
                   >
-                    type
+                    Password
                   </label>
-                  <div class="flex items-center mt-5">
-                    <input v-model="type" value="balance" id="balance" name="type" type="radio" class="w-4 h-4 focus:ring-indigo-500 text-primary border-H2">
-                    <label for="balance" class="block ml-3 text-sm font-medium text-secondary">
-                      balance
-                    </label>
-                    <input v-model="type" value="gift" id="gift" name="type" type="radio" class="w-4 h-4 ml-5 focus:ring-indigo-500 text-primary border-H2">
-                    <label for="gift" class="block ml-3 text-sm font-medium text-secondary">
-                      gift
-                    </label>
-                  </div>
+                  <input
+                    v-model="password"
+                    type="password"
+                    class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
+                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    placeholder="Password"
+                  />
                 </div>
               </div>
-              <div class="w-full px-4 mb-2 lg:w-6/12">
+            </div>
+            <div class="flex flex-wrap">
+              <div class="w-full px-4 mb-2">
                 <div class="relative w-full mt-7">
                   <button
                     @click="close"
@@ -119,10 +109,10 @@ template>
   export default {
     data() {
       return {
-        userId: '',
-        amount: '',
-        type: 'balance',
-        status: 'paid'
+        name: '',
+        address: '',
+        username: '',
+        password: ''
       }
     },
     methods: {
@@ -131,18 +121,20 @@ template>
       },
       submitForm () {
         let formdata = new FormData()
-        formdata.append('userId', this.userId)
-        formdata.append('amount', this.amount)
-        formdata.append('type', this.type)
-        formdata.append('status', this.status)
+        formdata.append('name', this.name)
+        formdata.append('address', this.address)
+        formdata.append('username', this.username)
+        formdata.append('password', this.password)
 
-        this.$axios.$post('backend/trans/create',
+        this.$axios.$post('backend/server/create',
           formdata)
           .then(response => {
-            if (response.status === 200) {
-              this.$toast.success('Successfully created!')
-            } else {
+            console.log('dg', response)
+            if (response.message) {
               this.$toast.error(response.message)
+            } else {
+              this.$nuxt.$emit('onLoadData')
+              this.$toast.success('Successfully created!')
             }
             this.close()
           })
