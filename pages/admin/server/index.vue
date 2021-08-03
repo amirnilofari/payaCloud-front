@@ -9,6 +9,8 @@
     </h2>
     <create-modal
       v-if="showCreateModal"
+      :selected-server="selectedServer"
+      :is-edit="isEdit"
     ></create-modal>
     <server-list
       :is-loading="isLoading"
@@ -28,9 +30,8 @@
         isLoading: false,
         showCreateModal: false,
         showModal: false,
-        // selectedMachine: {
-        //   id: 0
-        // }
+        selectedServer: {},
+        isEdit: false
       }
     },
     components: {
@@ -41,13 +42,20 @@
       this.loadData()
 
       this.$nuxt.$on('closeModal', () => {
+        this.selectedServer = {}
+        this.isEdit = false
         this.toggleModal()
       })
       this.$nuxt.$on('toggleCreateModal', () => {
+        this.isEdit = false
         this.toggleCreateModal()
       })
       this.$nuxt.$on('onLoadData', () => {
         this.loadData()
+      })
+      this.$nuxt.$on('onSetServer', (data) => {
+        this.isEdit = true
+        this.selectedServer = data
       })
     },
     methods: {

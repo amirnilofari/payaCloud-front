@@ -57,6 +57,11 @@
         >
           Password
         </th>
+        <th
+          class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
+        >
+
+        </th>
       </tr>
       </thead>
       <tbody>
@@ -89,6 +94,18 @@
           class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
         >
           {{server.password}}
+        </td>
+        <td
+          class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
+        >
+          <button
+            class="p-2 mr-5 text-white rounded-full bg-primary hover:shadow-lg"
+            @click="onEdit(server)"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+            </svg>
+          </button>
         </td>
       </tr>
       </tbody>
@@ -127,6 +144,10 @@
     },
     props: ['isLoading', 'servers'],
     methods: {
+      onEdit (server) {
+        this.$nuxt.$emit('toggleCreateModal')
+        this.$nuxt.$emit('onSetServer', server)
+      },
       close () {
         this.$nuxt.$emit('toggleCreateModal')
       },

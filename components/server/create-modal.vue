@@ -109,12 +109,14 @@
   export default {
     data() {
       return {
+        id: '',
         name: '',
         address: '',
         username: '',
         password: ''
       }
     },
+    props: ['isEdit', 'selectedServer'],
     methods: {
       close() {
         this.$nuxt.$emit('toggleCreateModal')
@@ -126,18 +128,48 @@
         formdata.append('username', this.username)
         formdata.append('password', this.password)
 
-        this.$axios.$post('backend/server/create',
-          formdata)
-          .then(response => {
-            console.log('dg', response)
-            if (response.message) {
-              this.$toast.error(response.message)
-            } else {
-              this.$nuxt.$emit('onLoadData')
-              this.$toast.success('Successfully created!')
-            }
-            this.close()
-          })
+        if (this.isEdit) {
+          this.$axios.$post('backend/server/update/' + this.id,
+            formdata)
+            .then(response => {
+              // console.log('edit', response)
+              if (response.message) {
+                this.$toast.error(response.message)
+              } else {
+                this.$nuxt.$emit('onLoadData')
+                this.$toast.success('Successfully edited!')
+              }
+              this.close()
+            })
+        } else {
+          this.$axios.$post('backend/server/create',
+            formdata)
+            .then(response => {
+              // console.log('create', response)
+              if (response.message) {
+                this.$toast.error(response.message)
+              } else {
+                this.$nuxt.$emit('onLoadData')
+                this.$toast.success('Successfully created!')
+              }
+              this.close()
+            })
+        }
+      }
+    },
+    created() {
+      if (this.isEdit) {
+        this.id = this.selectedServer.id
+        this.name = this.selectedServer.name
+        this.address = this.selectedServer.address
+        this.username = this.selectedServer.username
+        this.password = this.selectedServer.password
+      } else {
+        this.id = ''
+        this.name = ''
+        this.address = ''
+        this.username = ''
+        this.password = ''
       }
     }
   }
