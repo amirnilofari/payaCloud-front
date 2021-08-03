@@ -24,7 +24,7 @@
   export default {
     data() {
       return {
-        users: [],
+        users: [] ,
         isLoading: false,
         showCreateModal: false,
         showModal: false,
