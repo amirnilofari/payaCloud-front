@@ -95,7 +95,13 @@
     </div>
   </nav>
 </template>
-); }
+
+<style scoped>
+  .nuxt-link-exact-active {
+    font-weight:bold;
+    color: #3d69e1 ;
+}
+</style>
 
 <script>
 import ListDropDown from "~/components/Navbar/ListDropDown.vue";
