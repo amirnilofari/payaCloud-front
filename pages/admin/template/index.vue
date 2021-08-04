@@ -5,47 +5,47 @@
     <h2
       class="mb-10 text-3xl font-bold uppercase text-H1"
     >
-      Servers
+      Templates
     </h2>
     <create-modal
       v-if="showCreateModal"
-      :selected-server="selectedServer"
+      :selected-template="selectedTemplate"
       :is-edit="isEdit"
     ></create-modal>
-    <server-list
+    <template-list
       :is-loading="isLoading"
-      :servers="servers"
+      :templates="templates"
       :is-end="isEnd"
-      :key="servers.length"
-    ></server-list>
+      :key="templates.length"
+    ></template-list>
   </div>
 </template>
 
 <script>
-  import serverList from '/components/server/list'
-  import createModal from '/components/server/create-modal'
+  import templateList from '/components/template/list.vue'
+  import createModal from '/components/template/create-modal'
   export default {
     data() {
       return {
-        servers: [],
+        templates: [],
         isLoading: false,
         showCreateModal: false,
         showModal: false,
-        selectedServer: {},
+        selectedTemplate: {},
         isEdit: false,
         pageIndex: 1,
         isEnd: false
       }
     },
     components: {
-      serverList,
+      templateList,
       createModal
     },
     created () {
       this.loadData()
 
       this.$nuxt.$on('closeModal', () => {
-        this.selectedServer = {}
+        this.selectedTemplate = {}
         this.isEdit = false
         this.toggleModal()
       })
@@ -56,9 +56,9 @@
       this.$nuxt.$on('onLoadData', () => {
         this.loadData()
       })
-      this.$nuxt.$on('onSetServer', (data) => {
+      this.$nuxt.$on('onSetTemplate', (data) => {
         this.isEdit = true
-        this.selectedServer = data
+        this.selectedTemplate = data
       })
       this.$nuxt.$on('loadMore', () => {
         this.pageIndex++
@@ -68,9 +68,9 @@
     methods: {
       loadData () {
         this.isLoading = true
-        this.$axios.$get('backend/server/index?page=' + this.pageIndex)
+        this.$axios.$get('backend/template/index?page=' + this.pageIndex)
           .then(response => {
-            this.servers = this.servers.concat(response.data);
+            this.templates = this.templates.concat(response.data);
             if (response.links.next === null) {
               this.isEnd = true
             } else {
