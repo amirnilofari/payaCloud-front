@@ -6,13 +6,13 @@
           <h3
             class="inline text-lg font-semibold text-primary"
           >
-            Machines List
+            Template List
           </h3>
           <button
             @click="close"
             type="button"
             class="absolute inline-flex justify-center w-full px-10 py-2 mt-3 mr-6 text-base font-medium rounded-md shadow-sm right-16 bg-primary text-background focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
-            create machine
+            create template
           </button>
         </div>
       </div>
@@ -22,7 +22,7 @@
       class="mt-14"
     ></loading>
     <empty-state
-      v-else-if="!isLoading && machines.length === 0"
+      v-else-if="!isLoading && templates.length === 0"
     ></empty-state>
     <table
       v-else
@@ -40,96 +40,70 @@
         <th
           class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
         >
-          Template
+          Name
         </th>
         <th
           class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
         >
-          UserName
+          Username
         </th>
         <th
           class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
         >
-          Address
+          Password
         </th>
-        <th
-          class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
-        >
-          Memory Size
-        </th>
-        <th
-          class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
-        >
-          Disk Size
-        </th>
-        <th
-          class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
-        >
-          Cpu Core
-        </th>
-        <th
+         <th
           class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
         >
           Status
+        </th>
+        <th
+          class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
+        >
+
         </th>
       </tr>
       </thead>
       <tbody>
       <tr
-        v-for="machine in machines"
-        :key="machine"
-        @click="onClickMachine(machine.id)"
+        v-for="template in templates"
+        :key="template.id"
         class="cursor-pointer hover:bg-background"
       >
         <td
           class="p-4 px-6 text-xs font-bold align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
         >
-          {{machine.id}}
+          {{template.id}}
         </td>
         <th
           class="flex items-center p-4 px-6 text-xs text-left align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
         >
           <img
-            :src="machine.template.icon.address"
-            class="w-12 h-12 bg-white border-2 rounded-full border-primary"
+            :src="template.icon.address"
+            class="items-center w-12 h-12 bg-white border-2 rounded-full border-primary"
             alt="..."
           />
           <span
             class="ml-3 font-bold"
           >
-              {{machine.template.name}}
+              {{template.name}}
             </span>
         </th>
         <td
           class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
         >
-          {{machine.template.username}}
+          {{template.username}}
         </td>
         <td
           class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
         >
-          {{machine.address.address}}
-        </td>
-        <td
-          class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
-        >
-          {{machine.memorySize}}
-        </td>
-        <td
-          class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
-        >
-          {{machine.diskSize}}
-        </td>
-        <td
-          class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
-        >
-          {{machine.cpuCore}}
+          {{template.password}}
         </td>
         <td
           class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
         >
           <button
-            v-if="machine.status === 'active'"
+            v-if="template.status === 'active'"
             class="p-2 mr-5 text-white rounded-full pointer-events-none bg-positive hover:shadow-lg"
           >
             <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24"
@@ -147,9 +121,33 @@
             </svg>
           </button>
         </td>
+        <td
+          class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
+        >
+          <button
+            class="p-2 mr-5 text-white rounded-full bg-primary hover:shadow-lg"
+            @click="onEdit(template)"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+            </svg>
+          </button>
+        </td>
       </tr>
       </tbody>
     </table>
+    <div
+      class="mt-6 text-center"
+    >
+      <button
+        v-if="!isEnd"
+        @click="getData"
+        class="px-6 py-3 mb-1 mr-1 text-sm font-semibold transition-all duration-150 ease-linear rounded shadow outline-none bg-background text-primary hover:shadow-lg focus:outline-none"
+        type="submit"
+      >
+        Load More
+      </button>
+    </div>
   </div>
 </template>
 
@@ -158,18 +156,21 @@
   import emptyState from '/components/empty-state'
 
   export default {
-    name: "list",
     components: {
       loading,
       emptyState
     },
-    props: ['isLoading', 'machines'],
+    props: ['isLoading', 'templates', 'isEnd'],
     methods: {
-      onClickMachine (id) {
-        this.$nuxt.$emit('getMachine', id)
+      onEdit (template) {
+        this.$nuxt.$emit('toggleCreateModal')
+        this.$nuxt.$emit('onSetTemplate', template)
       },
       close () {
         this.$nuxt.$emit('toggleCreateModal')
+      },
+      getData () {
+        this.$nuxt.$emit('loadMore')
       }
     }
   }
