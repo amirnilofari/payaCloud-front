@@ -15,6 +15,7 @@
     <server-list
       :is-loading="isLoading"
       :servers="servers"
+      :is-end="isEnd"
       :key="servers.length"
     ></server-list>
   </div>
@@ -31,7 +32,9 @@
         showCreateModal: false,
         showModal: false,
         selectedServer: {},
-        isEdit: false
+        isEdit: false,
+        pageIndex: 1,
+        isEnd: false
       }
     },
     components: {
@@ -57,13 +60,22 @@
         this.isEdit = true
         this.selectedServer = data
       })
+      this.$nuxt.$on('loadMore', () => {
+        this.pageIndex++
+        this.loadData()
+      })
     },
     methods: {
       loadData () {
         this.isLoading = true
-        this.$axios.$get('backend/server/index')
+        this.$axios.$get('backend/server/index?page=' + this.pageIndex)
           .then(response => {
-            this.servers = response.data
+            this.servers = this.servers.concat(response.data);
+            if (response.links.next === null) {
+              this.isEnd = true
+            } else {
+              this.isEnd = false
+            }
             this.isLoading = false
           })
       },

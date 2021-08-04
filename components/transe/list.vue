@@ -66,7 +66,7 @@
       </thead>
       <tbody>
       <tr
-        v-for="trans in makeList"
+        v-for="trans in transes"
         :key="trans.id"
         class="cursor-pointer hover:bg-background"
       >
@@ -107,7 +107,7 @@
       class="mt-6 text-center"
     >
       <button
-        v-if=" transes.length >  listIndex"
+        v-if="!isEnd"
         @click="getData"
         class="px-6 py-3 mb-1 mr-1 text-sm font-semibold transition-all duration-150 ease-linear rounded shadow outline-none bg-background text-primary hover:shadow-lg focus:outline-none"
         type="submit"
@@ -123,37 +123,17 @@
   import emptyState from '/components/empty-state'
 
   export default {
-    name: "list",
-    data () {
-      return {
-        pageSize: 10,
-        pageIndex: 0,
-        makeList: [],
-        listIndex: 0
-      }
-    },
     components: {
       loading,
       emptyState
     },
-    props: ['isLoading', 'transes'],
+    props: ['isLoading', 'transes', 'isEnd'],
     methods: {
       close () {
         this.$nuxt.$emit('toggleCreateModal')
       },
       getData () {
-        this.listIndex = (this.pageIndex + 1) * this.pageSize
-        for(let i = (this.pageSize * this.pageIndex) ; i < this.listIndex ; i++) {
-         if (this.transes[i]) {
-           this.makeList.push(this.transes[i])
-         }
-        }
-        this.pageIndex = this.pageIndex + 1
-      }
-    },
-    mounted() {
-      if (this.transes) {
-        this.getData()
+        this.$nuxt.$emit('loadMore')
       }
     }
   }

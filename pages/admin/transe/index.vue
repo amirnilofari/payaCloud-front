@@ -13,6 +13,7 @@
     <transe-list
       :is-loading="isLoading"
       :transes="transes"
+      :is-end="isEnd"
       :key="transes.length"
     ></transe-list>
   </div>
@@ -30,7 +31,9 @@
         showModal: false,
         selectedMachine: {
           id: 0
-        }
+        },
+        pageIndex: 1,
+        isEnd: false
       }
     },
     components: {
@@ -46,14 +49,23 @@
       this.$nuxt.$on('toggleCreateModal', () => {
         this.toggleCreateModal()
       })
+
+      this.$nuxt.$on('loadMore', () => {
+        this.pageIndex++
+        this.loadData()
+      })
     },
     methods: {
       loadData () {
         this.isLoading = true
-        this.$axios.$get('backend/trans/index')
+        this.$axios.$get('backend/trans/index?page=' + this.pageIndex)
           .then(response => {
-            this.transes = response.data
-            // console.log('transes', this.transes)
+            this.transes = this.transes.concat(response.data);
+            if (response.links.next === null) {
+              this.isEnd = true
+            } else {
+              this.isEnd = false
+            }
             this.isLoading = false
           })
       },

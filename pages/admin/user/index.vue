@@ -13,6 +13,7 @@
     <user-list
       :is-loading="isLoading"
       :users="users"
+      :is-end="isEnd"
       :key="users.length"
     ></user-list>
   </div>
@@ -28,15 +29,16 @@
         isLoading: false,
         showCreateModal: false,
         showModal: false,
+        pageIndex: 1,
+        isEnd: false
       }
-    }, 
+    },
 
     components: {
       userList,
       createModal
     },
     created () {
-      console.log("amir")
       this.loadData()
 
       this.$nuxt.$on('closeModal', () => {
@@ -45,13 +47,22 @@
       this.$nuxt.$on('toggleCreateModal', () => {
         this.toggleCreateModal()
       })
+      this.$nuxt.$on('loadMore', () => {
+        this.pageIndex++
+        this.loadData()
+      })
     },
     methods: {
       loadData () {
         this.isLoading = true
-        this.$axios.$get('backend/user/index')
+        this.$axios.$get('backend/user/index?page=' + this.pageIndex)
           .then(response => {
-            this.users = response.data
+            this.users = this.users.concat(response.data);
+            if (response.links.next === null) {
+              this.isEnd = true
+            } else {
+              this.isEnd = false
+            }
             this.isLoading = false
           })
       },
