@@ -9,7 +9,7 @@
           <form
             class="p-6"
           >
-            <h3 class="font-semibold mb-6 text-H3 text-xl">New Center</h3>
+            <h3 class="font-semibold mb-6 text-H3 text-xl">New Section</h3>
             <div class="flex flex-wrap">
               <div class="w-full lg:w-4/12 px-4 mb-2">
                 <div class="relative w-full mb-3">
@@ -48,17 +48,17 @@
                   <label
                     class="block mb-2 text-xs font-bold uppercase text-primary"
                   >
-                    Server
+                    Cluster
                   </label>
                   <select
-                    v-model="serverId"
+                    v-model="clusterId"
                     class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-secondary focus:outline-none focus:ring">
-                    <option value="" disabled selected>Server</option>
+                    <option value="" disabled selected>Cluster</option>
                     <option
-                      v-for="server in servers"
-                      :value="server.id"
+                      v-for="cluster in clusters"
+                      :value="cluster.id"
                     >
-                      {{server.name}}
+                      {{cluster.name}}
                     </option>
                   </select>
                 </div>
@@ -98,10 +98,10 @@
         id: '',
         name: '',
         clue: '',
-        serverId: ''
+        clusterId: ''
       }
     },
-    props: ['isEdit', 'selectedCenter', 'servers'],
+    props: ['isEdit', 'selectedSection', 'clusters'],
     methods: {
       close() {
         this.$nuxt.$emit('toggleCreateModal')
@@ -110,7 +110,7 @@
         let formdata = new FormData()
         formdata.append('name', this.name)
         formdata.append('clue', this.clue)
-        formdata.append('serverId', this.serverId)
+        formdata.append('clusterId', this.clusterId)
 
         if (this.isEdit) {
           this.$axios.$post('backend/center/update/' + this.id,
@@ -125,7 +125,7 @@
               this.close()
             })
         } else {
-          this.$axios.$post('backend/center/create',
+          this.$axios.$post('backend/section/create',
             formdata)
             .then(response => {
               if (response.message) {
@@ -140,17 +140,17 @@
       }
     },
     created() {
-      if (this.isEdit) {
-        this.id = this.selectedCenter.id
-        this.name = this.selectedCenter.name
-        this.clue = this.selectedCenter.clue
-        this.serverId = this.selectedCenter.server.id
-      } else {
-        this.id = ''
-        this.name = ''
-        this.clue = ''
-        this.serverId = ''
-      }
+      // if (this.isEdit) {
+      //   this.id = this.selectedCenter.id
+      //   this.name = this.selectedCenter.name
+      //   this.clue = this.selectedCenter.clue
+      //   this.clusterId = this.selectedCenter.server.id
+      // } else {
+      //   this.id = ''
+      //   this.name = ''
+      //   this.clue = ''
+      //   this.clusterId = ''
+      // }
     }
   }
 </script>

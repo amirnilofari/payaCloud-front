@@ -7,28 +7,28 @@
     >
       Sections
     </h2>
-<!--    <create-modal-->
-<!--      v-if="showCreateModal"-->
-<!--      :selected-section="selectedSection"-->
-<!--      :servers="servers"-->
-<!--      :is-edit="isEdit"-->
-<!--    ></create-modal>-->
-    <sectoin-list
+    <create-modal
+      v-if="showCreateModal"
+      :selected-section="selectedSection"
+      :clusters="clusters"
+      :is-edit="isEdit"
+    ></create-modal>
+    <section-list
       :is-loading="isLoading"
       :sections="sections"
       :is-end="isEnd"
       :key="sections.length"
-    ></sectoin-list>
+    ></section-list>
   </div>
 </template>
 
 <script>
-  import sectoinList from '/components/sectoin/list'
-  // import createModal from '/components/center/create-modal'
+  import sectionList from '/components/section/list'
+  import createModal from '/components/section/create-modal'
   export default {
     data() {
       return {
-        servers: [],
+        clusters: [],
         sections: [],
         isLoading: false,
         showCreateModal: false,
@@ -40,12 +40,12 @@
       }
     },
     components: {
-      sectoinList,
-      // createModal
+      sectionList,
+      createModal
     },
     created () {
       this.loadData()
-      // this.getServers()
+      this.getClusters()
 
       this.$nuxt.$on('closeModal', () => {
         this.selectedSection = {}
@@ -84,12 +84,13 @@
             this.isLoading = false
           })
       },
-      // getServers () {
-      //   this.$axios.$get('backend/server/index')
-      //     .then(response => {
-      //       this.servers = response.data
-      //     })
-      // },
+      getClusters () {
+        this.$axios.$get('backend/cluster/index')
+          .then(response => {
+            console.log('cluster', response.data)
+            this.clusters = response.data
+          })
+      },
       toggleModal () {
         this.showModal = !this.showModal
       },
