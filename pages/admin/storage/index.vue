@@ -9,7 +9,7 @@
     </h2>
     <create-modal
       v-if="showCreateModal"
-      :selected-section="selectedSection"
+      :selected-storage="selectedStorage"
       :clusters="clusters"
       :is-edit="isEdit"
     ></create-modal>
@@ -33,7 +33,7 @@
         isLoading: false,
         showCreateModal: false,
         showModal: false,
-        selectedSection: {},
+        selectedStorage: {},
         isEdit: false,
         pageIndex: 1,
         isEnd: false
@@ -48,7 +48,7 @@
       this.getClusters()
 
       this.$nuxt.$on('closeModal', () => {
-        this.selectedSection = {}
+        this.selectedStorage = {}
         this.isEdit = false
         this.toggleModal()
       })
@@ -61,9 +61,9 @@
         this.storages = []
         this.loadData()
       })
-      this.$nuxt.$on('onSetSection', (data) => {
+      this.$nuxt.$on('onSetStorage', (data) => {
         this.isEdit = true
-        this.selectedSection = data
+        this.selectedStorage = data
       })
       this.$nuxt.$on('loadMore', () => {
         this.pageIndex++

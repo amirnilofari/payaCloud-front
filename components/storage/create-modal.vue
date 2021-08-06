@@ -101,7 +101,7 @@
         clusterId: ''
       }
     },
-    props: ['isEdit', 'selectedSection', 'clusters'],
+    props: ['isEdit', 'selectedStorage', 'clusters'],
     methods: {
       close() {
         this.$nuxt.$emit('toggleCreateModal')
@@ -113,7 +113,7 @@
         formdata.append('clusterId', this.clusterId)
 
         if (this.isEdit) {
-          this.$axios.$post('backend/section/update/' + this.id,
+          this.$axios.$post('backend/storage/update/' + this.id,
             formdata)
             .then(response => {
               if (response.message) {
@@ -140,17 +140,17 @@
       }
     },
     created() {
-      // if (this.isEdit) {
-      //   this.id = this.selectedSection.id
-      //   this.name = this.selectedSection.name
-      //   this.clue = this.selectedSection.clue
-      //   this.clusterId = this.selectedSection.cluster.id
-      // } else {
-      //   this.id = ''
-      //   this.name = ''
-      //   this.clue = ''
-      //   this.clusterId = ''
-      // }
+      if (this.isEdit) {
+        this.id = this.selectedStorage.id
+        this.name = this.selectedStorage.name
+        this.clue = this.selectedStorage.clue
+        this.clusterId = this.selectedStorage.cluster.id
+      } else {
+        this.id = ''
+        this.name = ''
+        this.clue = ''
+        this.clusterId = ''
+      }
     }
   }
 </script>

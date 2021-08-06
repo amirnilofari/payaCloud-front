@@ -126,9 +126,9 @@
     },
     props: ['isLoading', 'storages', 'isEnd'],
     methods: {
-      onEdit (section) {
+      onEdit (storage) {
         this.$nuxt.$emit('toggleCreateModal')
-        this.$nuxt.$emit('onSetSection', section)
+        this.$nuxt.$emit('onSetStorage', storage)
       },
       close () {
         this.$nuxt.$emit('toggleCreateModal')
