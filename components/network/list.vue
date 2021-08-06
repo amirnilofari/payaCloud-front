@@ -126,9 +126,9 @@
     },
     props: ['isLoading', 'networks', 'isEnd'],
     methods: {
-      onEdit (storage) {
+      onEdit (network) {
         this.$nuxt.$emit('toggleCreateModal')
-        this.$nuxt.$emit('onSetStorage', storage)
+        this.$nuxt.$emit('onSetNetwork', network)
       },
       close () {
         this.$nuxt.$emit('toggleCreateModal')
