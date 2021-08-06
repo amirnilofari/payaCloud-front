@@ -113,7 +113,7 @@
         formdata.append('clusterId', this.clusterId)
 
         if (this.isEdit) {
-          this.$axios.$post('backend/center/update/' + this.id,
+          this.$axios.$post('backend/section/update/' + this.id,
             formdata)
             .then(response => {
               if (response.message) {
@@ -140,17 +140,17 @@
       }
     },
     created() {
-      // if (this.isEdit) {
-      //   this.id = this.selectedCenter.id
-      //   this.name = this.selectedCenter.name
-      //   this.clue = this.selectedCenter.clue
-      //   this.clusterId = this.selectedCenter.server.id
-      // } else {
-      //   this.id = ''
-      //   this.name = ''
-      //   this.clue = ''
-      //   this.clusterId = ''
-      // }
+      if (this.isEdit) {
+        this.id = this.selectedSection.id
+        this.name = this.selectedSection.name
+        this.clue = this.selectedSection.clue
+        this.clusterId = this.selectedSection.cluster.id
+      } else {
+        this.id = ''
+        this.name = ''
+        this.clue = ''
+        this.clusterId = ''
+      }
     }
   }
 </script>

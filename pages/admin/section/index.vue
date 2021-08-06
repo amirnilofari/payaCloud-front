@@ -61,7 +61,7 @@
         this.sections = []
         this.loadData()
       })
-      this.$nuxt.$on('onSetServer', (data) => {
+      this.$nuxt.$on('onSetSection', (data) => {
         this.isEdit = true
         this.selectedSection = data
       })
