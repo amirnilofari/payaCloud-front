@@ -9,6 +9,7 @@
     </h2>
     <create-modal
       v-if="showCreateModal"
+      :users="users"
     ></create-modal>
     <transe-list
       :is-loading="isLoading"
@@ -33,7 +34,8 @@
           id: 0
         },
         pageIndex: 1,
-        isEnd: false
+        isEnd: false,
+        users: []
       }
     },
     components: {
@@ -42,12 +44,19 @@
     },
     created () {
       this.loadData()
+      this.getUsers()
 
       this.$nuxt.$on('closeModal', () => {
         this.toggleModal()
       })
       this.$nuxt.$on('toggleCreateModal', () => {
         this.toggleCreateModal()
+      })
+
+      this.$nuxt.$on('onLoadData', () => {
+        this.pageIndex = 0
+        this.transes = []
+        this.loadData()
       })
 
       this.$nuxt.$on('loadMore', () => {
@@ -67,6 +76,12 @@
               this.isEnd = false
             }
             this.isLoading = false
+          })
+      },
+      getUsers () {
+        this.$axios.$get('backend/user/index')
+          .then(response => {
+            this.users = response.data
           })
       },
       toggleModal () {

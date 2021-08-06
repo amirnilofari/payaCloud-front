@@ -23,9 +23,12 @@
                     class="border border-secondary px-3 py-3 placeholder-secondary text-secondary bg-white
                    rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
                     <option value="" disabled selected>User</option>
-                    <option>test1</option>
-                    <option>test2</option>
-                    <option>test3</option>
+                    <option
+                      v-for="user in users"
+                      :value="user.id"
+                    >
+                      {{user.name}}
+                    </option>
                   </select>
                 </div>
               </div>
@@ -125,6 +128,7 @@
         status: 'paid'
       }
     },
+    props: ['users'],
     methods: {
       close() {
         this.$nuxt.$emit('toggleCreateModal')
@@ -139,10 +143,11 @@
         this.$axios.$post('backend/trans/create',
           formdata)
           .then(response => {
-            if (response.status === 200) {
-              this.$toast.success('Successfully created!')
-            } else {
+            if (response.message) {
               this.$toast.error(response.message)
+            } else {
+              this.$nuxt.$emit('onLoadData')
+              this.$toast.success('Successfully created!')
             }
             this.close()
           })
