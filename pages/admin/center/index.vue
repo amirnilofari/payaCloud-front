@@ -7,11 +7,12 @@
     >
       Centers
     </h2>
-<!--    <create-modal-->
-<!--      v-if="showCreateModal"-->
-<!--      :selected-server="selectedServer"-->
-<!--      :is-edit="isEdit"-->
-<!--    ></create-modal>-->
+    <create-modal
+      v-if="showCreateModal"
+      :selected-server="selectedServer"
+      :servers="servers"
+      :is-edit="isEdit"
+    ></create-modal>
     <center-list
       :is-loading="isLoading"
       :centers="centers"
@@ -23,10 +24,11 @@
 
 <script>
   import centerList from '/components/center/list'
-  import createModal from '/components/server/create-modal'
+  import createModal from '/components/center/create-modal'
   export default {
     data() {
       return {
+        servers: [],
         centers: [],
         isLoading: false,
         showCreateModal: false,
@@ -43,6 +45,7 @@
     },
     created () {
       this.loadData()
+      this.getServers()
 
       this.$nuxt.$on('closeModal', () => {
         this.selectedServer = {}
@@ -54,6 +57,8 @@
         this.toggleCreateModal()
       })
       this.$nuxt.$on('onLoadData', () => {
+        this.pageIndex = 0
+        this.centers = []
         this.loadData()
       })
       this.$nuxt.$on('onSetServer', (data) => {
@@ -77,6 +82,12 @@
               this.isEnd = false
             }
             this.isLoading = false
+          })
+      },
+      getServers () {
+        this.$axios.$get('backend/server/index')
+          .then(response => {
+            this.servers = response.data
           })
       },
       toggleModal () {

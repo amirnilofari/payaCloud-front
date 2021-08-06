@@ -54,6 +54,8 @@
         this.toggleCreateModal()
       })
       this.$nuxt.$on('onLoadData', () => {
+        this.pageIndex = 0
+        this.servers = []
         this.loadData()
       })
       this.$nuxt.$on('onSetServer', (data) => {

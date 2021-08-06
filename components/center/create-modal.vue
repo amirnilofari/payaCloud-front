@@ -9,9 +9,9 @@
           <form
             class="p-6"
           >
-            <h3 class="font-semibold mb-6 text-H3 text-xl">New Server</h3>
+            <h3 class="font-semibold mb-6 text-H3 text-xl">New Center</h3>
             <div class="flex flex-wrap">
-              <div class="w-full lg:w-6/12 px-4 mb-2">
+              <div class="w-full lg:w-4/12 px-4 mb-2">
                 <div class="relative w-full mb-3">
                   <label
                     class="block uppercase text-primary text-xs font-bold mb-2"
@@ -27,54 +27,40 @@
                   />
                 </div>
               </div>
-              <div class="w-full lg:w-6/12 px-4 mb-2">
+              <div class="w-full lg:w-4/12 px-4 mb-2">
                 <div class="relative w-full mb-3">
                   <label
                     class="block uppercase text-primary text-xs font-bold mb-2"
                   >
-                    Address
+                    Clue
                   </label>
                   <input
-                    v-model="address"
+                    v-model="clue"
                     type="text"
                     class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
                    rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    placeholder="Address"
+                    placeholder="Clue"
                   />
                 </div>
               </div>
-            </div>
-            <div class="flex flex-wrap">
-              <div class="w-full lg:w-6/12 px-4 mb-2">
+              <div class="w-full lg:w-4/12 px-4 mb-2">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block uppercase text-primary text-xs font-bold mb-2"
+                    class="block mb-2 text-xs font-bold uppercase text-primary"
                   >
-                    Username
+                    Server
                   </label>
-                  <input
-                    v-model="username"
-                    type="text"
-                    class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
-                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    placeholder="Username"
-                  />
-                </div>
-              </div>
-              <div class="w-full lg:w-6/12 px-4 mb-2">
-                <div class="relative w-full mb-3">
-                  <label
-                    class="block uppercase text-primary text-xs font-bold mb-2"
-                  >
-                    Password
-                  </label>
-                  <input
-                    v-model="password"
-                    type="password"
-                    class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
-                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    placeholder="Password"
-                  />
+                  <select
+                    v-model="serverId"
+                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-secondary focus:outline-none focus:ring">
+                    <option value="" disabled selected>Server</option>
+                    <option
+                      v-for="server in servers"
+                      :value="server.id"
+                    >
+                      {{server.name}}
+                    </option>
+                  </select>
                 </div>
               </div>
             </div>
@@ -111,12 +97,11 @@
       return {
         id: '',
         name: '',
-        address: '',
-        username: '',
-        password: ''
+        clue: '',
+        serverId: ''
       }
     },
-    props: ['isEdit', 'selectedServer'],
+    props: ['isEdit', 'selectedServer', 'servers'],
     methods: {
       close() {
         this.$nuxt.$emit('toggleCreateModal')
@@ -124,15 +109,13 @@
       submitForm () {
         let formdata = new FormData()
         formdata.append('name', this.name)
-        formdata.append('address', this.address)
-        formdata.append('username', this.username)
-        formdata.append('password', this.password)
+        formdata.append('clue', this.clue)
+        formdata.append('serverId', this.serverId)
 
         if (this.isEdit) {
-          this.$axios.$post('backend/server/update/' + this.id,
+          this.$axios.$post('backend/center/update/' + this.id,
             formdata)
             .then(response => {
-              // console.log('edit', response)
               if (response.message) {
                 this.$toast.error(response.message)
               } else {
@@ -142,10 +125,9 @@
               this.close()
             })
         } else {
-          this.$axios.$post('backend/server/create',
+          this.$axios.$post('backend/center/create',
             formdata)
             .then(response => {
-              // console.log('create', response)
               if (response.message) {
                 this.$toast.error(response.message)
               } else {
@@ -161,15 +143,13 @@
       if (this.isEdit) {
         this.id = this.selectedServer.id
         this.name = this.selectedServer.name
-        this.address = this.selectedServer.address
-        this.username = this.selectedServer.username
-        this.password = this.selectedServer.password
+        this.clue = this.selectedServer.clue
+        this.serverId = this.selectedServer.server.id
       } else {
         this.id = ''
         this.name = ''
-        this.address = ''
-        this.username = ''
-        this.password = ''
+        this.clue = ''
+        this.serverId = ''
       }
     }
   }
