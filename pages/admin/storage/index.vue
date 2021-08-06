@@ -5,31 +5,31 @@
     <h2
       class="mb-10 text-3xl font-bold uppercase text-H1"
     >
-      Sections
+      Storages
     </h2>
-    <create-modal
-      v-if="showCreateModal"
-      :selected-section="selectedSection"
-      :clusters="clusters"
-      :is-edit="isEdit"
-    ></create-modal>
-    <section-list
+<!--    <create-modal-->
+<!--      v-if="showCreateModal"-->
+<!--      :selected-section="selectedSection"-->
+<!--      :clusters="clusters"-->
+<!--      :is-edit="isEdit"-->
+<!--    ></create-modal>-->
+    <storage-list
       :is-loading="isLoading"
-      :sections="sections"
+      :storages="storages"
       :is-end="isEnd"
-      :key="sections.length"
-    ></section-list>
+      :key="storages.length"
+    ></storage-list>
   </div>
 </template>
 
 <script>
-  import sectionList from '/components/section/list'
+  import storageList from '/components/storage/list'
   import createModal from '/components/section/create-modal'
   export default {
     data() {
       return {
         clusters: [],
-        sections: [],
+        storages: [],
         isLoading: false,
         showCreateModal: false,
         showModal: false,
@@ -40,7 +40,7 @@
       }
     },
     components: {
-      sectionList,
+      storageList,
       createModal
     },
     created () {
@@ -58,7 +58,7 @@
       })
       this.$nuxt.$on('onLoadData', () => {
         this.pageIndex = 0
-        this.sections = []
+        this.storages = []
         this.loadData()
       })
       this.$nuxt.$on('onSetSection', (data) => {
@@ -73,9 +73,9 @@
     methods: {
       loadData () {
         this.isLoading = true
-        this.$axios.$get('backend/section/index?page=' + this.pageIndex)
+        this.$axios.$get('backend/storage/index?page=' + this.pageIndex)
           .then(response => {
-            this.sections = this.sections.concat(response.data);
+            this.storages = this.storages.concat(response.data);
             if (response.links.next === null) {
               this.isEnd = true
             } else {
