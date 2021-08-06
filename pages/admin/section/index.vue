@@ -5,50 +5,50 @@
     <h2
       class="mb-10 text-3xl font-bold uppercase text-H1"
     >
-      Centers
+      Sections
     </h2>
-    <create-modal
-      v-if="showCreateModal"
-      :selected-center="selectedCenter"
-      :servers="servers"
-      :is-edit="isEdit"
-    ></create-modal>
-    <center-list
+<!--    <create-modal-->
+<!--      v-if="showCreateModal"-->
+<!--      :selected-section="selectedSection"-->
+<!--      :servers="servers"-->
+<!--      :is-edit="isEdit"-->
+<!--    ></create-modal>-->
+    <sectoin-list
       :is-loading="isLoading"
-      :centers="centers"
+      :sections="sections"
       :is-end="isEnd"
-      :key="centers.length"
-    ></center-list>
+      :key="sections.length"
+    ></sectoin-list>
   </div>
 </template>
 
 <script>
-  import centerList from '/components/center/list'
-  import createModal from '/components/center/create-modal'
+  import sectoinList from '/components/sectoin/list'
+  // import createModal from '/components/center/create-modal'
   export default {
     data() {
       return {
         servers: [],
-        centers: [],
+        sections: [],
         isLoading: false,
         showCreateModal: false,
         showModal: false,
-        selectedCenter: {},
+        selectedSection: {},
         isEdit: false,
         pageIndex: 1,
         isEnd: false
       }
     },
     components: {
-      centerList,
-      createModal
+      sectoinList,
+      // createModal
     },
     created () {
       this.loadData()
-      this.getServers()
+      // this.getServers()
 
       this.$nuxt.$on('closeModal', () => {
-        this.selectedCenter = {}
+        this.selectedSection = {}
         this.isEdit = false
         this.toggleModal()
       })
@@ -58,12 +58,12 @@
       })
       this.$nuxt.$on('onLoadData', () => {
         this.pageIndex = 0
-        this.centers = []
+        this.sections = []
         this.loadData()
       })
-      this.$nuxt.$on('onSetCenter', (data) => {
+      this.$nuxt.$on('onSetServer', (data) => {
         this.isEdit = true
-        this.selectedCenter = data
+        this.selectedSection = data
       })
       this.$nuxt.$on('loadMore', () => {
         this.pageIndex++
@@ -73,9 +73,9 @@
     methods: {
       loadData () {
         this.isLoading = true
-        this.$axios.$get('backend/center/index?page=' + this.pageIndex)
+        this.$axios.$get('backend/section/index?page=' + this.pageIndex)
           .then(response => {
-            this.centers = this.centers.concat(response.data);
+            this.sections = this.sections.concat(response.data);
             if (response.links.next === null) {
               this.isEnd = true
             } else {
@@ -84,12 +84,12 @@
             this.isLoading = false
           })
       },
-      getServers () {
-        this.$axios.$get('backend/server/index')
-          .then(response => {
-            this.servers = response.data
-          })
-      },
+      // getServers () {
+      //   this.$axios.$get('backend/server/index')
+      //     .then(response => {
+      //       this.servers = response.data
+      //     })
+      // },
       toggleModal () {
         this.showModal = !this.showModal
       },

@@ -6,13 +6,13 @@
           <h3
             class="inline text-lg font-semibold text-primary"
           >
-            Centers List
+            Sections List
           </h3>
           <button
             @click="close"
             type="button"
             class="absolute inline-flex justify-center w-full px-10 py-2 mt-3 mr-6 text-base font-medium rounded-md shadow-sm right-16 bg-primary text-background focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
-            create center
+            create section
           </button>
         </div>
       </div>
@@ -22,7 +22,7 @@
       class="mt-14"
     ></loading>
     <empty-state
-      v-else-if="!isLoading && centers.length === 0"
+      v-else-if="!isLoading && sections.length === 0"
     ></empty-state>
     <table
       v-else
@@ -50,7 +50,7 @@
         <th
           class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
         >
-          server name
+          cluster name
         </th>
         <th
           class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
@@ -61,36 +61,36 @@
       </thead>
       <tbody>
       <tr
-        v-for="center in centers"
-        :key="center.id"
+        v-for="section in sections"
+        :key="section.id"
         class="cursor-pointer hover:bg-background"
       >
         <td
           class="p-4 px-6 text-xs font-bold align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
         >
-          {{center.id}}
+          {{section.id}}
         </td>
         <td
           class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
         >
-          {{center.name}}
+          {{section.name}}
         </td>
         <td
           class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
         >
-          {{center.clue}}
+          {{section.clue}}
         </td>
         <td
           class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
         >
-          {{center.server.name}}
+          {{section.cluster.name}}
         </td>
         <td
           class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
         >
           <button
             class="p-2 mr-5 text-white rounded-full bg-primary hover:shadow-lg"
-            @click="onEdit(center)"
+            @click="onEdit(section)"
           >
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
@@ -124,7 +124,7 @@
       loading,
       emptyState
     },
-    props: ['isLoading', 'centers', 'isEnd'],
+    props: ['isLoading', 'sections', 'isEnd'],
     methods: {
       onEdit (center) {
         this.$nuxt.$emit('toggleCreateModal')
