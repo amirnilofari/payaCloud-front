@@ -9,7 +9,7 @@
           <form
             class="p-6"
           >
-            <h3 class="font-semibold mb-6 text-H3 text-xl">New Storage</h3>
+            <h3 class="font-semibold mb-6 text-H3 text-xl">New Network</h3>
             <div class="flex flex-wrap">
               <div class="w-full lg:w-4/12 px-4 mb-2">
                 <div class="relative w-full mb-3">
@@ -125,7 +125,7 @@
               this.close()
             })
         } else {
-          this.$axios.$post('backend/storage/create',
+          this.$axios.$post('backend/network/create',
             formdata)
             .then(response => {
               if (response.message) {
@@ -140,17 +140,17 @@
       }
     },
     created() {
-      if (this.isEdit) {
-        this.id = this.selectedStorage.id
-        this.name = this.selectedStorage.name
-        this.clue = this.selectedStorage.clue
-        this.clusterId = this.selectedStorage.cluster.id
-      } else {
-        this.id = ''
-        this.name = ''
-        this.clue = ''
-        this.clusterId = ''
-      }
+      // if (this.isEdit) {
+      //   this.id = this.selectedStorage.id
+      //   this.name = this.selectedStorage.name
+      //   this.clue = this.selectedStorage.clue
+      //   this.clusterId = this.selectedStorage.cluster.id
+      // } else {
+      //   this.id = ''
+      //   this.name = ''
+      //   this.clue = ''
+      //   this.clusterId = ''
+      // }
     }
   }
 </script>

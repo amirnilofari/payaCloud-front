@@ -7,23 +7,23 @@
     >
       Networks
     </h2>
-<!--    <create-modal-->
-<!--      v-if="showCreateModal"-->
-<!--      :selected-storage="selectedStorage"-->
-<!--      :clusters="clusters"-->
-<!--      :is-edit="isEdit"-->
-<!--    ></create-modal>-->
-    <storage-list
+    <create-modal
+      v-if="showCreateModal"
+      :selected-storage="selectedStorage"
+      :clusters="clusters"
+      :is-edit="isEdit"
+    ></create-modal>
+    <network-list
       :is-loading="isLoading"
       :networks="networks"
       :is-end="isEnd"
       :key="networks.length"
-    ></storage-list>
+    ></network-list>
   </div>
 </template>
 
 <script>
-  import storageList from '/components/network/list'
+  import networkList from '/components/network/list'
   import createModal from '/components/network/create-modal'
   export default {
     data() {
@@ -40,7 +40,7 @@
       }
     },
     components: {
-      storageList,
+      networkList,
       createModal
     },
     created () {
