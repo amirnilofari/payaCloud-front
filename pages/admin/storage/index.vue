@@ -7,12 +7,12 @@
     >
       Storages
     </h2>
-<!--    <create-modal-->
-<!--      v-if="showCreateModal"-->
-<!--      :selected-section="selectedSection"-->
-<!--      :clusters="clusters"-->
-<!--      :is-edit="isEdit"-->
-<!--    ></create-modal>-->
+    <create-modal
+      v-if="showCreateModal"
+      :selected-section="selectedSection"
+      :clusters="clusters"
+      :is-edit="isEdit"
+    ></create-modal>
     <storage-list
       :is-loading="isLoading"
       :storages="storages"
@@ -24,7 +24,7 @@
 
 <script>
   import storageList from '/components/storage/list'
-  import createModal from '/components/section/create-modal'
+  import createModal from '/components/storage/create-modal'
   export default {
     data() {
       return {
