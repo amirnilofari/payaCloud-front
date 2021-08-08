@@ -8,9 +8,9 @@
           <form
             class="p-6"
           >
-            <h3 class="mb-6 text-xl font-semibold text-H3">New Pool</h3>
+            <h3 class="mb-6 text-xl font-semibold text-H3">New Icon</h3>
             <div class="flex flex-wrap">
-              <div class="w-full px-4 mb-2 lg:w-12/12">
+              <div class="w-full px-4 mb-2 lg:w-6/12">
                 <div class="relative w-full mb-3">
                   <label
                     class="block mb-2 text-xs font-bold uppercase text-primary"
@@ -25,6 +25,21 @@
                   />
                 </div>
               </div>
+              <div class="w-full px-4 mb-2 lg:w-6/12">
+                <div class="relative w-full mb-3">
+                  <label
+                    class="block mb-2 text-xs font-bold uppercase text-primary"
+                  >
+                    Address
+                  </label>
+                  <input
+                    v-model="address"
+                    type="text"
+                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-H1 focus:outline-none focus:ring"
+                    placeholder="Address"
+                  />
+                </div>
+              </div>
             </div>
             <div class="flex flex-wrap">
               <div class="w-full px-4 mb-2">
@@ -32,7 +47,7 @@
                   <button
                     @click="close"
                     type="button"
-                    class="px-16 py-3 mb-1 mr-1 mr-3 text-sm font-bold uppercase transition-all duration-150 ease-linear border rounded shadow outline-none bg-background text-primary border-primary hover:shadow-lg focus:outline-none"
+                    class="px-16 py-3 mb-1 mr-3 text-sm font-bold uppercase transition-all duration-150 ease-linear border rounded shadow outline-none bg-background text-primary border-primary hover:shadow-lg focus:outline-none"
                   >
                     cancel
                   </button>
@@ -59,9 +74,10 @@
       return {
         id: '',
         name: '',
+        address: '',
       }
     },
-    props: ['isEdit', 'selectedPool'],
+    props: ['isEdit', 'selectedIcon'],
     methods: {
       close() {
         this.$nuxt.$emit('toggleCreateModal')
@@ -69,9 +85,10 @@
       submitForm () {
         let formdata = new FormData()
         formdata.append('name', this.name)
+        formdata.append('address', this.address)
 
         if (this.isEdit) {
-          this.$axios.$post('backend/pool/update/' + this.id,
+          this.$axios.$post('backend/icon/update/' + this.id,
             formdata)
             .then(response => {
               if (response.message) {
@@ -83,7 +100,7 @@
               this.close()
             })
         } else {
-          this.$axios.$post('backend/pool/create',
+          this.$axios.$post('backend/icon/create',
             formdata)
             .then(response => {
               if (response.message) {
@@ -99,11 +116,13 @@
     },
     created() {
       if (this.isEdit) {
-        this.id = this.selectedPool.id
-        this.name = this.selectedPool.name
+        this.id = this.selectedIcon.id
+        this.name = this.selectedIcon.name
+        this.address = this.selectedIcon.address
       } else {
         this.id = ''
         this.name = ''
+        this.address = ''
       }
     }
   }
