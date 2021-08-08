@@ -63,7 +63,7 @@
         name: '',
       }
     },
-    props: ['isEdit', 'selectedNetwork'],
+    props: ['isEdit', 'selectedPool'],
     methods: {
       close() {
         this.$nuxt.$emit('toggleCreateModal')
@@ -73,7 +73,7 @@
         formdata.append('name', this.name)
 
         if (this.isEdit) {
-          this.$axios.$post('backend/network/update/' + this.id,
+          this.$axios.$post('backend/pool/update/' + this.id,
             formdata)
             .then(response => {
               if (response.message) {
@@ -101,15 +101,11 @@
     },
     created() {
       if (this.isEdit) {
-        this.id = this.selectedNetwork.id
-        this.name = this.selectedNetwork.name
-        this.clue = this.selectedNetwork.clue
-        this.clusterId = this.selectedNetwork.cluster.id
+        this.id = this.selectedPool.id
+        this.name = this.selectedPool.name
       } else {
         this.id = ''
         this.name = ''
-        this.clue = ''
-        this.clusterId = ''
       }
     }
   }

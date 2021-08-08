@@ -106,9 +106,9 @@
     },
     props: ['isLoading', 'pools', 'isEnd'],
     methods: {
-      onEdit (network) {
+      onEdit (pool) {
         this.$nuxt.$emit('toggleCreateModal')
-        this.$nuxt.$emit('onSetNetwork', network)
+        this.$nuxt.$emit('onSetPool', pool)
       },
       close () {
         this.$nuxt.$emit('toggleCreateModal')

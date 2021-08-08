@@ -9,7 +9,7 @@
     </h2>
     <create-modal
       v-if="showCreateModal"
-      :selected-network="selectedNetwork"
+      :selected-pool="selectedPool"
       :is-edit="isEdit"
     ></create-modal>
     <pool-list
@@ -31,7 +31,7 @@
         isLoading: false,
         showCreateModal: false,
         showModal: false,
-        selectedNetwork: {},
+        selectedPool: {},
         isEdit: false,
         pageIndex: 1,
         isEnd: false
@@ -45,7 +45,7 @@
       this.loadData()
 
       this.$nuxt.$on('closeModal', () => {
-        this.selectedNetwork = {}
+        this.selectedPool = {}
         this.isEdit = false
         this.toggleModal()
       })
@@ -58,9 +58,9 @@
         this.pools = []
         this.loadData()
       })
-      this.$nuxt.$on('onSetNetwork', (data) => {
+      this.$nuxt.$on('onSetPool', (data) => {
         this.isEdit = true
-        this.selectedNetwork = data
+        this.selectedPool = data
       })
       this.$nuxt.$on('loadMore', () => {
         this.pageIndex++
