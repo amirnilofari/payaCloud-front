@@ -9,7 +9,7 @@
           <form
             class="p-6"
           >
-            <h3 class="font-semibold mb-6 text-H3 text-xl">New Network</h3>
+            <h3 class="font-semibold mb-6 text-H3 text-xl">New Script</h3>
             <div class="flex flex-wrap">
               <div class="w-full lg:w-4/12 px-4 mb-2">
                 <div class="relative w-full mb-3">
@@ -32,14 +32,14 @@
                   <label
                     class="block uppercase text-primary text-xs font-bold mb-2"
                   >
-                    Clue
+                    wait
                   </label>
                   <input
-                    v-model="clue"
+                    v-model="wait"
                     type="text"
                     class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
                    rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    placeholder="Clue"
+                    placeholder="Wait"
                   />
                 </div>
               </div>
@@ -48,19 +48,106 @@
                   <label
                     class="block mb-2 text-xs font-bold uppercase text-primary"
                   >
-                    Cluster
+                    template
                   </label>
                   <select
-                    v-model="clusterId"
+                    v-model="templateId"
                     class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-secondary focus:outline-none focus:ring">
-                    <option value="" disabled selected>Cluster</option>
+                    <option value="" disabled selected>Template</option>
                     <option
-                      v-for="cluster in clusters"
-                      :value="cluster.id"
+                      v-for="template in templates"
+                      :value="template.id"
                     >
-                      {{cluster.name}}
+                      {{template.name}}
                     </option>
                   </select>
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-wrap">
+              <div class="w-full lg:w-4/12 px-4 mb-2">
+                <div class="relative w-full mb-3">
+                  <label
+                    class="block uppercase text-primary text-xs font-bold mb-2"
+                  >
+                    type
+                  </label>
+                  <div class="flex items-center mt-5">
+                    <input v-model="type" value="setup" id="setup" name="type" type="radio" class="w-4 h-4 focus:ring-indigo-500 text-primary border-H2">
+                    <label for="balance" class="block ml-3 text-sm font-medium text-secondary">
+                      setup
+                    </label>
+                    <input v-model="type" value="gift" id="gift" name="type" type="radio" class="w-4 h-4 ml-5 focus:ring-indigo-500 text-primary border-H2">
+                    <label for="gift" class="block ml-3 text-sm font-medium text-secondary">
+                      gift
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="w-full lg:w-8/12 px-4 mb-2">
+                <div class="relative w-full mb-3">
+                  <label
+                    class="block uppercase text-primary text-xs font-bold mb-2"
+                  >
+                    content
+                  </label>
+                  <input
+                    v-model="content"
+                    type="text"
+                    class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
+                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    placeholder="Content"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-wrap">
+              <div class="w-full lg:w-4/12 px-4 mb-2">
+                <div class="relative w-full mb-3">
+                  <label
+                    class="block uppercase text-primary text-xs font-bold mb-2"
+                  >
+                    where Is Program
+                  </label>
+                  <input
+                    v-model="whereIsProgram"
+                    type="text"
+                    class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
+                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    placeholder="where Is Program"
+                  />
+                </div>
+              </div>
+              <div class="w-full lg:w-4/12 px-4 mb-2">
+                <div class="relative w-full mb-3">
+                  <label
+                    class="block uppercase text-primary text-xs font-bold mb-2"
+                  >
+                    where To Upload
+                  </label>
+                  <input
+                    v-model="whereToUpload"
+                    type="text"
+                    class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
+                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    placeholder="where To Upload"
+                  />
+                </div>
+              </div>
+              <div class="w-full lg:w-4/12 px-4 mb-2">
+                <div class="relative w-full mb-3">
+                  <label
+                    class="block uppercase text-primary text-xs font-bold mb-2"
+                  >
+                    how To Execute
+                  </label>
+                  <input
+                    v-model="howToExecute"
+                    type="text"
+                    class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
+                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    placeholder="how To Execute"
+                  />
                 </div>
               </div>
             </div>
@@ -97,11 +184,16 @@
       return {
         id: '',
         name: '',
-        clue: '',
-        clusterId: ''
+        type: 'setup',
+        wait: '',
+        content: '',
+        templateId: '',
+        whereIsProgram: '',
+        whereToUpload: '',
+        howToExecute: '',
       }
     },
-    props: ['isEdit', 'selectedNetwork', 'clusters'],
+    props: ['isEdit', 'selectedNetwork', 'templates'],
     methods: {
       close() {
         this.$nuxt.$emit('toggleCreateModal')
@@ -109,8 +201,13 @@
       submitForm () {
         let formdata = new FormData()
         formdata.append('name', this.name)
-        formdata.append('clue', this.clue)
-        formdata.append('clusterId', this.clusterId)
+        formdata.append('type', this.type)
+        formdata.append('wait', this.wait)
+        formdata.append('content', this.content)
+        formdata.append('templateId', this.templateId)
+        formdata.append('whereIsProgram', this.whereIsProgram)
+        formdata.append('whereToUpload', this.whereToUpload)
+        formdata.append('howToExecute', this.howToExecute)
 
         if (this.isEdit) {
           this.$axios.$post('backend/network/update/' + this.id,
@@ -125,7 +222,7 @@
               this.close()
             })
         } else {
-          this.$axios.$post('backend/network/create',
+          this.$axios.$post('backend/script/create',
             formdata)
             .then(response => {
               if (response.message) {

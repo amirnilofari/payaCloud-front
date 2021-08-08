@@ -7,12 +7,12 @@
     >
       Scripts
     </h2>
-<!--    <create-modal-->
-<!--      v-if="showCreateModal"-->
-<!--      :selected-network="selectedNetwork"-->
-<!--      :clusters="clusters"-->
-<!--      :is-edit="isEdit"-->
-<!--    ></create-modal>-->
+    <create-modal
+      v-if="showCreateModal"
+      :selected-network="selectedNetwork"
+      :templates="templates"
+      :is-edit="isEdit"
+    ></create-modal>
     <script-list
       :is-loading="isLoading"
       :scripts="scripts"
@@ -24,11 +24,11 @@
 
 <script>
   import scriptList from '/components/script/list'
-  import createModal from '/components/network/create-modal'
+  import createModal from '/components/script/create-modal'
   export default {
     data() {
       return {
-        clusters: [],
+        templates: [],
         scripts: [],
         isLoading: false,
         showCreateModal: false,
@@ -45,7 +45,7 @@
     },
     created () {
       this.loadData()
-      this.getClusters()
+      this.getTemplates()
 
       this.$nuxt.$on('closeModal', () => {
         this.selectedNetwork = {}
@@ -84,10 +84,10 @@
             this.isLoading = false
           })
       },
-      getClusters () {
-        this.$axios.$get('backend/cluster/index')
+      getTemplates () {
+        this.$axios.$get('backend/template/index')
           .then(response => {
-            this.clusters = response.data
+            this.templates = response.data
           })
       },
       toggleModal () {
