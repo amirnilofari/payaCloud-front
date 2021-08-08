@@ -74,12 +74,12 @@
                   </label>
                   <div class="flex items-center mt-5">
                     <input v-model="type" value="setup" id="setup" name="type" type="radio" class="w-4 h-4 focus:ring-indigo-500 text-primary border-H2">
-                    <label for="balance" class="block ml-3 text-sm font-medium text-secondary">
+                    <label for="setup" class="block ml-3 text-sm font-medium text-secondary">
                       setup
                     </label>
-                    <input v-model="type" value="gift" id="gift" name="type" type="radio" class="w-4 h-4 ml-5 focus:ring-indigo-500 text-primary border-H2">
-                    <label for="gift" class="block ml-3 text-sm font-medium text-secondary">
-                      gift
+                    <input v-model="type" value="custom" id="custom" name="type" type="radio" class="w-4 h-4 ml-5 focus:ring-indigo-500 text-primary border-H2">
+                    <label for="custom" class="block ml-3 text-sm font-medium text-secondary">
+                      custom
                     </label>
                   </div>
                 </div>
