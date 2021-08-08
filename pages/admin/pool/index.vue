@@ -7,12 +7,11 @@
     >
       Pools
     </h2>
-<!--    <create-modal-->
-<!--      v-if="showCreateModal"-->
-<!--      :selected-network="selectedNetwork"-->
-<!--      :clusters="clusters"-->
-<!--      :is-edit="isEdit"-->
-<!--    ></create-modal>-->
+    <create-modal
+      v-if="showCreateModal"
+      :selected-network="selectedNetwork"
+      :is-edit="isEdit"
+    ></create-modal>
     <pool-list
       :is-loading="isLoading"
       :pools="pools"
@@ -24,11 +23,10 @@
 
 <script>
   import poolList from '/components/pool/list'
-  import createModal from '/components/network/create-modal'
+  import createModal from '/components/pool/create-modal'
   export default {
     data() {
       return {
-        clusters: [],
         pools: [],
         isLoading: false,
         showCreateModal: false,
@@ -45,7 +43,6 @@
     },
     created () {
       this.loadData()
-      this.getClusters()
 
       this.$nuxt.$on('closeModal', () => {
         this.selectedNetwork = {}
@@ -82,12 +79,6 @@
               this.isEnd = false
             }
             this.isLoading = false
-          })
-      },
-      getClusters () {
-        this.$axios.$get('backend/cluster/index')
-          .then(response => {
-            this.clusters = response.data
           })
       },
       toggleModal () {

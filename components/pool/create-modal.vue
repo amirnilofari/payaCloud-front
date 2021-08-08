@@ -5,13 +5,13 @@
       <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center w-full sm:block sm:p-0">
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
         <div class="inline-block align-bottom bg-white rounded-lg text-left
-        shadow-xl transform transition-all sm:mt-4 sm:align-middle sm:max-w-6xl sm:w-full">
+        shadow-xl transform transition-all sm:mt-4 sm:align-middle sm:max-w-2xl sm:w-full">
           <form
             class="p-6"
           >
-            <h3 class="font-semibold mb-6 text-H3 text-xl">New Network</h3>
+            <h3 class="font-semibold mb-6 text-H3 text-xl">New Pool</h3>
             <div class="flex flex-wrap">
-              <div class="w-full lg:w-4/12 px-4 mb-2">
+              <div class="w-full lg:w-12/12 px-4 mb-2">
                 <div class="relative w-full mb-3">
                   <label
                     class="block uppercase text-primary text-xs font-bold mb-2"
@@ -25,42 +25,6 @@
                    rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
                     placeholder="Name"
                   />
-                </div>
-              </div>
-              <div class="w-full lg:w-4/12 px-4 mb-2">
-                <div class="relative w-full mb-3">
-                  <label
-                    class="block uppercase text-primary text-xs font-bold mb-2"
-                  >
-                    Clue
-                  </label>
-                  <input
-                    v-model="clue"
-                    type="text"
-                    class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
-                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    placeholder="Clue"
-                  />
-                </div>
-              </div>
-              <div class="w-full lg:w-4/12 px-4 mb-2">
-                <div class="relative w-full mb-3">
-                  <label
-                    class="block mb-2 text-xs font-bold uppercase text-primary"
-                  >
-                    Cluster
-                  </label>
-                  <select
-                    v-model="clusterId"
-                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-secondary focus:outline-none focus:ring">
-                    <option value="" disabled selected>Cluster</option>
-                    <option
-                      v-for="cluster in clusters"
-                      :value="cluster.id"
-                    >
-                      {{cluster.name}}
-                    </option>
-                  </select>
                 </div>
               </div>
             </div>
@@ -97,11 +61,9 @@
       return {
         id: '',
         name: '',
-        clue: '',
-        clusterId: ''
       }
     },
-    props: ['isEdit', 'selectedNetwork', 'clusters'],
+    props: ['isEdit', 'selectedNetwork'],
     methods: {
       close() {
         this.$nuxt.$emit('toggleCreateModal')
@@ -109,8 +71,6 @@
       submitForm () {
         let formdata = new FormData()
         formdata.append('name', this.name)
-        formdata.append('clue', this.clue)
-        formdata.append('clusterId', this.clusterId)
 
         if (this.isEdit) {
           this.$axios.$post('backend/network/update/' + this.id,
@@ -125,7 +85,7 @@
               this.close()
             })
         } else {
-          this.$axios.$post('backend/network/create',
+          this.$axios.$post('backend/pool/create',
             formdata)
             .then(response => {
               if (response.message) {
