@@ -193,7 +193,7 @@
         howToExecute: '',
       }
     },
-    props: ['isEdit', 'selectedNetwork', 'templates'],
+    props: ['isEdit', 'selectedScript', 'templates'],
     methods: {
       close() {
         this.$nuxt.$emit('toggleCreateModal')
@@ -210,7 +210,7 @@
         formdata.append('howToExecute', this.howToExecute)
 
         if (this.isEdit) {
-          this.$axios.$post('backend/network/update/' + this.id,
+          this.$axios.$post('backend/script/update/' + this.id,
             formdata)
             .then(response => {
               if (response.message) {
@@ -238,15 +238,25 @@
     },
     created() {
       if (this.isEdit) {
-        this.id = this.selectedNetwork.id
-        this.name = this.selectedNetwork.name
-        this.clue = this.selectedNetwork.clue
-        this.clusterId = this.selectedNetwork.cluster.id
+        this.id = this.selectedScript.id
+        this.name = this.selectedScript.name
+        this.type = this.selectedScript.type
+        this.content = this.selectedScript.content
+        this.wait = this.selectedScript.wait
+        this.whereIsProgram = this.selectedScript.whereIsProgram
+        this.whereToUpload = this.selectedScript.whereToUpload
+        this.howToExecute = this.selectedScript.howToExecute
+        this.templateId = this.selectedScript.template.id
       } else {
         this.id = ''
         this.name = ''
-        this.clue = ''
-        this.clusterId = ''
+        this.type = ''
+        this.content = ''
+        this.wait = ''
+        this.whereIsProgram = ''
+        this.whereToUpload = ''
+        this.howToExecute = ''
+        this.templateId = ''
       }
     }
   }

@@ -9,7 +9,7 @@
     </h2>
     <create-modal
       v-if="showCreateModal"
-      :selected-network="selectedNetwork"
+      :selected-script="selectedScript"
       :templates="templates"
       :is-edit="isEdit"
     ></create-modal>
@@ -33,7 +33,7 @@
         isLoading: false,
         showCreateModal: false,
         showModal: false,
-        selectedNetwork: {},
+        selectedScript: {},
         isEdit: false,
         pageIndex: 1,
         isEnd: false
@@ -48,7 +48,7 @@
       this.getTemplates()
 
       this.$nuxt.$on('closeModal', () => {
-        this.selectedNetwork = {}
+        this.selectedScript = {}
         this.isEdit = false
         this.toggleModal()
       })
@@ -61,9 +61,9 @@
         this.scripts = []
         this.loadData()
       })
-      this.$nuxt.$on('onSetNetwork', (data) => {
+      this.$nuxt.$on('onSetScript', (data) => {
         this.isEdit = true
-        this.selectedNetwork = data
+        this.selectedScript = data
       })
       this.$nuxt.$on('loadMore', () => {
         this.pageIndex++
