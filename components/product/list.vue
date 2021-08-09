@@ -176,9 +176,9 @@
     },
     props: ['isLoading', 'products', 'isEnd'],
     methods: {
-      onEdit (layout) {
+      onEdit (product) {
         this.$nuxt.$emit('toggleCreateModal')
-        this.$nuxt.$emit('onSetLayout', layout)
+        this.$nuxt.$emit('onSetProduct', product)
       },
       close () {
         this.$nuxt.$emit('toggleCreateModal')

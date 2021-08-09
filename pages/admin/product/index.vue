@@ -9,7 +9,7 @@
     </h2>
     <create-modal
       v-if="showCreateModal"
-      :selected-layout="selectedLayout"
+      :selected-product="selectedProduct"
       :is-edit="isEdit"
       :pools="pools"
       :regions="regions"
@@ -35,7 +35,7 @@
         isLoading: false,
         showCreateModal: false,
         showModal: false,
-        selectedLayout: {},
+        selectedProduct: {},
         isEdit: false,
         pageIndex: 1,
         isEnd: false
@@ -51,7 +51,7 @@
       this.getRegions()
 
       this.$nuxt.$on('closeModal', () => {
-        this.selectedLayout = {}
+        this.selectedProduct = {}
         this.isEdit = false
         this.toggleModal()
       })
@@ -64,9 +64,9 @@
         this.products = []
         this.loadData()
       })
-      this.$nuxt.$on('onSetLayout', (data) => {
+      this.$nuxt.$on('onSetProduct', (data) => {
         this.isEdit = true
-        this.selectedLayout = data
+        this.selectedProduct = data
       })
       this.$nuxt.$on('loadMore', () => {
         this.pageIndex++

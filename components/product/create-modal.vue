@@ -231,7 +231,7 @@
         status: 'active'
       }
     },
-    props: ['isEdit', 'selectedLayout', 'regions', 'pools'],
+    props: ['isEdit', 'selectedProduct', 'regions', 'pools'],
     methods: {
       close() {
         this.$nuxt.$emit('toggleCreateModal')
@@ -249,7 +249,7 @@
         formdata.append('sort', this.sort)
         formdata.append('status', this.status)
         if (this.isEdit) {
-          this.$axios.$post('backend/layout/update/' + this.id,
+          this.$axios.$post('backend/product/update/' + this.id,
             formdata)
             .then(response => {
               if (response.message) {
@@ -277,15 +277,29 @@
     },
     created() {
       if (this.isEdit) {
-        this.id = this.selectedLayout.id
-        this.name = this.selectedLayout.name
-        this.content = this.selectedLayout.content
-        this.type = this.selectedLayout.type
+        this.id = this.selectedProduct.id
+        this.name = this.selectedProduct.name
+        this.price = this.selectedProduct.price
+        this.cpuCore = this.selectedProduct.cpuCore
+        this.status = this.selectedProduct.status
+        this.sort = this.selectedProduct.sort
+        this.memorySize = this.selectedProduct.memorySize
+        this.diskSize = this.selectedProduct.diskSize
+        this.bandwidth = this.selectedProduct.bandwidth
+        this.regionId = this.selectedProduct.region.id
+        this.poolId = this.selectedProduct.pool.id
       } else {
         this.id = ''
         this.name = ''
-        this.content = ''
-        this.type = 'password'
+        this.price = ''
+        this.cpuCore = ''
+        this.status = 'active'
+        this.sort = ''
+        this.memorySize = ''
+        this.diskSize = ''
+        this.bandwidth = ''
+        this.regionId = ''
+        this.poolId = ''
       }
     }
   }
