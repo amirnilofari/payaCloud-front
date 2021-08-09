@@ -9,7 +9,7 @@
           <form
             class="p-6"
           >
-            <h3 class="font-semibold mb-6 text-H3 text-xl">New Layout</h3>
+            <h3 class="font-semibold mb-6 text-H3 text-xl">New Product</h3>
             <div class="flex flex-wrap">
               <div class="w-full lg:w-4/12 px-4 mb-2">
                 <div class="relative w-full mb-3">
@@ -32,14 +32,14 @@
                   <label
                     class="block uppercase text-primary text-xs font-bold mb-2"
                   >
-                    content
+                    sort
                   </label>
                   <input
-                    v-model="content"
+                    v-model="sort"
                     type="text"
                     class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
                    rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                    placeholder="Content"
+                    placeholder="Sort"
                   />
                 </div>
               </div>
@@ -48,14 +48,138 @@
                   <label
                     class="block uppercase text-primary text-xs font-bold mb-2"
                   >
-                    type
+                    price
+                  </label>
+                  <input
+                    v-model="price"
+                    type="text"
+                    class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
+                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    placeholder="Price"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-wrap">
+              <div class="w-full lg:w-4/12 px-4 mb-2">
+                <div class="relative w-full mb-3">
+                  <label
+                    class="block uppercase text-primary text-xs font-bold mb-2"
+                  >
+                    cpu Core
+                  </label>
+                  <input
+                    v-model="cpuCore"
+                    type="text"
+                    class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
+                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    placeholder="Cpu Core"
+                  />
+                </div>
+              </div>
+              <div class="w-full lg:w-4/12 px-4 mb-2">
+                <div class="relative w-full mb-3">
+                  <label
+                    class="block uppercase text-primary text-xs font-bold mb-2"
+                  >
+                    disk Size
+                  </label>
+                  <input
+                    v-model="diskSize"
+                    type="text"
+                    class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
+                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    placeholder="Disk Size"
+                  />
+                </div>
+              </div>
+              <div class="w-full lg:w-4/12 px-4 mb-2">
+                <div class="relative w-full mb-3">
+                  <label
+                    class="block uppercase text-primary text-xs font-bold mb-2"
+                  >
+                    memory Size
+                  </label>
+                  <input
+                    v-model="memorySize"
+                    type="text"
+                    class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
+                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    placeholder="Memory Size"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="flex flex-wrap">
+              <div class="w-full lg:w-4/12 px-4 mb-2">
+                <div class="relative w-full mb-3">
+                  <label
+                    class="block uppercase text-primary text-xs font-bold mb-2"
+                  >
+                    band width
+                  </label>
+                  <input
+                    v-model="bandwidth"
+                    type="text"
+                    class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
+                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    placeholder="Band Width"
+                  />
+                </div>
+              </div>
+              <div class="w-full lg:w-4/12 px-4 mb-2">
+                <div class="relative w-full mb-3">
+                  <label
+                    class="block mb-2 text-xs font-bold uppercase text-primary"
+                  >
+                    Pool
+                  </label>
+                  <select
+                    v-model="poolId"
+                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-secondary focus:outline-none focus:ring">
+                    <option value="" disabled selected>Pool</option>
+                    <option
+                      v-for="pool in pools"
+                      :value="pool.id"
+                    >
+                      {{pool.name}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="w-full lg:w-4/12 px-4 mb-2">
+                <div class="relative w-full mb-3">
+                  <label
+                    class="block mb-2 text-xs font-bold uppercase text-primary"
+                  >
+                    Region
+                  </label>
+                  <select
+                    v-model="regionId"
+                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-secondary focus:outline-none focus:ring">
+                    <option value="" disabled selected>Region</option>
+                    <option
+                      v-for="region in regions"
+                      :value="region.id"
+                    >
+                      {{region.name}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="w-full lg:w-4/12 px-4 mb-2">
+                <div class="relative w-full mb-3">
+                  <label
+                    class="block uppercase text-primary text-xs font-bold mb-2"
+                  >
+                    status
                   </label>
                   <div class="flex items-center mt-5">
-                    <input v-model="type" value="password" id="password" name="type" type="radio" class="w-4 h-4 focus:ring-indigo-500 text-primary border-H2">
-                    <label for="password" class="block ml-3 text-sm font-medium text-secondary">
-                      password
+                    <input v-model="status" value="active" id="active" name="status" type="radio" class="w-4 h-4 focus:ring-indigo-500 text-primary border-H2">
+                    <label for="active" class="block ml-3 text-sm font-medium text-secondary">
+                      active
                     </label>
-                    <input v-model="type" value="custom" id="custom" name="type" type="radio" class="w-4 h-4 ml-5 focus:ring-indigo-500 text-primary border-H2">
+                    <input v-model="status" value="custom" id="custom" name="status" type="radio" class="w-4 h-4 ml-5 focus:ring-indigo-500 text-primary border-H2">
                     <label for="custom" class="block ml-3 text-sm font-medium text-secondary">
                       custom
                     </label>
@@ -96,11 +220,18 @@
       return {
         id: '',
         name: '',
-        content: '',
-        type: 'password'
+        price: '',
+        cpuCore: '',
+        diskSize: '',
+        memorySize: '',
+        bandwidth: '',
+        sort: '',
+        regionId: '',
+        poolId: '',
+        status: 'active'
       }
     },
-    props: ['isEdit', 'selectedLayout', 'clusters'],
+    props: ['isEdit', 'selectedLayout', 'regions', 'pools'],
     methods: {
       close() {
         this.$nuxt.$emit('toggleCreateModal')
@@ -108,9 +239,15 @@
       submitForm () {
         let formdata = new FormData()
         formdata.append('name', this.name)
-        formdata.append('content', this.content)
-        formdata.append('type', this.type)
-
+        formdata.append('price', this.price)
+        formdata.append('cpuCore', this.cpuCore)
+        formdata.append('memorySize', this.memorySize)
+        formdata.append('diskSize', this.diskSize)
+        formdata.append('bandwidth', this.bandwidth)
+        formdata.append('regionId', this.regionId)
+        formdata.append('poolId', this.poolId)
+        formdata.append('sort', this.sort)
+        formdata.append('status', this.status)
         if (this.isEdit) {
           this.$axios.$post('backend/layout/update/' + this.id,
             formdata)
@@ -124,7 +261,7 @@
               this.close()
             })
         } else {
-          this.$axios.$post('backend/layout/create',
+          this.$axios.$post('backend/product/create',
             formdata)
             .then(response => {
               if (response.message) {

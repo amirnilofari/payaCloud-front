@@ -7,11 +7,13 @@
     >
       Products
     </h2>
-<!--    <create-modal-->
-<!--      v-if="showCreateModal"-->
-<!--      :selected-layout="selectedLayout"-->
-<!--      :is-edit="isEdit"-->
-<!--    ></create-modal>-->
+    <create-modal
+      v-if="showCreateModal"
+      :selected-layout="selectedLayout"
+      :is-edit="isEdit"
+      :pools="pools"
+      :regions="regions"
+    ></create-modal>
     <product-list
       :is-loading="isLoading"
       :products="products"
@@ -23,10 +25,12 @@
 
 <script>
   import productList from '/components/product/list'
-  import createModal from '/components/layout/create-modal'
+  import createModal from '/components/product/create-modal'
   export default {
     data() {
       return {
+        pools: [],
+        regions: [],
         products: [],
         isLoading: false,
         showCreateModal: false,
@@ -43,7 +47,8 @@
     },
     created () {
       this.loadData()
-      this.getClusters()
+      this.getPools()
+      this.getRegions()
 
       this.$nuxt.$on('closeModal', () => {
         this.selectedLayout = {}
@@ -83,10 +88,16 @@
             this.isLoading = false
           })
       },
-      getClusters () {
-        this.$axios.$get('backend/cluster/index')
+      getPools () {
+        this.$axios.$get('backend/pool/index')
           .then(response => {
-            this.clusters = response.data
+            this.pools = response.data
+          })
+      },
+      getRegions () {
+        this.$axios.$get('backend/region/index')
+          .then(response => {
+            this.regions = response.data
           })
       },
       toggleModal () {

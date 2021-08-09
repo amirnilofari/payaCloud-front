@@ -43,7 +43,6 @@
     },
     created () {
       this.loadData()
-      this.getClusters()
 
       this.$nuxt.$on('closeModal', () => {
         this.selectedLayout = {}
@@ -80,12 +79,6 @@
               this.isEnd = false
             }
             this.isLoading = false
-          })
-      },
-      getClusters () {
-        this.$axios.$get('backend/cluster/index')
-          .then(response => {
-            this.clusters = response.data
           })
       },
       toggleModal () {
