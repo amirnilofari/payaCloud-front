@@ -10,6 +10,7 @@
     <create-modal
       v-if="showCreateModal"
       :selected-template="selectedTemplate"
+      :icons="icons"
       :is-edit="isEdit"
     ></create-modal>
     <template-list
@@ -28,6 +29,7 @@
     data() {
       return {
         templates: [],
+        icons: [],
         isLoading: false,
         showCreateModal: false,
         showModal: false,
@@ -43,6 +45,7 @@
     },
     created () {
       this.loadData()
+      this.getIcons()
 
       this.$nuxt.$on('closeModal', () => {
         this.selectedTemplate = {}
@@ -77,6 +80,12 @@
               this.isEnd = false
             }
             this.isLoading = false
+          })
+      },
+      getIcons () {
+        this.$axios.$get('backend/icon/index')
+          .then(response => {
+            this.icons = response.data
           })
       },
       toggleModal () {

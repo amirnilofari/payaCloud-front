@@ -10,7 +10,7 @@
           >
             <h3 class="mb-6 text-xl font-semibold text-H3">New Template</h3>
             <div class="flex flex-wrap">
-              <div class="w-full px-4 mb-2 lg:w-6/12">
+              <div class="w-full px-4 mb-2 lg:w-4/12">
                 <div class="relative w-full mb-3">
                   <label
                     class="block mb-2 text-xs font-bold uppercase text-primary"
@@ -25,7 +25,7 @@
                   />
                 </div>
               </div>
-              <div class="w-full px-4 mb-2 lg:w-6/12">
+              <div class="w-full px-4 mb-2 lg:w-4/12">
                 <div class="relative w-full mb-3">
                   <label
                     class="block mb-2 text-xs font-bold uppercase text-primary"
@@ -40,9 +40,30 @@
                   />
                 </div>
               </div>
+              <div class="w-full px-4 mb-2 lg:w-4/12">
+                <div class="relative w-full mb-3">
+                  <label
+                    class="block mb-2 text-xs font-bold uppercase text-primary"
+                  >
+                    Icon
+                  </label>
+                  <select
+                    v-model="iconId"
+                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-secondary focus:outline-none focus:ring">
+                    <option value="" disabled selected>Icon</option>
+                    <option
+                      v-for="icon in icons"
+                      :key="icon.id"
+                      :value="icon.id"
+                    >
+                      {{icon.name}}
+                    </option>
+                  </select>
+                </div>
+              </div>
             </div>
             <div class="flex flex-wrap">
-              <div class="w-full px-4 mb-2 lg:w-6/12">
+              <div class="w-full px-4 mb-2 lg:w-4/12">
                 <div class="relative w-full mb-3">
                   <label
                     class="block mb-2 text-xs font-bold uppercase text-primary"
@@ -57,7 +78,7 @@
                   />
                 </div>
               </div>
-              <div class="w-full px-4 mb-2 lg:w-6/12">
+              <div class="w-full px-4 mb-2 lg:w-4/12">
                 <div class="relative w-full mb-3">
                   <label
                     class="block mb-2 text-xs font-bold uppercase text-primary"
@@ -72,6 +93,25 @@
                   />
                 </div>
               </div>
+              <div class="w-full px-4 mb-2 lg:w-4/12">
+                <div class="relative w-full mb-3">
+                  <label
+                    class="block mb-2 text-xs font-bold uppercase text-primary"
+                  >
+                    status
+                  </label>
+                  <div class="flex items-center mt-5">
+                    <input v-model="status" value="active" id="active" name="status" type="radio" class="w-4 h-4 focus:ring-indigo-500 text-primary border-H2">
+                    <label for="active" class="block ml-3 text-sm font-medium text-secondary">
+                      Active
+                    </label>
+                    <input v-model="status" value="pending" id="pending" name="status" type="radio" class="w-4 h-4 ml-5 focus:ring-indigo-500 text-primary border-H2">
+                    <label for="pending" class="block ml-3 text-sm font-medium text-secondary">
+                      Pending
+                    </label>
+                  </div>
+                </div>
+              </div>
             </div>
 
             
@@ -81,7 +121,7 @@
                   <button
                     @click="close"
                     type="button"
-                    class="px-16 py-3 mb-1 mr-1 mr-3 text-sm font-bold uppercase transition-all duration-150 ease-linear border rounded shadow outline-none bg-background text-primary border-primary hover:shadow-lg focus:outline-none"
+                    class="px-16 py-3 mb-1 mr-3 text-sm font-bold uppercase transition-all duration-150 ease-linear border rounded shadow outline-none bg-background text-primary border-primary hover:shadow-lg focus:outline-none"
                   >
                     cancel
                   </button>
@@ -110,10 +150,12 @@
         name: '',
         clue: '',
         username: '',
-        password: ''
+        password: '',
+        status: 'Active',
+        iconId: '',
       }
     },
-    props: ['isEdit', 'selectedTemplate'],
+    props: ['isEdit', 'selectedTemplate','icons'],
     methods: {
       close() {
         this.$nuxt.$emit('toggleCreateModal')
@@ -124,6 +166,8 @@
         formdata.append('clue', this.clue)
         formdata.append('username', this.username)
         formdata.append('password', this.password)
+        formdata.append('status', this.status)
+        formdata.append('iconId', this.iconId)
 
         if (this.isEdit) {
           this.$axios.$post('backend/template/update/' + this.id,
@@ -161,12 +205,16 @@
         this.clue = this.selectedTemplate.clue
         this.username = this.selectedTemplate.username
         this.password = this.selectedTemplate.password
+        this.status = this.selectedTemplate.status
+        this.iconId = this.selectedTemplate.icon.id
       } else {
         this.id = ''
         this.name = ''
         this.clue = ''
         this.username = ''
         this.password = ''
+        this.status = ''
+        this.iconId = ''
       }
     }
   }
