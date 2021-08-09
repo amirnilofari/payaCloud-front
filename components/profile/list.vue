@@ -8,12 +8,12 @@
           >
             Profile List
           </h3>
-          <!-- <button
+          <button
             @click="close"
             type="button"
             class="absolute inline-flex justify-center w-full px-10 py-2 mt-3 mr-6 text-base font-medium rounded-md shadow-sm right-16 bg-primary text-background focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
-            create trans
-          </button> -->
+            create profile
+          </button>
         </div>
       </div>
     </div>
@@ -45,22 +45,12 @@
         <th
           class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
         >
-          Email
+          Clue
         </th>
-        <th
+         <th
           class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
         >
-          Type
-        </th>
-        <th
-          class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
-        >
-          Balance
-        </th>
-        <th
-          class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
-        >
-        Token
+
         </th>
       </tr>
       </thead>
@@ -83,22 +73,19 @@
         <td
           class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
         >
-          {{profile.email}}
+          {{profile.clue}}
         </td>
         <td
           class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
         >
-          {{profile.type}}
-        </td>
-        <td
-          class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
-        >
-          {{profile.balance}}
-        </td>
-        <td
-          class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
-        >
-          {{profile.token}}
+          <button
+            class="p-2 mr-5 text-white rounded-full bg-primary hover:shadow-lg"
+            @click="onEdit(profile)"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
+            </svg>
+          </button>
         </td>
       </tr>
       </tbody>
@@ -118,6 +105,7 @@
   </div>
 </template>
 
+
 <script>
   import loading from '/components/loading'
   import emptyState from '/components/empty-state'
@@ -129,6 +117,10 @@
     },
     props: ['isLoading', 'profiles', 'isEnd'],
     methods: {
+      onEdit (profile) {
+        this.$nuxt.$emit('toggleCreateModal')
+        this.$nuxt.$emit('onSetProfile', profile)
+      },
       close () {
         this.$nuxt.$emit('toggleCreateModal')
       },
