@@ -250,7 +250,7 @@
       } else {
         this.id = ''
         this.name = ''
-        this.type = ''
+        this.type = 'setup'
         this.content = ''
         this.wait = ''
         this.whereIsProgram = ''

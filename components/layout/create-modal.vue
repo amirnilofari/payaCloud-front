@@ -100,7 +100,7 @@
         type: 'password'
       }
     },
-    props: ['isEdit', 'selectedNetwork', 'clusters'],
+    props: ['isEdit', 'selectedLayout', 'clusters'],
     methods: {
       close() {
         this.$nuxt.$emit('toggleCreateModal')
@@ -112,7 +112,7 @@
         formdata.append('type', this.type)
 
         if (this.isEdit) {
-          this.$axios.$post('backend/network/update/' + this.id,
+          this.$axios.$post('backend/layout/update/' + this.id,
             formdata)
             .then(response => {
               if (response.message) {
@@ -140,15 +140,15 @@
     },
     created() {
       if (this.isEdit) {
-        this.id = this.selectedNetwork.id
-        this.name = this.selectedNetwork.name
-        this.clue = this.selectedNetwork.clue
-        this.clusterId = this.selectedNetwork.cluster.id
+        this.id = this.selectedLayout.id
+        this.name = this.selectedLayout.name
+        this.content = this.selectedLayout.content
+        this.type = this.selectedLayout.type
       } else {
         this.id = ''
         this.name = ''
-        this.clue = ''
-        this.clusterId = ''
+        this.content = ''
+        this.type = 'password'
       }
     }
   }

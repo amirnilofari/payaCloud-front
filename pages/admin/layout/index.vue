@@ -9,7 +9,7 @@
     </h2>
     <create-modal
       v-if="showCreateModal"
-      :selected-network="selectedNetwork"
+      :selected-layout="selectedLayout"
       :is-edit="isEdit"
     ></create-modal>
     <layout-list
@@ -31,7 +31,7 @@
         isLoading: false,
         showCreateModal: false,
         showModal: false,
-        selectedNetwork: {},
+        selectedLayout: {},
         isEdit: false,
         pageIndex: 1,
         isEnd: false
@@ -46,7 +46,7 @@
       this.getClusters()
 
       this.$nuxt.$on('closeModal', () => {
-        this.selectedNetwork = {}
+        this.selectedLayout = {}
         this.isEdit = false
         this.toggleModal()
       })
@@ -59,9 +59,9 @@
         this.layouts = []
         this.loadData()
       })
-      this.$nuxt.$on('onSetNetwork', (data) => {
+      this.$nuxt.$on('onSetLayout', (data) => {
         this.isEdit = true
-        this.selectedNetwork = data
+        this.selectedLayout = data
       })
       this.$nuxt.$on('loadMore', () => {
         this.pageIndex++
