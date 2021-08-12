@@ -1,3 +1,4 @@
+var path = require('path');
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -37,7 +38,8 @@ export default {
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/toast'
+    '@nuxtjs/toast',
+    'nuxt-purgecss',
   ],
   axios: {
     baseURL: 'http://sandbox.autovm.net',
@@ -49,7 +51,22 @@ export default {
     position: 'top-center',
     duration: 3000
   },
+  purgeCSS: {
+    mode: 'postcss',
+    enabled: (process.env.NODE_ENV === 'production')
+  },
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
+    postcss: {
+      plugins: {
+        'postcss-import': {},
+        tailwindcss: path.resolve(__dirname, './tailwind.config.js'),
+        'postcss-nested': {}
+      }
+    },
+    preset: {
+      stage: 1 // see https://tailwindcss.com/docs/using-with-preprocessors#future-css-featuress
+    }
 }
+  }
+

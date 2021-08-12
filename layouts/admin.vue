@@ -4,7 +4,7 @@
     <div class="relative md:ml-64 bg-background">
       <admin-navbar />
       <admin-header />
-      <div class="w-full px-4 mx-auto -m-24 md:px-10 bg-background">
+      <div class="w-auto px-4 mx-auto -m-24 md:px-10 bg-background">
         <Nuxt />
         <footer-admin />
       </div>
