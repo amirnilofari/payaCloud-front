@@ -83,4 +83,13 @@ td {
   .admin-layout .card-head{
     @apply p-0;
   }
+  .admin-layout .table-frame thead th{
+    font-size: 0.75em;
+  }
+  .details-modal .mt-7{
+    @apply text-center;
+  }
+  .details-modal .mt-7 button{
+    @apply mx-0 my-2;
+  }
 }

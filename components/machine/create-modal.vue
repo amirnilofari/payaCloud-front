@@ -130,9 +130,12 @@
                     v-model="userId"
                     class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-secondary focus:outline-none focus:ring">
                     <option value="" disabled selected>User</option>
-                    <option>test1</option>
-                    <option>test2</option>
-                    <option>test3</option>
+                    <option
+                      v-for="user in users"
+                      :value="user.id"
+                    >{{user.name}}
+
+                    </option>
                   </select>
                 </div>
               </div>
@@ -147,9 +150,12 @@
                     v-model="sectionId"
                     class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-secondary focus:outline-none focus:ring">
                     <option value="" disabled selected>section</option>
-                    <option>test1</option>
-                    <option>test2</option>
-                    <option>test3</option>
+                    <option
+                      v-for="section in sections"
+                      :value="section.id"
+                    >
+                      {{section.name}}
+                    </option>
                   </select>
                 </div>
               </div>
@@ -164,9 +170,12 @@
                     v-model="storageId"
                     class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-secondary focus:outline-none focus:ring">
                     <option value="" disabled selected>Storage</option>
-                    <option>test1</option>
-                    <option>test2</option>
-                    <option>test3</option>
+                    <option
+                      v-for="storage in storages"
+                      :value="storage.id"
+                    >
+                      {{storage.name}}
+                    </option>
                   </select>
                 </div>
               </div>
@@ -181,9 +190,12 @@
                     v-model="profileId"
                     class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-secondary focus:outline-none focus:ring">
                     <option value="" disabled selected>Profile</option>
-                    <option>test1</option>
-                    <option>test2</option>
-                    <option>test3</option>
+                    <option
+                      v-for="profile in profiles"
+                      :value="profile.id"
+                    >
+                      {{profile.name}}
+                    </option>
                   </select>
                 </div>
               </div>
@@ -198,9 +210,12 @@
                     v-model="networkId"
                     class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-secondary focus:outline-none focus:ring">
                     <option value="" disabled selected>Network</option>
-                    <option>test1</option>
-                    <option>test2</option>
-                    <option>test3</option>
+                    <option
+                      v-for="network in networks"
+                      :value="network.id"
+                    >
+                      {{network.name}}
+                    </option>
                   </select>
                 </div>
               </div>
@@ -215,9 +230,12 @@
                     v-model="packageId"
                     class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-secondary focus:outline-none focus:ring">
                     <option value="" disabled selected>Package</option>
-                    <option>test1</option>
-                    <option>test2</option>
-                    <option>test3</option>
+                    <option
+                      v-for="p in packages"
+                      :value="p.id"
+                    >
+                      {{p.name}}
+                    </option>
                   </select>
                 </div>
               </div>
@@ -232,9 +250,12 @@
                     v-model="addressId"
                     class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-secondary focus:outline-none focus:ring">
                     <option value="" disabled selected>Address</option>
-                    <option>test1</option>
-                    <option>test2</option>
-                    <option>test3</option>
+                    <option
+                      v-for="address in addresses"
+                      :value="address.id"
+                    >
+                      {{address.name}}
+                    </option>
                   </select>
                 </div>
               </div>
@@ -249,9 +270,12 @@
                     v-model="templateId"
                     class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-secondary focus:outline-none focus:ring">
                     <option value="" disabled selected>Template</option>
-                    <option>test1</option>
-                    <option>test2</option>
-                    <option>test3</option>
+                    <option
+                      v-for="t in templates"
+                      :value="t.id"
+                    >
+                      {{t.name}}
+                    </option>
                   </select>
                 </div>
               </div>
@@ -284,7 +308,7 @@
 <script>
   export default {
     name: "machine-details",
-    props: ['machine'],
+    props: ['machine', 'users', 'sections', 'storages', 'profiles', 'packages', 'templates', 'addresses', 'networks'],
     data() {
       return {
         userId: '',

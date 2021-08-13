@@ -8,10 +8,19 @@
       Machines
     </h2>
     <create-modal
+      :users="users"
+      :sections="sections"
+      :storages="storages"
+      :profiles="profiles"
+      :packages="packages"
+      :templates="templates"
+      :addresses="addresses"
+      :networks="networks"
       v-if="showCreateModal"
     ></create-modal>
     <machine-list
       :is-loading="isLoading"
+      :is-end="isEnd"
       :machines="machines"
     ></machine-list>
     <modal
@@ -29,13 +38,23 @@
   export default {
     data() {
       return {
+        users: [],
+        sections: [],
+        storages: [],
+        profiles: [],
+        packages: [],
+        templates: [],
+        addresses: [],
+        networks: [],
         machines: [],
         isLoading: false,
         showCreateModal: false,
         showModal: false,
         selectedMachine: {
           id: 0
-        }
+        },
+        pageIndex: 1,
+        isEnd: false
       }
     },
     components: {
@@ -45,6 +64,7 @@
     },
     created () {
       this.loadData()
+      this.getData()
 
       this.$nuxt.$on('getMachine', (id) => {
         this.getMachineInfo(id)
@@ -55,13 +75,70 @@
       this.$nuxt.$on('toggleCreateModal', () => {
         this.toggleCreateModal()
       })
+
+      this.$nuxt.$on('onLoadData', () => {
+        this.pageIndex = 0
+        this.machines = []
+        this.loadData()
+      })
+      this.$nuxt.$on('loadMore', () => {
+        this.pageIndex++
+        this.loadData()
+      })
     },
     methods: {
+      getData () {
+        this.$axios.$get('backend/user/index')
+          .then(response => {
+            console.log('y', response)
+            this.users = response.data
+          })
+
+        this.$axios.$get('backend/section/index')
+          .then(response => {
+            this.sections = response.data
+          })
+
+        this.$axios.$get('backend/storage/index')
+          .then(response => {
+            this.storages = response.data
+          })
+
+        this.$axios.$get('backend/profile/index')
+          .then(response => {
+            this.profiles = response.data
+          })
+
+        this.$axios.$get('backend/network/index')
+          .then(response => {
+            this.networks = response.data
+          })
+
+        this.$axios.$get('backend/address/index')
+          .then(response => {
+            this.addresses = response.data
+          })
+
+        this.$axios.$get('backend/template/index')
+          .then(response => {
+            this.templates = response.data
+          })
+
+        this.$axios.$get('backend/package/index')
+          .then(response => {
+            this.packages = response.data
+          })
+      },
       loadData () {
         this.isLoading = true
-        this.$axios.$get('backend/machine/index')
+        this.$axios.$get('backend/machine/index?page=' + this.pageIndex)
           .then(response => {
-            this.machines = response.data
+            this.machines = this.machines.concat(response.data);
+            if (response.links.next === null) {
+              this.isEnd = true
+            } else {
+              this.isEnd = false
+            }
             this.isLoading = false
           })
       },
