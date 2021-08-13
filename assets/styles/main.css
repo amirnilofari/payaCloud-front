@@ -46,7 +46,7 @@ thead {
 }
 
 th{
-   @apply px-6 py-3 text-xs font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-solid border-primary text-primary whitespace-nowrap 
+   @apply px-6 py-3 text-xs font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-solid border-primary text-primary whitespace-nowrap
 }
 
 td {
@@ -63,4 +63,16 @@ td {
 
 .moreBtn {
    @apply px-6 py-3 mb-1 mr-1 text-sm font-semibold transition-all duration-150 ease-linear rounded shadow outline-none bg-background text-primary
+}
+
+@media only screen and (max-width: 992px) {
+  .admin-layout > .bg-background > h2{
+    @apply text-2xl;
+  }
+  .admin-layout > .bg-background{
+    @apply h-auto px-1;
+  }
+  .admin-layout .card-head{
+    @apply p-0;
+  }
 }

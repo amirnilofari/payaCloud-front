@@ -5,7 +5,9 @@
       <admin-navbar />
       <admin-header />
       <div class="w-auto px-4 mx-auto -m-24 md:px-10 bg-background">
-        <Nuxt />
+        <Nuxt
+          class="admin-layout"
+        />
         <footer-admin />
       </div>
     </div>
@@ -13,7 +15,7 @@
 </template>
 
 <script>
-import AdminNavbar from "~/components/Navbar/AdminNavbar.vue"; 
+import AdminNavbar from "~/components/Navbar/AdminNavbar.vue";
 import Sidebar from "~/components/Sidebar/AdminSidebar.vue";
 import AdminHeader from "~/components/Headers/AdminHeader.vue";
 import FooterAdmin from "~/components/Footers/AdminFooter.vue";
