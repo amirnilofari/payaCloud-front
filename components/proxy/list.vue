@@ -125,9 +125,9 @@
     },
     props: ['isLoading', 'proxies', 'isEnd'],
     methods: {
-      onEdit (center) {
+      onEdit (proxy) {
         this.$nuxt.$emit('toggleCreateModal')
-        this.$nuxt.$emit('onSetCenter', center)
+        this.$nuxt.$emit('onSetProxy', proxy)
       },
       close () {
         this.$nuxt.$emit('toggleCreateModal')

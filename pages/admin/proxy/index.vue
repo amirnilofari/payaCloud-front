@@ -9,7 +9,7 @@
     </h2>
     <create-modal
       v-if="showCreateModal"
-      :selected-center="selectedCenter"
+      :selected-proxy="selectedProxy"
       :servers="servers"
       :is-edit="isEdit"
     ></create-modal>
@@ -33,7 +33,7 @@
         isLoading: false,
         showCreateModal: false,
         showModal: false,
-        selectedCenter: {},
+        selectedProxy: {},
         isEdit: false,
         pageIndex: 1,
         isEnd: false
@@ -48,7 +48,7 @@
       this.getServers()
 
       this.$nuxt.$on('closeModal', () => {
-        this.selectedCenter = {}
+        this.selectedProxy = {}
         this.isEdit = false
         this.toggleModal()
       })
@@ -61,9 +61,9 @@
         this.proxies = []
         this.loadData()
       })
-      this.$nuxt.$on('onSetCenter', (data) => {
+      this.$nuxt.$on('onSetProxy', (data) => {
         this.isEdit = true
-        this.selectedCenter = data
+        this.selectedProxy = data
       })
       this.$nuxt.$on('loadMore', () => {
         this.pageIndex++

@@ -116,7 +116,7 @@
         port: ''
       }
     },
-    props: ['isEdit', 'selectedCenter', 'servers'],
+    props: ['isEdit', 'selectedProxy', 'servers'],
     methods: {
       close() {
         this.$nuxt.$emit('toggleCreateModal')
@@ -129,7 +129,7 @@
         formdata.append('host', this.host)
 
         if (this.isEdit) {
-          this.$axios.$post('backend/center/update/' + this.id,
+          this.$axios.$post('backend/proxy/update/' + this.id,
             formdata)
             .then(response => {
               if (response.message) {
@@ -157,15 +157,17 @@
     },
     created() {
       if (this.isEdit) {
-        this.id = this.selectedCenter.id
-        this.name = this.selectedCenter.name
-        this.clue = this.selectedCenter.clue
-        this.serverId = this.selectedCenter.server.id
+        this.id = this.selectedProxy.id
+        this.name = this.selectedProxy.name
+        this.host = this.selectedProxy.host
+        this.proxy = this.selectedProxy.proxy
+        this.port = this.selectedProxy.port
       } else {
         this.id = ''
         this.name = ''
-        this.clue = ''
-        this.serverId = ''
+        this.host = ''
+        this.port = ''
+        this.proxy = ''
       }
     }
   }
