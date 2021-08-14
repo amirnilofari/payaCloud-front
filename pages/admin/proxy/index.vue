@@ -7,29 +7,29 @@
     >
       Proxies
     </h2>
-    <create-modal
-      v-if="showCreateModal"
-      :selected-center="selectedCenter"
-      :servers="servers"
-      :is-edit="isEdit"
-    ></create-modal>
-    <center-list
+<!--    <create-modal-->
+<!--      v-if="showCreateModal"-->
+<!--      :selected-center="selectedCenter"-->
+<!--      :servers="servers"-->
+<!--      :is-edit="isEdit"-->
+<!--    ></create-modal>-->
+    <proxy-list
       :is-loading="isLoading"
-      :centers="centers"
+      :proxies="proxies"
       :is-end="isEnd"
-      :key="centers.length"
-    ></center-list>
+      :key="proxies.length"
+    ></proxy-list>
   </div>
 </template>
 
 <script>
-  import centerList from '/components/center/list'
-  import createModal from '/components/center/create-modal'
+  import proxyList from '/components/proxy/list'
+  import createModal from '/components/proxy/create-modal'
   export default {
     data() {
       return {
         servers: [],
-        centers: [],
+        proxies: [],
         isLoading: false,
         showCreateModal: false,
         showModal: false,
@@ -40,7 +40,7 @@
       }
     },
     components: {
-      centerList,
+      proxyList,
       createModal
     },
     created () {
@@ -58,7 +58,7 @@
       })
       this.$nuxt.$on('onLoadData', () => {
         this.pageIndex = 0
-        this.centers = []
+        this.proxies = []
         this.loadData()
       })
       this.$nuxt.$on('onSetCenter', (data) => {
@@ -73,9 +73,10 @@
     methods: {
       loadData () {
         this.isLoading = true
-        this.$axios.$get('backend/center/index?page=' + this.pageIndex)
+        this.$axios.$get('backend/proxy/index?page=' + this.pageIndex)
           .then(response => {
-            this.centers = this.centers.concat(response.data);
+            console.log('proxies', response)
+            this.proxies = this.proxies.concat(response.data);
             if (response.links.next === null) {
               this.isEnd = true
             } else {
