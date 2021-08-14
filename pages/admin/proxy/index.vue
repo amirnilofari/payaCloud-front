@@ -7,12 +7,12 @@
     >
       Proxies
     </h2>
-<!--    <create-modal-->
-<!--      v-if="showCreateModal"-->
-<!--      :selected-center="selectedCenter"-->
-<!--      :servers="servers"-->
-<!--      :is-edit="isEdit"-->
-<!--    ></create-modal>-->
+    <create-modal
+      v-if="showCreateModal"
+      :selected-center="selectedCenter"
+      :servers="servers"
+      :is-edit="isEdit"
+    ></create-modal>
     <proxy-list
       :is-loading="isLoading"
       :proxies="proxies"
@@ -75,7 +75,6 @@
         this.isLoading = true
         this.$axios.$get('backend/proxy/index?page=' + this.pageIndex)
           .then(response => {
-            console.log('proxies', response)
             this.proxies = this.proxies.concat(response.data);
             if (response.links.next === null) {
               this.isEnd = true

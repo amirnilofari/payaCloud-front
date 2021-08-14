@@ -9,7 +9,7 @@
           <form
             class="p-6"
           >
-            <h3 class="font-semibold mb-6 text-H3 text-xl">New Center</h3>
+            <h3 class="font-semibold mb-6 text-H3 text-xl">New Proxy</h3>
             <div class="flex flex-wrap">
               <div class="w-full lg:w-6/12 px-4 mb-2">
                 <div class="relative w-full mb-3">
@@ -156,17 +156,17 @@
       }
     },
     created() {
-      if (this.isEdit) {
-        this.id = this.selectedCenter.id
-        this.name = this.selectedCenter.name
-        this.clue = this.selectedCenter.clue
-        this.serverId = this.selectedCenter.server.id
-      } else {
-        this.id = ''
-        this.name = ''
-        this.clue = ''
-        this.serverId = ''
-      }
+      // if (this.isEdit) {
+      //   this.id = this.selectedCenter.id
+      //   this.name = this.selectedCenter.name
+      //   this.clue = this.selectedCenter.clue
+      //   this.serverId = this.selectedCenter.server.id
+      // } else {
+      //   this.id = ''
+      //   this.name = ''
+      //   this.clue = ''
+      //   this.serverId = ''
+      // }
     }
   }
 </script>
