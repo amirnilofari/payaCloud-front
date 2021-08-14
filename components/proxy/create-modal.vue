@@ -156,17 +156,17 @@
       }
     },
     created() {
-      // if (this.isEdit) {
-      //   this.id = this.selectedCenter.id
-      //   this.name = this.selectedCenter.name
-      //   this.clue = this.selectedCenter.clue
-      //   this.serverId = this.selectedCenter.server.id
-      // } else {
-      //   this.id = ''
-      //   this.name = ''
-      //   this.clue = ''
-      //   this.serverId = ''
-      // }
+      if (this.isEdit) {
+        this.id = this.selectedCenter.id
+        this.name = this.selectedCenter.name
+        this.clue = this.selectedCenter.clue
+        this.serverId = this.selectedCenter.server.id
+      } else {
+        this.id = ''
+        this.name = ''
+        this.clue = ''
+        this.serverId = ''
+      }
     }
   }
 </script>
