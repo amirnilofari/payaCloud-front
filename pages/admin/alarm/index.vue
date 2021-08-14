@@ -5,62 +5,47 @@
     <h2
       class="mb-10 text-3xl font-bold uppercase text-H1"
     >
-      Proxies
+      Alarms
     </h2>
-    <create-modal
-      v-if="showCreateModal"
-      :selected-proxy="selectedProxy"
-      :is-edit="isEdit"
-    ></create-modal>
-    <proxy-list
+    <alarm-list
       :is-loading="isLoading"
-      :proxies="proxies"
+      :alarms="alarms"
       :is-end="isEnd"
-      :key="proxies.length"
-    ></proxy-list>
+      :key="alarms.length"
+    ></alarm-list>
   </div>
 </template>
 
 <script>
-  import proxyList from '/components/proxy/list'
-  import createModal from '/components/proxy/create-modal'
+  import alarmList from '/components/alarm/list'
   export default {
     data() {
       return {
-        proxies: [],
+        alarms: [],
         isLoading: false,
         showCreateModal: false,
         showModal: false,
-        selectedProxy: {},
-        isEdit: false,
         pageIndex: 1,
         isEnd: false
       }
     },
     components: {
-      proxyList,
-      createModal
+      alarmList
     },
     created () {
       this.loadData()
+      this.getServers()
 
       this.$nuxt.$on('closeModal', () => {
-        this.selectedProxy = {}
-        this.isEdit = false
         this.toggleModal()
       })
       this.$nuxt.$on('toggleCreateModal', () => {
-        this.isEdit = false
         this.toggleCreateModal()
       })
       this.$nuxt.$on('onLoadData', () => {
         this.pageIndex = 0
-        this.proxies = []
+        this.alarms = []
         this.loadData()
-      })
-      this.$nuxt.$on('onSetProxy', (data) => {
-        this.isEdit = true
-        this.selectedProxy = data
       })
       this.$nuxt.$on('loadMore', () => {
         this.pageIndex++
@@ -70,15 +55,22 @@
     methods: {
       loadData () {
         this.isLoading = true
-        this.$axios.$get('backend/proxy/index?page=' + this.pageIndex)
+        this.$axios.$get('backend/alarm/index?page=' + this.pageIndex)
           .then(response => {
-            this.proxies = this.proxies.concat(response.data);
+            console.log(response)
+            this.alarms = this.alarms.concat(response.data);
             if (response.links.next === null) {
               this.isEnd = true
             } else {
               this.isEnd = false
             }
             this.isLoading = false
+          })
+      },
+      getServers () {
+        this.$axios.$get('backend/server/index')
+          .then(response => {
+            this.servers = response.data
           })
       },
       toggleModal () {

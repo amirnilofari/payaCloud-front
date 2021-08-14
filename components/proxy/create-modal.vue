@@ -116,7 +116,7 @@
         port: ''
       }
     },
-    props: ['isEdit', 'selectedProxy', 'servers'],
+    props: ['isEdit', 'selectedProxy'],
     methods: {
       close() {
         this.$nuxt.$emit('toggleCreateModal')
