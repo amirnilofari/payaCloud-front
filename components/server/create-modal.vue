@@ -10,7 +10,7 @@
           >
             <h3 class="mb-6 text-xl font-semibold text-white">New Server</h3>
             <div class="flex flex-wrap">
-              
+
               <div class="w-full px-4 mb-2 lg:w-6/12">
                 <div class="relative w-full mb-3">
                   <label
@@ -91,7 +91,7 @@
                   </button>
                 </div>
               </div>
-             
+
             </div>
           </form>
         </div>
@@ -127,7 +127,6 @@
           this.$axios.$post('backend/server/update/' + this.id,
             formdata)
             .then(response => {
-              // console.log('edit', response)
               if (response.message) {
                 this.$toast.error(response.message)
               } else {
@@ -140,7 +139,6 @@
           this.$axios.$post('backend/server/create',
             formdata)
             .then(response => {
-              // console.log('create', response)
               if (response.message) {
                 this.$toast.error(response.message)
               } else {

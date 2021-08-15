@@ -1,7 +1,7 @@
 <template>
   <transition name="slide">
     <div
-      class="fixed z-10 inset-0 overflow-y-auto details-modal" role="dialog" aria-modal="true">
+      class="fixed z-10 inset-0 overflow-y-auto details-modal machine-modal" role="dialog" aria-modal="true">
       <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center w-full sm:block sm:p-0">
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
         <div class="inline-block align-bottom bg-white rounded-lg text-left
@@ -61,7 +61,7 @@
                 {{machine.address.address}}
               </div>
             </div>
-            <div class="mt-5 text-center">
+            <div class="mt-5 text-center table-frame">
               <table
                 class="items-center w-full bg-white border-collapse shadow-lg rounded border border-primary"
               >
@@ -156,7 +156,7 @@
                 Actions
               </h3>
             </div>
-            <div class="py-5 text-center">
+            <div class="py-5 text-center table-frame">
               <table
                 class="items-center w-full bg-white border-collapse shadow-lg rounded border border-primary"
               >
@@ -297,6 +297,10 @@
 </script>
 
 <style scoped>
+  .machine-modal .table-frame{
+    width: 80%;
+    margin: auto;
+  }
   .details-modal .image-cont{
     top: -60px;
     position: absolute;

@@ -6,7 +6,7 @@
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
         <div class="inline-block text-left align-bottom transition-all transform rounded-lg shadow-xl bg-opacity-95 bg-H1 sm:mt-4 sm:align-middle sm:max-w-6xl sm:w-full">
           <form
-            class="p-6"
+            class="lg:p-6 md:py-5 px-2"
           >
             <h3 class="mb-6 text-xl font-semibold text-white">New Trans</h3>
             <div class="flex flex-wrap">
@@ -110,7 +110,7 @@
                   </button>
                 </div>
               </div>
-             
+
             </div>
           </form>
         </div>

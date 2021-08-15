@@ -78,7 +78,6 @@
         this.isLoading = true
         this.$axios.$get('backend/product/index?page=' + this.pageIndex)
           .then(response => {
-            console.log('product', response)
             this.products = this.products.concat(response.data);
             if (response.links.next === null) {
               this.isEnd = true
