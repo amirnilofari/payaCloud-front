@@ -34,7 +34,6 @@
     },
     created () {
       this.loadData()
-      this.getServers()
 
       this.$nuxt.$on('closeModal', () => {
         this.toggleModal()
@@ -57,7 +56,6 @@
         this.isLoading = true
         this.$axios.$get('backend/alarm/index?page=' + this.pageIndex)
           .then(response => {
-            console.log(response)
             this.alarms = this.alarms.concat(response.data);
             if (response.links.next === null) {
               this.isEnd = true
@@ -65,12 +63,6 @@
               this.isEnd = false
             }
             this.isLoading = false
-          })
-      },
-      getServers () {
-        this.$axios.$get('backend/server/index')
-          .then(response => {
-            this.servers = response.data
           })
       },
       toggleModal () {
