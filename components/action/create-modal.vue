@@ -10,19 +10,19 @@
           >
             <h3 class="mb-6 text-xl font-semibold text-white">New Center</h3>
             <div class="flex flex-wrap">
-              
+
               <div class="w-full px-4 mb-2 lg:w-4/12">
                 <div class="relative w-full mb-3">
                   <label
                     class="block mb-2 text-xs font-bold text-white uppercase"
                   >
-                    Name
+                    method
                   </label>
                   <input
-                    v-model="name"
+                    v-model="method"
                     type="text"
                     class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-primary placeholder-primary text-H1 focus:outline-none focus:ring"
-                    placeholder="Name"
+                    placeholder="Method"
                   />
                 </div>
               </div>
@@ -31,40 +31,41 @@
                   <label
                     class="block mb-2 text-xs font-bold text-white uppercase"
                   >
-                    Clue
-                  </label>
-                  <input
-                    v-model="clue"
-                    type="text"
-                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-primary placeholder-primary text-H1 focus:outline-none focus:ring"
-                    placeholder="Clue"
-                  />
-                </div>
-              </div>
-              <div class="w-full px-4 mb-2 lg:w-4/12">
-                <div class="relative w-full mb-3">
-                  <label
-                    class="block mb-2 text-xs font-bold text-white uppercase"
-                  >
-                    Server
+                    Machine
                   </label>
                   <select
-                    v-model="serverId"
+                    v-model="machineId"
                     class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-primary placeholder-primary text-primary focus:outline-none focus:ring">
-                    <option value="" disabled selected>Server</option>
+                    <option value="" disabled selected>Machine</option>
                     <option
-                      v-for="server in servers"
-                      :key="server.id"
-                      :value="server.id"
+                      v-for="machine in machines"
+                      :key="machine.id"
+                      :value="machine.id"
                     >
-                      {{server.name}}
+                      {{machine.template.name}}
                     </option>
                   </select>
                 </div>
               </div>
-
-
-              
+              <div class="w-full px-4 mb-2 lg:w-4/12">
+                <div class="relative w-full mb-3">
+                  <label
+                    class="block mb-2 text-xs font-bold text-white uppercase"
+                  >
+                    status
+                  </label>
+                  <div class="flex items-center mt-5">
+                    <input v-model="status" value="active" id="active" name="status" type="radio" class="w-4 h-4 focus:ring-indigo-500 text-primary border-H2">
+                    <label for="active" class="block ml-3 text-sm font-medium text-white">
+                      Active
+                    </label>
+                    <input v-model="status" value="pending" id="pending" name="status" type="radio" class="w-4 h-4 ml-5 focus:ring-indigo-500 text-primary border-H2">
+                    <label for="pending" class="block ml-3 text-sm font-medium text-white">
+                      Pending
+                    </label>
+                  </div>
+                </div>
+              </div>
               <div class="w-full px-4 mb-2">
                 <div class="flex flex-wrap w-full mt-7">
                   <button
@@ -83,7 +84,7 @@
                   </button>
                 </div>
               </div>
-             
+
             </div>
           </form>
         </div>
@@ -97,21 +98,21 @@
     data() {
       return {
         id: '',
-        name: '',
-        clue: '',
-        serverId: ''
+        method: '',
+        status: 'active',
+        machineId: ''
       }
     },
-    props: ['isEdit', 'selectedCenter', 'servers'],
+    props: ['isEdit', 'selectedCenter', 'machines'],
     methods: {
       close() {
         this.$nuxt.$emit('toggleCreateModal')
       },
       submitForm () {
         let formdata = new FormData()
-        formdata.append('name', this.name)
-        formdata.append('clue', this.clue)
-        formdata.append('serverId', this.serverId)
+        formdata.append('method', this.method)
+        formdata.append('status', this.status)
+        formdata.append('machineId', this.machineId)
 
         if (this.isEdit) {
           this.$axios.$post('backend/center/update/' + this.id,
@@ -126,7 +127,7 @@
               this.close()
             })
         } else {
-          this.$axios.$post('backend/center/create',
+          this.$axios.$post('backend/action/create',
             formdata)
             .then(response => {
               if (response.message) {

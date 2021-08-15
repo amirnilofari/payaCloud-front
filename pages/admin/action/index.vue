@@ -7,12 +7,12 @@
     >
       Actions
     </h2>
-<!--    <create-modal-->
-<!--      v-if="showCreateModal"-->
-<!--      :selected-center="selectedCenter"-->
-<!--      :servers="servers"-->
-<!--      :is-edit="isEdit"-->
-<!--    ></create-modal>-->
+    <create-modal
+      v-if="showCreateModal"
+      :selected-center="selectedCenter"
+      :machines="machines"
+      :is-edit="isEdit"
+    ></create-modal>
     <action-list
       :is-loading="isLoading"
       :actions="actions"
@@ -24,11 +24,11 @@
 
 <script>
   import actionList from '/components/action/list'
-  import createModal from '/components/center/create-modal'
+  import createModal from '/components/action/create-modal'
   export default {
     data() {
       return {
-        servers: [],
+        machines: [],
         actions: [],
         isLoading: false,
         showCreateModal: false,
@@ -45,7 +45,7 @@
     },
     created () {
       this.loadData()
-      this.getServers()
+      this.getMachines()
 
       this.$nuxt.$on('closeModal', () => {
         this.selectedCenter = {}
@@ -75,7 +75,6 @@
         this.isLoading = true
         this.$axios.$get('backend/action/index?page=' + this.pageIndex)
           .then(response => {
-            console.log('actionList', response)
             this.actions = this.actions.concat(response.data);
             if (response.links.next === null) {
               this.isEnd = true
@@ -85,10 +84,10 @@
             this.isLoading = false
           })
       },
-      getServers () {
-        this.$axios.$get('backend/server/index')
+      getMachines () {
+        this.$axios.$get('backend/machine/index')
           .then(response => {
-            this.servers = response.data
+            this.machines = response.data
           })
       },
       toggleModal () {
