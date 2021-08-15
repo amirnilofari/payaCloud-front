@@ -83,24 +83,26 @@
         </div>
 
         <!-- Heading -->
-<!--        <h6-->
-<!--          class="block pt-1 pb-4 text-xs font-bold no-underline uppercase md:min-w-full text-blueGray-500"-->
-<!--        >-->
-<!--          Permission-->
-<!--        </h6>-->
+        <h2
+          class="block pt-1 pb-4 font-bold no-underline uppercase md:min-w-full"
+        >
+          DASHBOARD
+        </h2>
         <!-- Navigation -->
-
         <ul
           v-for="item in listPerm"
           :key="item.name"
-          class="flex flex-col list-none md:flex-col md:min-w-full"
+          class="flex flex-col mb-4 list-none md:flex-col md:min-w-full"
         >
-          <li class="items-center px-2 py-3 mb-2 rounded text-H2">
-            <nuxt-link :to="item.link" class="flex">
-              <div v-html="item.icon" class="mr-2"></div>
-              {{ item.name }}
+          <h4 class="mb-2 font-bold text-primary font">{{item.name}}</h4>
+            <li v-for="list in item.collection" :key="list.name"  class="items-center px-2 py-3 mb-2 rounded text-H2">
+            <nuxt-link :to="list.link" class="flex">
+              <div v-html="list.icon" class="mr-2"></div>
+              {{ list.name }}
             </nuxt-link>
           </li>
+        
+          
         </ul>
       </div>
     </div>
@@ -110,7 +112,7 @@
 <style scoped>
 .nuxt-link-exact-active {
   font-weight: bold;
-  color: #3d69e1;
+  color: #88aaff;
 }
 </style>
 
@@ -123,20 +125,21 @@ export default {
       collapseShow: "hidden",
       listPerm: [
         {
-          name: "Dashboard",
-          link: "/admin",
-          icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-</svg>`,
+          name: "USER",
+          collection: [
+            {
+              name: "Users",
+              link: "/admin/user",
+              icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                     </svg>`,
+            },
+          ],
         },
         {
-          name: "Users",
-          link: "/admin/user",
-          icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-</svg>`,
-        },
-        {
+          name: "COMMON",
+          collection: [
+            {
           name: "Icons",
           link: "/admin/icon",
           icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -153,7 +156,7 @@ export default {
         {
           name: "Proxies",
           link: "/admin/proxy",
-          icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.636 18.364a9 9 0 010-12.728m12.728 0a9 9 0 010 12.728m-9.9-2.829a5 5 0 010-7.07m7.072 0a5 5 0 010 7.07M13 12a1 1 0 11-2 0 1 1 0 012 0z" />
 </svg>`,
         },
@@ -164,21 +167,24 @@ export default {
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" />
 </svg>`,
         },
+          ],
+        },
         {
+          name: "FINANCIAL",
+          collection: [
+            {
           name: "Transes",
           link: "/admin/transe",
           icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
 </svg>`,
         },
-        {
-          name: "Alarms",
-          link: "/admin/alarm",
-          icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-</svg>`,
+          ]
         },
         {
+          name: "TEMPLATE",
+          collection: [
+            {
           name: "Templates",
           link: "/admin/template",
           icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -192,15 +198,24 @@ export default {
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
 </svg>`,
         },
-        {
-          name: "Packages",
-          link: "/admin/package",
-          icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
-</svg>`,
+          ]
         },
         {
+          name: "NETWORK",
+          collection: [
+            {
+          name: "Addresses",
+          link: "/admin/address",
+          icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+</svg>`,
+        },
+          ]
+        },
+        {
+          name: "SERVER",
+          collection: [
+            {
           name: "Servers",
           link: "/admin/server",
           icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -221,7 +236,12 @@ export default {
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
 </svg>`,
         },
+          ]
+        },
         {
+          name: "CLUSTER",
+          collection: [
+            {
           name: "Clusters",
           link: "/admin/cluster",
           icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -249,7 +269,12 @@ export default {
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
 </svg>`,
         },
+          ]
+        },
         {
+          name : "POOL",
+          collection: [
+            {
           name: "Pools",
           link: "/admin/pool",
           icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -270,7 +295,12 @@ export default {
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
 </svg>`,
         },
+          ]
+        },
         {
+          name : "MACHINE",
+          collection : [
+            {
           name: "Machines",
           link: "/admin/machine",
           icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
@@ -284,13 +314,8 @@ export default {
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5" />
 </svg>`,
         },
-        {
-          name: "IPs",
-          link: "/admin/address",
-          icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-</svg>`,
-        },
+          ]
+        },  
       ],
     };
   },
