@@ -9,7 +9,7 @@
     </h2>
     <create-modal
       v-if="showCreateModal"
-      :selected-pool="selectedPool"
+      :selected-package="selectedPackage"
       :is-edit="isEdit"
     ></create-modal>
     <package-list
@@ -31,7 +31,7 @@
         isLoading: false,
         showCreateModal: false,
         showModal: false,
-        selectedPool: {},
+        selectedPackage: {},
         isEdit: false,
         pageIndex: 1,
         isEnd: false
@@ -45,7 +45,7 @@
       this.loadData()
 
       this.$nuxt.$on('closeModal', () => {
-        this.selectedPool = {}
+        this.selectedPackage = {}
         this.isEdit = false
         this.toggleModal()
       })
@@ -58,9 +58,9 @@
         this.packages = []
         this.loadData()
       })
-      this.$nuxt.$on('onSetPool', (data) => {
+      this.$nuxt.$on('onSetPackage', (data) => {
         this.isEdit = true
-        this.selectedPool = data
+        this.selectedPackage = data
       })
       this.$nuxt.$on('loadMore', () => {
         this.pageIndex++

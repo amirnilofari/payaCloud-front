@@ -8,7 +8,8 @@
           <form
             class="p-6"
           >
-            <h3 class="mb-6 text-xl font-semibold text-white">New Package</h3>
+            <h3 v-if="!isEdit" class="mb-6 text-xl font-semibold text-white">New Package</h3>
+            <h3 v-else class="mb-6 text-xl font-semibold text-white">Edit Package</h3>
             <div class="flex flex-wrap">
                <div class="w-full px-4 mb-2 lg:w-12/12">
                 <div class="relative w-full mb-3">
@@ -60,7 +61,7 @@
         name: '',
       }
     },
-    props: ['isEdit', 'selectedPool'],
+    props: ['isEdit', 'selectedPackage'],
     methods: {
       close() {
         this.$nuxt.$emit('toggleCreateModal')
@@ -70,7 +71,7 @@
         formdata.append('name', this.name)
 
         if (this.isEdit) {
-          this.$axios.$post('backend/pool/update/' + this.id,
+          this.$axios.$post('backend/package/update/' + this.id,
             formdata)
             .then(response => {
               if (response.message) {
@@ -98,8 +99,8 @@
     },
     created() {
       if (this.isEdit) {
-        this.id = this.selectedPool.id
-        this.name = this.selectedPool.name
+        this.id = this.selectedPackage.id
+        this.name = this.selectedPackage.name
       } else {
         this.id = ''
         this.name = ''

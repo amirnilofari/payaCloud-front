@@ -118,9 +118,9 @@
     },
     props: ['isLoading', 'packages', 'isEnd'],
     methods: {
-      onEdit (pool) {
+      onEdit (p) {
         this.$nuxt.$emit('toggleCreateModal')
-        this.$nuxt.$emit('onSetPool', pool)
+        this.$nuxt.$emit('onSetPackage', p)
       },
       close () {
         this.$nuxt.$emit('toggleCreateModal')
