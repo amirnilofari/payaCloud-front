@@ -90,7 +90,6 @@
       getData () {
         this.$axios.$get('backend/user/index')
           .then(response => {
-            console.log('y', response)
             this.users = response.data
           })
 
