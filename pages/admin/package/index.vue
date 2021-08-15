@@ -7,11 +7,11 @@
     >
       Packages
     </h2>
-<!--    <create-modal-->
-<!--      v-if="showCreateModal"-->
-<!--      :selected-pool="selectedPool"-->
-<!--      :is-edit="isEdit"-->
-<!--    ></create-modal>-->
+    <create-modal
+      v-if="showCreateModal"
+      :selected-pool="selectedPool"
+      :is-edit="isEdit"
+    ></create-modal>
     <package-list
       :is-loading="isLoading"
       :packages="packages"
@@ -23,7 +23,7 @@
 
 <script>
   import packageList from '/components/package/list'
-  import createModal from '/components/pool/create-modal'
+  import createModal from '/components/package/create-modal'
   export default {
     data() {
       return {
@@ -72,7 +72,6 @@
         this.isLoading = true
         this.$axios.$get('backend/package/index?page=' + this.pageIndex)
           .then(response => {
-            console.log('package', response)
             this.packages = this.packages.concat(response.data);
             if (response.links.next === null) {
               this.isEnd = true
