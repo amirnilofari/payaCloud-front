@@ -1,30 +1,29 @@
 <template>
   <transition name="slide">
     <div
-      class="fixed z-10 inset-0 overflow-y-auto details-modal" role="dialog" aria-modal="true">
-      <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center w-full sm:block sm:p-0">
+      class="fixed inset-0 z-10 overflow-y-auto details-modal" role="dialog" aria-modal="true">
+      <div class="flex items-end justify-center w-full min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-        <div class="inline-block align-bottom bg-white rounded-lg text-left
-        shadow-xl transform transition-all sm:mt-4 sm:align-middle sm:max-w-6xl sm:w-full">
+        <div class="inline-block text-left align-bottom transition-all transform rounded-lg shadow-xl bg-opacity-95 bg-H1 sm:mt-4 sm:align-middle sm:max-w-6xl sm:w-full">
           <form
             class="p-6"
           >
-            <h3 class="font-semibold mb-6 text-H3 text-xl">New Trans</h3>
+            <h3 class="mb-6 text-xl font-semibold text-white">New Trans</h3>
             <div class="flex flex-wrap">
-              <div class="w-full lg:w-6/12 px-4 mb-2">
+              <div class="w-full px-4 mb-2 lg:w-6/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block uppercase text-primary text-xs font-bold mb-2"
+                    class="block mb-2 text-xs font-bold text-white uppercase"
                   >
                     User
                   </label>
                   <select
                     v-model="userId"
-                    class="border border-secondary px-3 py-3 placeholder-secondary text-secondary bg-white
-                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150">
+                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-secondary focus:outline-none focus:ring">
                     <option value="" disabled selected>User</option>
                     <option
                       v-for="user in users"
+                      :key= "user.id"
                       :value="user.id"
                     >
                       {{user.name}}
@@ -32,84 +31,86 @@
                   </select>
                 </div>
               </div>
-              <div class="w-full lg:w-6/12 px-4 mb-2">
+
+              <div class="w-full px-4 mb-2 lg:w-6/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block uppercase text-primary text-xs font-bold mb-2"
+                    class="block mb-2 text-xs font-bold text-white uppercase"
                   >
                     Amount
                   </label>
                   <input
                     v-model="amount"
                     type="text"
-                    class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
-                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-H1 focus:outline-none focus:ring"
                     placeholder="Amount"
                   />
                 </div>
               </div>
-            </div>
-            <div class="flex flex-wrap">
-              <div class="w-full lg:w-6/12 px-4 mb-2">
+
+              <div class="w-full px-4 mb-2 lg:w-6/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block mb-2 text-xs font-bold uppercase text-primary"
+                    class="block mb-2 text-xs font-bold text-white uppercase"
                   >
                     status
                   </label>
                   <div class="flex items-center mt-5">
                     <input v-model="status" value="paid" id="paid" name="status" type="radio" class="w-4 h-4 focus:ring-indigo-500 text-primary border-H2">
-                    <label for="paid" class="block ml-3 text-sm font-medium text-secondary">
+                    <label for="paid" class="block ml-3 text-sm font-medium text-white">
                       paid
                     </label>
                     <input v-model="status" value="pending" id="pending" name="status" type="radio" class="w-4 h-4 ml-5 focus:ring-indigo-500 text-primary border-H2">
-                    <label for="pending" class="block ml-3 text-sm font-medium text-secondary">
+                    <label for="pending" class="block ml-3 text-sm font-medium text-white">
                       Pending
                     </label>
                     <input v-model="status" value="completed" id="completed" name="status" type="radio" class="w-4 h-4 ml-5 focus:ring-indigo-500 text-primary border-H2">
-                    <label for="completed" class="block ml-3 text-sm font-medium text-secondary">
+                    <label for="completed" class="block ml-3 text-sm font-medium text-white">
                       completed
                     </label>
                   </div>
                 </div>
               </div>
-              <div class="w-full lg:w-6/12 px-4 mb-2">
+
+              <div class="w-full px-4 mb-2 lg:w-6/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block mb-2 text-xs font-bold uppercase text-primary"
+                    class="block mb-2 text-xs font-bold text-white uppercase"
                   >
                     type
                   </label>
                   <div class="flex items-center mt-5">
                     <input v-model="type" value="balance" id="balance" name="type" type="radio" class="w-4 h-4 focus:ring-indigo-500 text-primary border-H2">
-                    <label for="balance" class="block ml-3 text-sm font-medium text-secondary">
+                    <label for="balance" class="block ml-3 text-sm font-medium text-white">
                       balance
                     </label>
                     <input v-model="type" value="gift" id="gift" name="type" type="radio" class="w-4 h-4 ml-5 focus:ring-indigo-500 text-primary border-H2">
-                    <label for="gift" class="block ml-3 text-sm font-medium text-secondary">
+                    <label for="gift" class="block ml-3 text-sm font-medium text-white">
                       gift
                     </label>
                   </div>
                 </div>
               </div>
-              <div class="w-full px-4 mb-2 lg:w-6/12">
-                <div class="relative w-full mt-7">
+
+              <div class="w-full px-4 mb-2">
+                <div class="flex flex-wrap w-full mt-7">
                   <button
                     @click="close"
                     type="button"
-                    class="px-16 py-3 mb-1 mr-1 mr-3 text-sm font-bold uppercase transition-all duration-150 ease-linear border rounded shadow outline-none bg-background text-primary border-primary hover:shadow-lg focus:outline-none"
+                    class="relative w-full px-16 py-3 mb-1 mr-1 text-sm font-bold uppercase transition-all duration-150 ease-linear border rounded shadow outline-none lg:w-3/12 bg-background text-primary border-primary hover:shadow-lg focus:outline-none"
                   >
                     cancel
                   </button>
                   <button
                     @click="submitForm"
                     type="button"
-                    class="px-16 py-3 mb-1 mr-1 text-sm font-bold uppercase transition-all duration-150 ease-linear rounded shadow outline-none bg-primary text-background hover:shadow-lg focus:outline-none"
+                    class="relative w-full px-16 py-3 mb-1 mr-1 text-sm font-bold uppercase transition-all duration-150 ease-linear border rounded shadow outline-none lg:w-3/12 text-background bg-primary border-primary hover:shadow-lg focus:outline-none"
                   >
                     submit
                   </button>
                 </div>
               </div>
+             
             </div>
           </form>
         </div>
@@ -117,6 +118,7 @@
     </div>
   </transition>
 </template>
+
 
 <script>
   export default {
