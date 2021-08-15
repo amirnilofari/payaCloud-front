@@ -3,6 +3,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      opacity: {
+        '95': '0.95',
+       },
       backgroundImage: theme => ({
         'back-404': "url('assets/img/404.png')"
       }),
