@@ -8,7 +8,8 @@
           <form
             class="lg:p-6 md:py-5 px-2"
           >
-            <h3 class="mb-6 text-xl font-semibold text-white">New Trans</h3>
+            <h3 v-if="!isEdit" class="mb-6 text-xl font-semibold text-white">New Trans</h3>
+            <h3 v-else class="mb-6 text-xl font-semibold text-white">Edit Trans</h3>
             <div class="flex flex-wrap">
               <div class="w-full px-4 mb-2 lg:w-6/12">
                 <div class="relative w-full mb-3">
