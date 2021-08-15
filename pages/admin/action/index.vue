@@ -9,7 +9,7 @@
     </h2>
     <create-modal
       v-if="showCreateModal"
-      :selected-center="selectedCenter"
+      :selected-action="selectedAction"
       :machines="machines"
       :is-edit="isEdit"
     ></create-modal>
@@ -33,7 +33,7 @@
         isLoading: false,
         showCreateModal: false,
         showModal: false,
-        selectedCenter: {},
+        selectedAction: {},
         isEdit: false,
         pageIndex: 1,
         isEnd: false
@@ -48,7 +48,7 @@
       this.getMachines()
 
       this.$nuxt.$on('closeModal', () => {
-        this.selectedCenter = {}
+        this.selectedAction = {}
         this.isEdit = false
         this.toggleModal()
       })
@@ -61,9 +61,9 @@
         this.actions = []
         this.loadData()
       })
-      this.$nuxt.$on('onSetCenter', (data) => {
+      this.$nuxt.$on('onSetAction', (data) => {
         this.isEdit = true
-        this.selectedCenter = data
+        this.selectedAction = data
       })
       this.$nuxt.$on('loadMore', () => {
         this.pageIndex++

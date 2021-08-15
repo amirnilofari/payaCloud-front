@@ -8,7 +8,8 @@
           <form
             class="p-6"
           >
-            <h3 class="mb-6 text-xl font-semibold text-white">New Center</h3>
+            <h3 v-if="!isEdit" class="mb-6 text-xl font-semibold text-white">New Action</h3>
+            <h3 v-else class="mb-6 text-xl font-semibold text-white">Edit Action</h3>
             <div class="flex flex-wrap">
 
               <div class="w-full px-4 mb-2 lg:w-4/12">
@@ -103,7 +104,7 @@
         machineId: ''
       }
     },
-    props: ['isEdit', 'selectedCenter', 'machines'],
+    props: ['isEdit', 'selectedAction', 'machines'],
     methods: {
       close() {
         this.$nuxt.$emit('toggleCreateModal')
@@ -115,7 +116,7 @@
         formdata.append('machineId', this.machineId)
 
         if (this.isEdit) {
-          this.$axios.$post('backend/center/update/' + this.id,
+          this.$axios.$post('backend/action/update/' + this.id,
             formdata)
             .then(response => {
               if (response.message) {
@@ -143,15 +144,15 @@
     },
     created() {
       if (this.isEdit) {
-        this.id = this.selectedCenter.id
-        this.name = this.selectedCenter.name
-        this.clue = this.selectedCenter.clue
-        this.serverId = this.selectedCenter.server.id
+        this.id = this.selectedAction.id
+        this.status = this.selectedAction.status
+        this.method = this.selectedAction.method
+        this.machineId = this.selectedAction.machine.id
       } else {
         this.id = ''
-        this.name = ''
-        this.clue = ''
-        this.serverId = ''
+        this.status = 'active'
+        this.method = ''
+        this.machineId = ''
       }
     }
   }

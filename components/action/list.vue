@@ -135,9 +135,9 @@
     },
     props: ['isLoading', 'actions', 'isEnd'],
     methods: {
-      onEdit (center) {
+      onEdit (action) {
         this.$nuxt.$emit('toggleCreateModal')
-        this.$nuxt.$emit('onSetCenter', center)
+        this.$nuxt.$emit('onSetAction', action)
       },
       close () {
         this.$nuxt.$emit('toggleCreateModal')
