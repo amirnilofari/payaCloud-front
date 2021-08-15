@@ -1,6 +1,6 @@
 <template>
   <div
-    class="h-screen p-8 mx-auto bg-background"
+    class="h-auto p-8 mx-auto bg-background"
   >
     <h2
       class="mb-10 text-3xl font-bold uppercase text-H1"

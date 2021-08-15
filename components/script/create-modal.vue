@@ -1,61 +1,60 @@
 <template>
   <transition name="slide">
     <div
-      class="fixed z-10 inset-0 overflow-y-auto details-modal" role="dialog" aria-modal="true">
-      <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center w-full sm:block sm:p-0">
+      class="fixed inset-0 z-10 overflow-y-auto details-modal" role="dialog" aria-modal="true">
+      <div class="flex items-end justify-center w-full min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-        <div class="inline-block align-bottom bg-white rounded-lg text-left
-        shadow-xl transform transition-all sm:mt-4 sm:align-middle sm:max-w-6xl sm:w-full">
+        <div class="inline-block text-left align-bottom transition-all transform rounded-lg shadow-xl bg-opacity-95 bg-H1 sm:mt-4 sm:align-middle sm:max-w-6xl sm:w-full">
           <form
             class="p-6"
           >
-            <h3 class="font-semibold mb-6 text-H3 text-xl">New Script</h3>
+            <h3 class="mb-6 text-xl font-semibold text-white">New Script</h3>
             <div class="flex flex-wrap">
-              <div class="w-full lg:w-4/12 px-4 mb-2">
+              <div class="w-full px-4 mb-2 lg:w-4/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block uppercase text-primary text-xs font-bold mb-2"
+                    class="block mb-2 text-xs font-bold text-white uppercase"
                   >
                     Name
                   </label>
                   <input
                     v-model="name"
                     type="text"
-                    class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
-                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-primary placeholder-primary text-H1 focus:outline-none focus:ring"
                     placeholder="Name"
                   />
                 </div>
               </div>
-              <div class="w-full lg:w-4/12 px-4 mb-2">
+
+              <div class="w-full px-4 mb-2 lg:w-4/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block uppercase text-primary text-xs font-bold mb-2"
+                    class="block mb-2 text-xs font-bold text-white uppercase"
                   >
                     wait
                   </label>
                   <input
                     v-model="wait"
                     type="text"
-                    class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
-                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-primary placeholder-primary text-H1 focus:outline-none focus:ring"
                     placeholder="Wait"
                   />
                 </div>
               </div>
-              <div class="w-full lg:w-4/12 px-4 mb-2">
+              <div class="w-full px-4 mb-2 lg:w-4/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block mb-2 text-xs font-bold uppercase text-primary"
+                    class="block mb-2 text-xs font-bold text-white uppercase"
                   >
                     template
                   </label>
                   <select
                     v-model="templateId"
-                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-secondary placeholder-secondary text-secondary focus:outline-none focus:ring">
+                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-primary placeholder-primary text-primary focus:outline-none focus:ring">
                     <option value="" disabled selected>Template</option>
                     <option
                       v-for="template in templates"
+                      :key="template.id"
                       :value="template.id"
                     >
                       {{template.name}}
@@ -63,113 +62,107 @@
                   </select>
                 </div>
               </div>
-            </div>
-            <div class="flex flex-wrap">
-              <div class="w-full lg:w-4/12 px-4 mb-2">
+
+              <div class="w-full px-4 mb-2 lg:w-4/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block uppercase text-primary text-xs font-bold mb-2"
+                    class="block mb-2 text-xs font-bold text-white uppercase"
                   >
                     type
                   </label>
                   <div class="flex items-center mt-5">
                     <input v-model="type" value="setup" id="setup" name="type" type="radio" class="w-4 h-4 focus:ring-indigo-500 text-primary border-H2">
-                    <label for="setup" class="block ml-3 text-sm font-medium text-secondary">
+                    <label for="setup" class="block ml-3 text-sm font-medium text-white">
                       setup
                     </label>
                     <input v-model="type" value="custom" id="custom" name="type" type="radio" class="w-4 h-4 ml-5 focus:ring-indigo-500 text-primary border-H2">
-                    <label for="custom" class="block ml-3 text-sm font-medium text-secondary">
+                    <label for="custom" class="block ml-3 text-sm font-medium text-white">
                       custom
                     </label>
                   </div>
                 </div>
               </div>
-              <div class="w-full lg:w-8/12 px-4 mb-2">
+              <div class="w-full px-4 mb-2 lg:w-8/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block uppercase text-primary text-xs font-bold mb-2"
+                    class="block mb-2 text-xs font-bold text-white uppercase"
                   >
                     content
                   </label>
                   <input
                     v-model="content"
                     type="text"
-                    class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
-                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-primary placeholder-primary text-H1 focus:outline-none focus:ring"
                     placeholder="Content"
                   />
                 </div>
               </div>
-            </div>
-            <div class="flex flex-wrap">
-              <div class="w-full lg:w-4/12 px-4 mb-2">
+
+              <div class="w-full px-4 mb-2 lg:w-4/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block uppercase text-primary text-xs font-bold mb-2"
+                    class="block mb-2 text-xs font-bold text-white uppercase"
                   >
                     where Is Program
                   </label>
                   <input
                     v-model="whereIsProgram"
                     type="text"
-                    class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
-                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-primary placeholder-primary text-H1 focus:outline-none focus:ring"
                     placeholder="where Is Program"
                   />
                 </div>
               </div>
-              <div class="w-full lg:w-4/12 px-4 mb-2">
+              <div class="w-full px-4 mb-2 lg:w-4/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block uppercase text-primary text-xs font-bold mb-2"
+                    class="block mb-2 text-xs font-bold text-white uppercase"
                   >
                     where To Upload
                   </label>
                   <input
                     v-model="whereToUpload"
                     type="text"
-                    class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
-                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-primary placeholder-primary text-H1 focus:outline-none focus:ring"
                     placeholder="where To Upload"
                   />
                 </div>
               </div>
-              <div class="w-full lg:w-4/12 px-4 mb-2">
+              <div class="w-full px-4 mb-2 lg:w-4/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block uppercase text-primary text-xs font-bold mb-2"
+                    class="block mb-2 text-xs font-bold text-white uppercase"
                   >
                     how To Execute
                   </label>
                   <input
                     v-model="howToExecute"
                     type="text"
-                    class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-white
-                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                    class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear bg-white border rounded shadow border-primary placeholder-primary text-H1 focus:outline-none focus:ring"
                     placeholder="how To Execute"
                   />
                 </div>
               </div>
-            </div>
-            <div class="flex flex-wrap">
+              
               <div class="w-full px-4 mb-2">
-                <div class="relative w-full mt-7">
+                <div class="flex flex-wrap w-full mt-7">
                   <button
                     @click="close"
                     type="button"
-                    class="px-16 py-3 mb-1 mr-1 mr-3 text-sm font-bold uppercase transition-all duration-150 ease-linear border rounded shadow outline-none bg-background text-primary border-primary hover:shadow-lg focus:outline-none"
+                    class="relative w-full px-16 py-3 mb-1 mr-1 text-sm font-bold uppercase transition-all duration-150 ease-linear border rounded shadow outline-none lg:w-3/12 bg-background text-primary border-primary hover:shadow-lg focus:outline-none"
                   >
                     cancel
                   </button>
                   <button
                     @click="submitForm"
                     type="button"
-                    class="px-16 py-3 mb-1 mr-1 text-sm font-bold uppercase transition-all duration-150 ease-linear rounded shadow outline-none bg-primary text-background hover:shadow-lg focus:outline-none"
+                    class="relative w-full px-16 py-3 mb-1 mr-1 text-sm font-bold uppercase transition-all duration-150 ease-linear border rounded shadow outline-none lg:w-3/12 text-background bg-primary border-primary hover:shadow-lg focus:outline-none"
                   >
                     submit
                   </button>
                 </div>
               </div>
+             
             </div>
           </form>
         </div>
@@ -177,6 +170,7 @@
     </div>
   </transition>
 </template>
+
 
 <script>
   export default {
