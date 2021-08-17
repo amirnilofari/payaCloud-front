@@ -65,6 +65,30 @@ td {
    @apply px-6 py-3 mb-1 mr-1 text-sm font-semibold transition-all duration-150 ease-linear rounded shadow outline-none bg-background text-primary
 }
 
+.cancelBtn {
+    @apply inline-flex justify-center w-full px-4 py-2 text-base font-medium border rounded-md shadow-sm text-primary border-primary  sm:ml-3 sm:w-auto sm:text-sm
+}
+
+.cancelBtn:hover {
+  @apply bg-negative text-white
+}
+
+.cancelBtn:focus {
+  @apply outline-none ring-2 ring-offset-2 ring-secondary 
+}
+
+.submitBtn {
+  @apply inline-flex justify-center w-full px-4 py-2 mt-3 text-base font-medium text-white border border-H2 rounded-md shadow-sm bg-primary  sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm
+}
+
+.submitBtn:hover {
+  @apply bg-positive
+}
+
+.submitBtn:focus {
+  @apply outline-none ring-2 ring-offset-2 ring-positive
+}
+
 .iconSection {
    @apply flex items-center p-4 px-6 text-xs text-left align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap
 }

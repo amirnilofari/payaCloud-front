@@ -3,18 +3,21 @@
     <div
       class="fixed inset-0 z-10 overflow-y-auto details-modal" role="dialog" aria-modal="true">
       <div class="flex items-end justify-center w-full min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+        <div class="fixed inset-0 transition-opacity bg-opacity-50 bg-H1" aria-hidden="true"></div>
+
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-        <div class="inline-block text-left align-bottom transition-all transform rounded-lg shadow-xl bg-opacity-95 bg-H1 sm:mt-4 sm:align-middle sm:max-w-6xl sm:w-full">
+         
+        <div class="inline-block overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl sm:my-6 sm:align-middle sm:max-w-xl sm:w-full">
           <form
             class="p-6"
           >
-            <h3 class="mb-6 text-xl font-semibold text-white">New Machine</h3>
+            <h3 class="mb-6 text-xl font-semibold text-primary">New Machine</h3>
             <div class="flex flex-wrap">
             
             <div class="w-full px-4 mb-2 lg:w-6/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block mb-2 text-xs font-bold text-white uppercase"
+                    class="block mb-2 text-xs font-bold uppercase text-H1"
                   >
                     Name
                   </label>
@@ -29,7 +32,7 @@
               <div class="w-full px-4 mb-2 lg:w-6/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block mb-2 text-xs font-bold text-white uppercase"
+                    class="block mb-2 text-xs font-bold uppercase text-H1"
                   >
                     Clue
                   </label>
@@ -44,7 +47,7 @@
               <div class="w-full px-4 mb-2 lg:w-6/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block mb-2 text-xs font-bold text-white uppercase"
+                    class="block mb-2 text-xs font-bold uppercase text-H1"
                   >
                     Price
                   </label>
@@ -59,7 +62,7 @@
               <div class="w-full px-4 mb-2 lg:w-6/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block mb-2 text-xs font-bold text-white uppercase"
+                    class="block mb-2 text-xs font-bold uppercase text-H1"
                   >
                     memorySize
                   </label>
@@ -71,10 +74,10 @@
                   />
                 </div>
               </div>
-              <div class="w-full px-4 mb-2 lg:w-4/12">
+              <div class="w-full px-4 mb-2 lg:w-6/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block mb-2 text-xs font-bold text-white uppercase"
+                    class="block mb-2 text-xs font-bold uppercase text-H1"
                   >
                     Disk Size
                   </label>
@@ -86,10 +89,10 @@
                   />
                 </div>
               </div>
-              <div class="w-full px-4 mb-2 lg:w-4/12">
+              <div class="w-full px-4 mb-2 lg:w-6/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block mb-2 text-xs font-bold text-white uppercase"
+                    class="block mb-2 text-xs font-bold uppercase text-H1"
                   >
                     Cpu Core
                   </label>
@@ -101,29 +104,29 @@
                   />
                 </div>
               </div>
-              <div class="w-full px-4 mb-2 lg:w-4/12">
+              <div class="w-full px-4 mb-2 lg:w-6/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block mb-2 text-xs font-bold text-white uppercase"
+                    class="block mb-2 text-xs font-bold uppercase text-H1"
                   >
                     status
                   </label>
                   <div class="flex items-center mt-5">
                     <input v-model="status" value="active" id="active" name="status" type="radio" class="w-4 h-4 focus:ring-indigo-500 text-primary border-H2">
-                    <label for="active" class="block ml-3 text-sm font-medium text-white">
+                    <label for="active" class="block ml-3 text-sm font-medium text-H1">
                       Active
                     </label>
                     <input v-model="status" value="pending" id="pending" name="status" type="radio" class="w-4 h-4 ml-5 focus:ring-indigo-500 text-primary border-H2">
-                    <label for="pending" class="block ml-3 text-sm font-medium text-white">
+                    <label for="pending" class="block ml-3 text-sm font-medium text-H1">
                       Pending
                     </label>
                   </div>
                 </div>
               </div>
-              <div class="w-full px-4 mb-2 lg:w-3/12">
+              <div class="w-full px-4 mb-2 lg:w-6/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block mb-2 text-xs font-bold text-white uppercase"
+                    class="block mb-2 text-xs font-bold uppercase text-H1"
                   >
                     User
                   </label>
@@ -141,10 +144,10 @@
                   </select>
                 </div>
               </div>
-              <div class="w-full px-4 mb-2 lg:w-3/12">
+              <div class="w-full px-4 mb-2 lg:w-4/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block mb-2 text-xs font-bold text-white uppercase"
+                    class="block mb-2 text-xs font-bold uppercase text-H1"
                   >
                     section
                   </label>
@@ -162,10 +165,10 @@
                   </select>
                 </div>
               </div>
-              <div class="w-full px-4 mb-2 lg:w-3/12">
+              <div class="w-full px-4 mb-2 lg:w-4/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block mb-2 text-xs font-bold text-white uppercase"
+                    class="block mb-2 text-xs font-bold uppercase text-H1"
                   >
                     storage
                   </label>
@@ -183,10 +186,10 @@
                   </select>
                 </div>
               </div>
-              <div class="w-full px-4 mb-2 lg:w-3/12">
+              <div class="w-full px-4 mb-2 lg:w-4/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block mb-2 text-xs font-bold text-white uppercase"
+                    class="block mb-2 text-xs font-bold uppercase text-H1"
                   >
                     Profile
                   </label>
@@ -204,10 +207,10 @@
                   </select>
                 </div>
               </div>
-              <div class="w-full px-4 mb-2 lg:w-3/12">
+              <div class="w-full px-4 mb-2 lg:w-4/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block mb-2 text-xs font-bold text-white uppercase"
+                    class="block mb-2 text-xs font-bold uppercase text-H1"
                   >
                     Network
                   </label>
@@ -225,10 +228,10 @@
                   </select>
                 </div>
               </div>
-              <div class="w-full px-4 mb-2 lg:w-3/12">
+              <div class="w-full px-4 mb-2 lg:w-4/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block mb-2 text-xs font-bold text-white uppercase"
+                    class="block mb-2 text-xs font-bold uppercase text-H1"
                   >
                     Package
                   </label>
@@ -246,10 +249,10 @@
                   </select>
                 </div>
               </div>
-              <div class="w-full px-4 mb-2 lg:w-3/12">
+              <div class="w-full px-4 mb-2 lg:w-4/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block mb-2 text-xs font-bold text-white uppercase"
+                    class="block mb-2 text-xs font-bold uppercase text-H1"
                   >
                     Address
                   </label>
@@ -267,10 +270,10 @@
                   </select>
                 </div>
               </div>
-              <div class="w-full px-4 mb-2 lg:w-3/12">
+              <div class="w-full px-4 mb-2 lg:w-4/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block mb-2 text-xs font-bold text-white uppercase"
+                    class="block mb-2 text-xs font-bold uppercase text-H1"
                   >
                     Template
                   </label>
@@ -294,14 +297,14 @@
                   <button
                     @click="close"
                     type="button"
-                    class="relative w-full px-16 py-3 mb-1 mr-1 text-sm font-bold uppercase transition-all duration-150 ease-linear border rounded shadow outline-none lg:w-3/12 bg-background text-primary border-primary hover:shadow-lg focus:outline-none"
+                    class="cancelBtn"
                   >
                     cancel
                   </button>
                   <button
                     @click="submitForm"
                     type="button"
-                    class="relative w-full px-16 py-3 mb-1 mr-1 text-sm font-bold uppercase transition-all duration-150 ease-linear border rounded shadow outline-none lg:w-3/12 text-background bg-primary border-primary hover:shadow-lg focus:outline-none"
+                    class="submitBtn"
                   >
                     submit
                   </button>
