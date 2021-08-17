@@ -74,7 +74,7 @@ td {
 }
 
 .cancelBtn:focus {
-  @apply outline-none ring-2 ring-offset-2 ring-secondary 
+  @apply outline-none ring-2 ring-offset-2 ring-secondary
 }
 
 .submitBtn {
@@ -115,5 +115,8 @@ td {
   }
   .details-modal .mt-7 button{
     @apply mx-0 my-2;
+  }
+  .machine-modal .image-cont{
+    top: 10px !important;
   }
 }

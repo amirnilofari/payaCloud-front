@@ -2,12 +2,16 @@
   <transition name="slide">
     <div
       class="fixed z-10 inset-0 overflow-y-auto details-modal machine-modal" role="dialog" aria-modal="true">
-      <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center w-full sm:block sm:p-0">
+      <div class="flex items-end justify-center min-h-screen pt-4 px-4 text-center w-full lg:pb-20 sm:block sm:p-0 sm:pb-10">
+        <div class="fixed inset-0 transition-opacity bg-opacity-50 bg-H1" aria-hidden="true"></div>
+
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+<!--        <div class="inline-block overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl sm:my-6 sm:align-middle sm:max-w-xl sm:w-full">-->
+
         <div class="inline-block align-bottom bg-white rounded-lg text-left
-        shadow-xl transform transition-all sm:mt-20 mb-10 sm:align-middle sm:max-w-6xl sm:w-full">
+        shadow-xl transform transition-all sm:mt-20 mb-10 sm:align-middle lg:overflow-visible sm:max-w-6xl sm:w-full overflow-hidden">
           <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-            <div class="flex flex-wrap justify-center">
+            <div class="flex flex-wrap justify-center lg:mt-0 sm:mb-0 mt-16">
               <div class="w-full flex justify-center image-cont">
                 <div
                   class="relative w-36"
@@ -268,7 +272,7 @@
             <button
               @click="close"
               type="button"
-              class="float-left mt-3 justify-center bg-primary w-full inline-flex justify-center rounded-md shadow-sm px-10 py-2 text-base font-medium text-background
+              class="mb-4 float-left mt-3 justify-center bg-primary w-full inline-flex justify-center rounded-md shadow-sm px-10 py-2 text-base font-medium text-background
               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
               Back
             </button>
@@ -297,10 +301,6 @@
 </script>
 
 <style scoped>
-  .machine-modal .table-frame{
-    width: 80%;
-    margin: auto;
-  }
   .details-modal .image-cont{
     top: -60px;
     position: absolute;
