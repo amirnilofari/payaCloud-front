@@ -6,14 +6,14 @@
         <div class="fixed inset-0 transition-opacity bg-opacity-50 bg-H1" aria-hidden="true"></div>
 
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-         
+
         <div class="inline-block overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl sm:my-6 sm:align-middle sm:max-w-xl sm:w-full">
           <form
             class="p-6"
           >
             <h3 class="mb-6 text-xl font-semibold text-primary">New Machine</h3>
             <div class="flex flex-wrap">
-            
+
             <div class="w-full px-4 mb-2 lg:w-6/12">
                 <div class="relative w-full mb-3">
                   <label
@@ -310,7 +310,7 @@
                   </button>
                 </div>
               </div>
-             
+
             </div>
           </form>
         </div>
@@ -367,12 +367,12 @@
         this.$axios.$post('backend/machine/create',
           formdata)
           .then(response => {
-            if (response.status === 200) {
-              this.$toast.success('Successfully created!')
-            } else {
+            if (response.message) {
               this.$toast.error(response.message)
+            } else {
+              this.$toast.success('Successfully created!')
+              this.close()
             }
-            this.close()
           })
       }
     }

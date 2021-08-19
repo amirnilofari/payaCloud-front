@@ -6,7 +6,7 @@
         <div class="fixed inset-0 transition-opacity bg-opacity-50 bg-H1" aria-hidden="true"></div>
 
         <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-         
+
         <div class="inline-block overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl sm:my-6 sm:align-middle sm:max-w-xl sm:w-full">
           <form
             class="p-6"
@@ -136,8 +136,8 @@
               } else {
                 this.$nuxt.$emit('onLoadData')
                 this.$toast.success('Successfully edited!')
+                this.close()
               }
-              this.close()
             })
         } else {
           this.$axios.$post('backend/server/create',
@@ -148,8 +148,8 @@
               } else {
                 this.$nuxt.$emit('onLoadData')
                 this.$toast.success('Successfully created!')
+                this.close()
               }
-              this.close()
             })
         }
       }
