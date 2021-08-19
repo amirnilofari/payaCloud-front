@@ -22,32 +22,32 @@
         <thead>
           <tr>
             <th
-              
+
             >
               Id
             </th>
             <th
-             
+
             >
               Name
             </th>
             <th
-              
+
             >
               content
             </th>
             <th
-              
+
             >
                wait
             </th>
             <th
-              
+
             >
                type
             </th>
             <th
-              
+
             >
                template
             </th>
@@ -61,7 +61,7 @@
               where To Upload
             </th>
             <th
-              
+
             >
               Action
             </th>
@@ -75,7 +75,7 @@
               {{ script.id }}
             </td>
             <th
-          class="iconSection"
+          class="iconSection border-0"
         >
           <img
             :src="script.template.icon.address"
@@ -89,12 +89,12 @@
           </span>
         </th>
             <td
-            
+
             >
               {{script.content}}
             </td>
             <td
-              
+
             >
               {{script.wait}}
             </td>
