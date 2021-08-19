@@ -114,7 +114,6 @@
                   </button>
                 </div>
               </div>
-
             </div>
           </form>
         </div>
@@ -128,13 +127,14 @@
   export default {
     data() {
       return {
+        id: '',
         userId: '',
         amount: '',
         type: 'balance',
         status: 'paid'
       }
     },
-    props: ['users'],
+    props: ['users', 'selectedTrans', 'isEdit'],
     methods: {
       close() {
         this.$nuxt.$emit('toggleCreateModal')
@@ -146,17 +146,48 @@
         formdata.append('type', this.type)
         formdata.append('status', this.status)
 
-        this.$axios.$post('backend/trans/create',
-          formdata)
-          .then(response => {
-            if (response.message) {
-              this.$toast.error(response.message)
-            } else {
-              this.$nuxt.$emit('onLoadData')
-              this.$toast.success('Successfully created!')
-              this.close()
-            }
-          })
+        if (this.isEdit) {
+          this.$axios.$post('backend/trans/update/' + this.id,
+            formdata)
+            .then(response => {
+              if (response.message) {
+                this.$toast.error(response.message)
+              } else {
+                this.$nuxt.$emit('onLoadData')
+                this.$toast.success('Successfully edited!')
+                this.close()
+              }
+            })
+        } else {
+          this.$axios.$post('backend/trans/create',
+            formdata)
+            .then(response => {
+              if (response.message) {
+                this.$toast.error(response.message)
+              } else {
+                this.$nuxt.$emit('onLoadData')
+                this.$toast.success('Successfully created!')
+                this.close()
+              }
+            })
+        }
+
+
+      }
+    },
+    created() {
+    if (this.isEdit) {
+        this.id = this.selectedTrans.id
+        this.amount = this.selectedTrans.amount
+        this.type = this.selectedTrans.type
+        this.status = this.selectedTrans.status
+        this.userId = this.selectedTrans.user.id
+      } else {
+        this.id = ''
+        this.userId = ''
+        this.amount = ''
+        this.type = 'balance'
+        this.status = 'paid'
       }
     }
   }

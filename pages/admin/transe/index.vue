@@ -9,6 +9,8 @@
     </h2>
     <create-modal
       v-if="showCreateModal"
+      :selected-trans="selectedTrans"
+      :is-edit="isEdit"
       :users="users"
     ></create-modal>
     <transe-list
@@ -26,6 +28,8 @@
   export default {
     data() {
       return {
+        isEdit: false,
+        selectedTrans: {},
         transes: [],
         isLoading: false,
         showCreateModal: false,
@@ -47,10 +51,18 @@
       this.getUsers()
 
       this.$nuxt.$on('closeModal', () => {
+        this.selectedTrans = {}
+        this.isEdit = false
         this.toggleModal()
       })
       this.$nuxt.$on('toggleCreateModal', () => {
+        this.isEdit = false
         this.toggleCreateModal()
+      })
+
+      this.$nuxt.$on('onSetTrans', (data) => {
+        this.isEdit = true
+        this.selectedTrans = data
       })
 
       this.$nuxt.$on('onLoadData', () => {
