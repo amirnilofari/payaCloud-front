@@ -28,5 +28,9 @@
 </template>
 
 <script>
-export default {}
+export default {
+  created() {
+    this.$nuxt.$options.router.push('/auth/login')
+  }
+}
 </script>

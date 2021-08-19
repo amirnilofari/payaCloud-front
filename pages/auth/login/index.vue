@@ -87,13 +87,17 @@
               <div
                 class="text-center mt-6"
               >
-                <button
-                  class="bg-primary text-background text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg
-                   outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
-                  type="submit"
+                <nuxt-link
+                  to="/admin/machine"
                 >
-                  Sign In
-                </button>
+                  <button
+                    class="bg-primary text-background text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg
+                   outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                    type="button"
+                  >
+                    Sign In
+                  </button>
+                </nuxt-link>
               </div>
             </form>
           </div>

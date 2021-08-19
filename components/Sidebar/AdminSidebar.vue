@@ -81,14 +81,16 @@
             </div>
           </div>
         </div>
-
-        <!-- Heading -->
-        <h2
-          class="block pt-1 pb-4 font-bold no-underline uppercase md:min-w-full"
+        <nuxt-link
+          to="/admin/machine"
         >
-          DASHBOARD
-        </h2>
-        <!-- Navigation -->
+          <h2
+            class="block pt-1 pb-4 font-bold no-underline uppercase md:min-w-full"
+          >
+            DASHBOARD
+          </h2>
+        </nuxt-link>
+
         <ul
           v-for="item in listPerm"
           :key="item.name"
