@@ -10,7 +10,7 @@
 }
 
 .card-head{
-    @apply px-4 py-3 mb-0 border-0 rounded-t ;
+    @apply px-4 py-3 mb-0 border-0 rounded-t  items-center;
 }
 
 .card-head-detail {
@@ -18,11 +18,11 @@
 }
 
 .card-head-text {
-   @apply flex items-center justify-between w-full px-4 ;
+   @apply flex justify-between w-full px-4 items-center ;
 }
 
 .card-head-title {
-    @apply text-sm font-bold text-primary lg:text-xl ;
+    @apply text-sm mt-3 font-bold text-primary lg:text-xl ;
 }
 
 .card-head-button {
