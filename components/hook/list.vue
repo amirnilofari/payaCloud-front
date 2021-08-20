@@ -12,7 +12,7 @@
             type="button"
             class="card-head-button"
           >
-            create hook
+            Create hook
           </button>
         </div>
       </div>

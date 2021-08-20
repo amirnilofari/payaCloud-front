@@ -12,7 +12,7 @@
               type="button"
               class="card-head-button"
             >
-              create center
+              Create center
             </button>
           </div>
         </div>

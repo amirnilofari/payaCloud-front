@@ -13,7 +13,7 @@
             type="button"
             class="card-head-button"
           >
-            create node
+            Create node
           </button>
         </div>
       </div>

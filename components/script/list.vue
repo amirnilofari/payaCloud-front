@@ -12,7 +12,7 @@
             type="button"
             class="card-head-button"
           >
-            create script
+            Create script
           </button>
         </div>
       </div>

@@ -12,7 +12,7 @@
             type="button"
             class="card-head-button"
           >
-            create IP
+            Create IP
           </button>
         </div>
       </div>

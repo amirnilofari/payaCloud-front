@@ -12,7 +12,7 @@
               type="button"
               class="card-head-button"
             >
-              create server
+              Create server
             </button>
           </div>
         </div>

@@ -12,7 +12,7 @@
             type="button"
             class="card-head-button"
           >
-            create product
+            Create product
           </button>
         </div>
       </div>
