@@ -13,7 +13,7 @@
             type="button"
             class="card-head-button"
           >
-            create package
+            Create package
           </button>
         </div>
       </div>

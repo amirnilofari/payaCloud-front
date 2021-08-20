@@ -13,7 +13,7 @@
             type="button"
             class="card-head-button"
           >
-            create region
+            Create region
           </button>
         </div>
       </div>

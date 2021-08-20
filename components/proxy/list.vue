@@ -12,7 +12,7 @@
               type="button"
               class="card-head-button"
             >
-              create proxy
+              Create proxy
             </button>
           </div>
         </div>

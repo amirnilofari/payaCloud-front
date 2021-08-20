@@ -12,7 +12,7 @@
               type="button"
               class="card-head-button"
             >
-              create machine
+              Create machine
             </button>
           </div>
         </div>

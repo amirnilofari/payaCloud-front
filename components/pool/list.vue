@@ -13,7 +13,7 @@
             type="button"
             class="card-head-button"
           >
-            create pool
+            Create pool
           </button>
         </div>
       </div>

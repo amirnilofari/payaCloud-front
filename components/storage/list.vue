@@ -12,7 +12,7 @@
               type="button"
               class="card-head-button"
             >
-              create storage
+              Create storage
             </button>
           </div>
         </div>

@@ -12,7 +12,7 @@
               type="button"
               class="card-head-button"
             >
-              create template
+              Create template
             </button>
           </div>
         </div>

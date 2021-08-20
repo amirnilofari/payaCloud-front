@@ -12,7 +12,7 @@
               type="button"
               class="card-head-button"
             >
-              create trans
+              Create trans
             </button>
           </div>
         </div>

@@ -12,7 +12,7 @@
               type="button"
               class="card-head-button"
             >
-              create profile
+              Create profile
             </button>
           </div>
         </div>

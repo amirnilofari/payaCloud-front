@@ -12,7 +12,7 @@
               type="button"
               class="card-head-button"
             >
-              create network
+              Create network
             </button>
           </div>
         </div>
