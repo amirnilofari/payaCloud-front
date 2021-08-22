@@ -1,29 +1,29 @@
 <template>
   <div
-    class="mx-auto px-4 h-screen"
+    class="h-screen px-4 mx-auto"
   >
     <img
       src="../assets/img/404.png"
-      class="absolute w-9/12 right-0 bottom-0"
+      class="absolute bottom-0 right-0 w-9/12"
     >
     <div
-        class="flex content-center items-center justify-center h-full"
+        class="flex items-center content-center justify-center h-full"
       >
         <div
-          class="lg:w-6/12 float-right text-center"
+          class="float-right text-center lg:w-6/12"
         >
           <p
-            class="text-12xl text-primary block leading-none"
+            class="block leading-none text-12xl text-primary"
           >
             404
           </p>
           <span
-            class="text-5xl text-secondary block"
+            class="block text-5xl text-secondary"
           >
             Page Not Found
           </span>
           <nuxt-link
-            to="/dashboard"
+            to="/admin/machine"
           >
             <button
               class="uppercase bg-primary rounded-full p-1.5 px-6 mt-8 text-lg text-background cursor-pointer"
@@ -34,7 +34,7 @@
 
         </div>
         <div
-          class="lg:w-6/12 float-right"
+          class="float-right lg:w-6/12"
         >
         </div>
       </div>

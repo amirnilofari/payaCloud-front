@@ -1,24 +1,24 @@
 <template>
   <div
-    class="mx-auto px-4 h-full bg-primary h-screen"
+    class="h-full h-screen px-4 mx-auto bg-primary"
   >
     <div
-      class="flex content-center items-center justify-center h-full"
+      class="flex items-center content-center justify-center h-full"
     >
       <div
-        class="w-full lg:w-4/12 px-12"
+        class="w-full px-12 lg:w-4/12"
       >
         <div
-          class="bg-background relative flex flex-col w-full shadow-lg rounded-lg border-0"
+          class="relative flex flex-col w-full border-0 rounded-lg shadow-lg bg-background"
         >
           <div
-            class="rounded-t mb-0 px-6 py-6"
+            class="px-6 py-6 mb-0 rounded-t"
           >
             <div
-              class="text-center mb-3"
+              class="mb-3 text-center"
             >
               <h6
-                class="text-primary text-xl font-bold"
+                class="text-xl font-bold text-primary"
               >
                 Sign in
               </h6>
@@ -28,31 +28,30 @@
             />
           </div>
           <div
-            class="flex-auto px-4 lg:px-10 py-10 pt-0"
+            class="flex-auto px-4 py-10 pt-0 lg:px-10 "
           >
             <form>
               <div
                 class="relative w-full mb-3"
               >
                 <label
-                  class="block uppercase text-primary text-sm font-bold mb-2"
+                  class="block mb-2 text-sm font-bold uppercase text-primary"
                 >
-                  Email
+                  Token
                 </label>
                 <input
-                  v-model="email"
+                  v-model="token"
                   required
                   type="email"
-                  class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-background
-                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
-                  placeholder="Email"
+                  class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear border rounded shadow border-secondary placeholder-secondary text-H1 bg-background focus:outline-none focus:ring"
+                  placeholder="Token"
                 />
               </div>
-              <div
+              <!-- <div
                 class="relative w-full mb-5"
               >
                 <label
-                  class="block uppercase text-primary text-sm font-bold mb-2"
+                  class="block mb-2 text-sm font-bold uppercase text-primary"
                 >
                   Password
                 </label>
@@ -60,11 +59,10 @@
                   v-model="password"
                   required
                   type="password"
-                  class="border border-secondary px-3 py-3 placeholder-secondary text-H1 bg-background
-                   rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                  class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear border rounded shadow border-secondary placeholder-secondary text-H1 bg-background focus:outline-none focus:ring"
                   placeholder="Password"
                 />
-              </div>
+              </div> -->
               <div
                 class="mt-2"
               >
@@ -75,7 +73,7 @@
                     v-model="rememberMe"
                     id="customCheckLogin"
                     type="checkbox"
-                    class="form-checkbox border-0 w-5 h-5 ease-linear transition-all duration-150 rounded"
+                    class="w-5 h-5 transition-all duration-150 ease-linear border-0 rounded form-checkbox"
                   />
                   <span
                     class="ml-2 text-sm font-medium text-primary"
@@ -85,31 +83,28 @@
                 </label>
               </div>
               <div
-                class="text-center mt-6"
+                class="mt-6 text-center"
               >
-                <nuxt-link
-                  to="/admin/machine"
-                >
+                
                   <button
-                    class="bg-primary text-background text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg
-                   outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+                    class="w-full px-6 py-3 mb-1 mr-1 text-sm font-bold uppercase transition-all duration-150 ease-linear rounded shadow outline-none bg-primary text-background hover:shadow-lg focus:outline-none"
                     type="button"
+                    @click="login()"
                   >
                     Sign In
                   </button>
-                </nuxt-link>
               </div>
             </form>
           </div>
         </div>
         <div
-          class="flex flex-wrap mt-6 relative"
+          class="relative flex flex-wrap mt-6"
         >
           <div
             class="w-1/2"
           >
             <a
-              class="text-background cursor-pointer"
+              class="cursor-pointer text-background"
             >
               <small>Forgot password?</small>
             </a>
@@ -117,11 +112,7 @@
           <div
             class="w-1/2 text-right"
           >
-            <a
-              class="text-background cursor-pointer"
-            >
-              <small>Create new account</small>
-            </a>
+          
           </div>
         </div>
       </div>
@@ -134,13 +125,29 @@
       return {
         email: '',
         password: '',
+        token: '',
         rememberMe: false
       }
     },
-    asyncData() {
-      return {
-        rendering: process.server ? 'server' : 'client'
+    // asyncData() {
+    //   return {
+    //     rendering: process.server ? 'server' : 'client'
+    //   }
+    // },
+    methods: {
+      login() {
+        let token = this.token
+        this.$axios.$post('auth/login', {token})
+          .then(response => {
+            if (response.message) {
+              this.$toast.error(response.message)
+            } else {
+              this.$toast.success('Welcome!')
+              this.$router.push('/admin/machine')
+              this.close()
+            }
+          })
       }
-    }
+    },
   }
 </script>

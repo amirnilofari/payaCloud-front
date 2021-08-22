@@ -81,9 +81,7 @@
             </div>
           </div>
         </div>
-        <nuxt-link
-          to="/admin/machine"
-        >
+        <nuxt-link to="/admin/machine">
           <h2
             class="block pt-1 pb-4 font-bold no-underline uppercase md:min-w-full"
           >
@@ -96,21 +94,7 @@
           :key="item.name"
           class="flex flex-col mb-4 list-none md:flex-col md:min-w-full"
         >
-          <div class="flex flex-wrap items-center mb-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-5 h-5 mr-1 text-primary"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                clip-rule="evenodd"
-              />
-            </svg>
-            <h4 class="mt-1 italic font-bold text-primary">{{ item.name }}</h4>
-          </div>
+          <h4 class="mt-1 italic font-bold text-primary">{{ item.name }}</h4>
 
           <li
             v-for="list in item.collection"
@@ -131,7 +115,7 @@
 <style scoped>
 .nuxt-link-exact-active {
   font-weight: bold;
-  color: #88aaff;
+  color: #79c325;
 }
 </style>
 
@@ -211,8 +195,8 @@ export default {
               icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
 </svg>`,
-            }
-            ],
+            },
+          ],
         },
         {
           name: "TEMPLATE",
@@ -239,7 +223,7 @@ export default {
             {
               name: "Packages",
               link: "/admin/package",
-              icon: `<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
 </svg>`,
             },
@@ -346,7 +330,7 @@ export default {
               icon: `<svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
   <path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd" />
 </svg>`,
-            }
+            },
           ],
         },
       ],
