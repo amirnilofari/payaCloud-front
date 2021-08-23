@@ -14,7 +14,7 @@
               href="#"
               class="py-1 text-sm font-semibold text-blueGray-500 hover:text-blueGray-700"
             >
-              PAYACLOUD
+              AutoVM
             </a>
           </div>
         </div>

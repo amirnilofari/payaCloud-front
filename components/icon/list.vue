@@ -6,13 +6,13 @@
     <div class="card-head">
       <div class="card-head-detail">
         <div class="card-head-text">
-          <h3 class="card-head-title">Icons List</h3>
+          <h3 class="card-head-title">List Icons</h3>
           <button
             @click="close"
             type="button"
             class="card-head-button"
           >
-            Create icon
+            Create
           </button>
         </div>
       </div>

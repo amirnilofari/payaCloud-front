@@ -7,13 +7,13 @@
     <div class="card-head">
       <div class="card-head-detail">
         <div class="card-head-text">
-          <h3 class="card-head-title">Layouts List</h3>
+          <h3 class="card-head-title">List Layouts</h3>
           <button
             @click="close"
             type="button"
             class="card-head-button"
           >
-            Create layout
+            Create
           </button>
         </div>
       </div>

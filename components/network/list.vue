@@ -6,13 +6,13 @@
       <div class="card-head">
         <div class="card-head-detail">
           <div class="card-head-text">
-            <h3 class="card-head-title">Networks List</h3>
+            <h3 class="card-head-title">List Networks</h3>
             <button
               @click="close"
               type="button"
               class="card-head-button"
             >
-              Create network
+              Create 
             </button>
           </div>
         </div>

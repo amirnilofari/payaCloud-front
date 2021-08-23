@@ -6,13 +6,13 @@
     <div class="card-head">
       <div class="card-head-detail">
         <div class="card-head-text">
-          <h3 class="card-head-title">Scripts List</h3>
+          <h3 class="card-head-title">List Scripts</h3>
           <button
             @click="close"
             type="button"
             class="card-head-button"
           >
-            Create script
+            Create
           </button>
         </div>
       </div>
@@ -75,7 +75,7 @@
               {{ script.id }}
             </td>
             <th
-          class="iconSection border-0"
+          class="border-0 iconSection"
         >
           <img
             :src="script.template.icon.address"

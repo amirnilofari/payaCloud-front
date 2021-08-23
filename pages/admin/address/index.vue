@@ -3,7 +3,7 @@
     class="h-auto p-8 mx-auto bg-background"
   >
     <h2
-      class="mb-10 text-3xl font-bold uppercase text-H1"
+      class="text-3xl font-bold uppercase mb- text-H1"
     >
       IPs
     </h2>

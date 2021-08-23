@@ -6,13 +6,13 @@
       <div class="card-head">
         <div class="card-head-detail">
           <div class="card-head-text">
-            <h3 class="card-head-title">Profiles List</h3>
+            <h3 class="card-head-title">List Profiles</h3>
             <button
               @click="close"
               type="button"
               class="card-head-button"
             >
-              Create profile
+              Create
             </button>
           </div>
         </div>

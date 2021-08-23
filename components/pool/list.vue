@@ -7,13 +7,13 @@
     <div class="card-head">
       <div class="card-head-detail">
         <div class="card-head-text">
-          <h3 class="card-head-title">Pools List</h3>
+          <h3 class="card-head-title">List Pools</h3>
           <button
             @click="close"
             type="button"
             class="card-head-button"
           >
-            Create pool
+            Create
           </button>
         </div>
       </div>

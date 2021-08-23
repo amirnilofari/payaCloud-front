@@ -6,7 +6,7 @@
       <div class="card-head">
         <div class="card-head-detail">
           <div class="card-head-text">
-            <h3 class="card-head-title">Alarms List</h3>
+            <h3 class="card-head-title">List Alarms</h3>
           </div>
         </div>
       </div>

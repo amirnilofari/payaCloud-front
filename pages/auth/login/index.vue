@@ -42,7 +42,7 @@
                 <input
                   v-model="token"
                   required
-                  type="email"
+                  type="password"
                   class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear border rounded shadow border-secondary placeholder-secondary text-H1 bg-background focus:outline-none focus:ring"
                   placeholder="Token"
                 />
@@ -63,25 +63,7 @@
                   placeholder="Password"
                 />
               </div> -->
-              <div
-                class="mt-2"
-              >
-                <label
-                  class="inline-flex items-center cursor-pointer"
-                >
-                  <input
-                    v-model="rememberMe"
-                    id="customCheckLogin"
-                    type="checkbox"
-                    class="w-5 h-5 transition-all duration-150 ease-linear border-0 rounded form-checkbox"
-                  />
-                  <span
-                    class="ml-2 text-sm font-medium text-primary"
-                  >
-                  Remember me
-                </span>
-                </label>
-              </div>
+              
               <div
                 class="mt-6 text-center"
               >
@@ -97,24 +79,7 @@
             </form>
           </div>
         </div>
-        <div
-          class="relative flex flex-wrap mt-6"
-        >
-          <div
-            class="w-1/2"
-          >
-            <a
-              class="cursor-pointer text-background"
-            >
-              <small>Forgot password?</small>
-            </a>
-          </div>
-          <div
-            class="w-1/2 text-right"
-          >
-          
-          </div>
-        </div>
+        
       </div>
     </div>
   </div>

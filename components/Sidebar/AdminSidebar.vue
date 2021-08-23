@@ -28,10 +28,10 @@
       </button>
       <!-- Brand -->
       <nuxt-link
-        class="inline-block p-4 px-0 mr-0 text-xl font-bold text-left uppercase md:block md:pb-2 text-blueGray-600 whitespace-nowrap text-primary"
+        class="inline-block p-4 px-0 mr-0 text-xl font-bold text-left md:block md:pb-2 text-blueGray-600 whitespace-nowrap text-primary"
         to="/"
       >
-        PAYACLOUD
+        AutoVM
       </nuxt-link>
       <!-- User -->
       <ul class="flex flex-wrap items-center list-none md:hidden">
@@ -51,10 +51,10 @@
           <div class="flex flex-wrap">
             <div class="w-6/12">
               <nuxt-link
-                class="inline-block p-4 px-0 mr-0 text-xl font-bold text-left uppercase text-primary md:block md:pb-2 text-blueGray-600 whitespace-nowrap"
+                class="inline-block p-4 px-0 mr-0 text-xl font-bold text-left text-primary md:block md:pb-2 text-blueGray-600 whitespace-nowrap"
                 to="/"
               >
-                PAYACLOUD
+                AutoVM
               </nuxt-link>
             </div>
             <div class="flex justify-end w-6/12">
@@ -81,14 +81,6 @@
             </div>
           </div>
         </div>
-        <nuxt-link to="/admin/machine">
-          <h2
-            class="block pt-1 pb-4 font-bold no-underline uppercase md:min-w-full"
-          >
-            DASHBOARD
-          </h2>
-        </nuxt-link>
-
         <ul
           v-for="item in listPerm"
           :key="item.name"
