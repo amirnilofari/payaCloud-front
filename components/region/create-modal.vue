@@ -55,11 +55,11 @@
               <div class="w-full px-4 mb-2 lg:w-6/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block mb-2 text-xs font-bold uppercase text-H1"
+                    class="block mb-3 text-xs font-bold uppercase text-H1"
                   >
                     status
                   </label>
-                  <div class="flex items-center mt-5">
+                  <div class="flex items-center">
                     <input
                       v-model="status"
                       value="active"

@@ -50,11 +50,11 @@
                 <div class="w-full px-4 mb-2 lg:w-4/12">
                 <div class="relative w-full mb-3">
                   <label
-                    class="block mb-2 text-xs font-bold uppercase text-H1"
+                    class="block mb-3 text-xs font-bold uppercase text-H1"
                   >
                     type
                   </label>
-                  <div class="flex items-center mt-5">
+                  <div class="flex items-center">
                     <input v-model="type" value="admin" id="admin" name="type" type="radio" class="w-4 h-4 focus:ring-indigo-500 text-primary border-H2">
                     <label for="admin" class="block ml-3 text-sm font-medium text-H1">
                       Admin
