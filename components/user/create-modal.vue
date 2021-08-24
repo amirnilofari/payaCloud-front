@@ -12,7 +12,7 @@
           <form
             class="p-6"
           >
-            <h3 class="mb-6 text-xl font-semibold text-primary">New User</h3>
+            <h3 class="mb-6 ml-4 text-xl font-semibold text-primary">New User</h3>
 
             <div class="flex flex-wrap">
               <div class="w-full px-4 mb-2 lg:w-6/12">
@@ -67,7 +67,7 @@
                 </div>
               </div>
 
-              <div class="w-full px-4 mb-2">
+              <div class="w-full px-4 mb-2 lg:px-1">
                 <div class="flex flex-wrap w-full mt-7">
                   <button
                     @click="close"

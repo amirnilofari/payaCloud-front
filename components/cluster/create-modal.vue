@@ -11,8 +11,8 @@
           <form
             class="p-6"
           >
-            <h3 v-if="!isEdit" class="mb-6 text-xl font-semibold text-primary">New Cluster</h3>
-            <h3 v-else class="mb-6 text-xl font-semibold text-primary">Edit Cluster</h3>
+            <h3 v-if="!isEdit" class="mb-6 ml-4 text-xl font-semibold text-primary">New Cluster</h3>
+            <h3 v-else class="mb-6 ml-4 text-xl font-semibold text-primary">Edit Cluster</h3>
             <div class="flex flex-wrap">
 
              <div class="w-full px-4 mb-2 lg:w-4/12">
@@ -68,7 +68,7 @@
               </div>
 
 
-              <div class="w-full px-4 mb-2">
+              <div class="w-full px-4 mb-2 lg:px-1">
                 <div class="flex flex-wrap w-full mt-7">
                   <button
                     @click="close"
