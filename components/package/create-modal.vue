@@ -1,5 +1,5 @@
 <template>
-  <transition name="slide">
+
     <div
       class="fixed inset-0 z-10 overflow-y-auto details-modal" role="dialog" aria-modal="true">
       <div class="flex items-end justify-center w-full min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
@@ -53,7 +53,7 @@
         </div>
       </div>
     </div>
-  </transition>
+
 </template>
 
 <script>
