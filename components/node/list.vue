@@ -65,7 +65,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="node in nodes" :key="node.id">
+          <tr v-for="node in nodes" :key="node.id" class="cursor-pointer hover:bg-background">
             <td
               class="font-bold"
             >

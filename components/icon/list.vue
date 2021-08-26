@@ -44,7 +44,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="icon in icons" :key="icon.id">
+          <tr v-for="icon in icons" :key="icon.id" class="cursor-pointer hover:bg-background">
             <td
               class="font-bold"
             >

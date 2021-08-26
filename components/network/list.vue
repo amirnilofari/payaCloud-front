@@ -49,7 +49,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="network in networks" :key="network.id">
+            <tr v-for="network in networks" :key="network.id" class="cursor-pointer hover:bg-background">
               <td
                 class="font-bold"
               >

@@ -50,7 +50,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="layout in layouts" :key="layout.id">
+          <tr v-for="layout in layouts" :key="layout.id" class="cursor-pointer hover:bg-background">
             <td
               class="font-bold"
             >

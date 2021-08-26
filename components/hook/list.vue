@@ -49,7 +49,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="hook in hooks" :key="hook.id">
+          <tr v-for="hook in hooks" :key="hook.id" class="cursor-pointer hover:bg-background">
             <td
               class="font-bold"
             >

@@ -40,7 +40,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="pool in pools" :key="pool.id">
+          <tr v-for="pool in pools" :key="pool.id" class="cursor-pointer hover:bg-background">
             <td
               class="font-bold"
             >

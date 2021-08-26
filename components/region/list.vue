@@ -45,7 +45,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="region in regions" :key="region.id">
+          <tr v-for="region in regions" :key="region.id" class="cursor-pointer hover:bg-background">
             <td
               class="font-bold"
             >

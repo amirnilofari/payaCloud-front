@@ -49,7 +49,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="cluster in clusters" :key="cluster.id">
+          <tr v-for="cluster in clusters" :key="cluster.id" class="cursor-pointer hover:bg-background">
             <td
               class="font-bold"
             >

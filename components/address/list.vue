@@ -54,7 +54,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="address in addresses" :key="address.id">
+          <tr v-for="address in addresses" :key="address.id" class="cursor-pointer hover:bg-background">
             <td
               class="font-bold"
             >

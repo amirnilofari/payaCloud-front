@@ -92,6 +92,7 @@
             v-for="list in item.collection"
             :key="list.name"
             class="items-center px-2 py-3 mb-2 rounded text-H2"
+            v-on:click="toggleCollapseShow('hidden')"
           >
             <nuxt-link :to="list.link" class="flex">
               <div v-html="list.icon" class="mr-2"></div>
