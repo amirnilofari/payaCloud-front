@@ -45,7 +45,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="p in packages" :key="p.id">
+          <tr v-for="p in packages" :key="p.id" class="cursor-pointer hover:bg-background">
             <td
               class="font-bold"
             >

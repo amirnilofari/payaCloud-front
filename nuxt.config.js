@@ -2,7 +2,7 @@ var path = require('path');
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'payacloud-front',
+    title: 'AutoVM ',
     htmlAttrs: {
       lang: 'en'
     },

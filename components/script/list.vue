@@ -68,7 +68,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="script in scripts" :key="script.id">
+          <tr v-for="script in scripts" :key="script.id" class="cursor-pointer hover:bg-background">
             <td
               class="font-bold"
             >

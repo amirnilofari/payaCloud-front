@@ -107,7 +107,6 @@
             if (response.message) {
               this.$toast.error(response.message)
             } else {
-              this.$toast.success('Welcome!')
               this.$router.push('/admin/machine')
               this.close()
             }

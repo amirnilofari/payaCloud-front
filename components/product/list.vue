@@ -64,7 +64,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-for="product in products" :key="product.id">
+          <tr v-for="product in products" :key="product.id" class="cursor-pointer hover:bg-background">
             <td
               class="font-bold"
             >
