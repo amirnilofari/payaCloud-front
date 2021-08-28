@@ -34,16 +34,6 @@
             <th
               
             >
-              type
-            </th>
-            <th
-              
-            >
-              address
-            </th>
-            <th
-              
-            >
               Action
             </th>
           </tr>
@@ -60,16 +50,7 @@
             >
               {{ hook.name }}
             </td>
-            <td
             
-            >
-              {{ hook.type }}
-            </td>
-            <td
-              
-            >
-              {{ hook.address }}
-            </td>
             <td
             >
               <button

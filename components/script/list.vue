@@ -21,48 +21,17 @@
       <table>
         <thead>
           <tr>
-            <th
-
-            >
+            <th>
               Id
             </th>
-            <th
-
-            >
-              Name
-            </th>
-            <th
-
-            >
-              content
-            </th>
-            <th
-
-            >
-               wait
-            </th>
-            <th
-
-            >
-               type
-            </th>
-            <th
-
-            >
+            <th>
                template
             </th>
             <th>
-              how To Execute
+              Name
             </th>
+            
             <th>
-              where Is Program
-            </th>
-            <th>
-              where To Upload
-            </th>
-            <th
-
-            >
               Action
             </th>
           </tr>
@@ -74,45 +43,19 @@
             >
               {{ script.id }}
             </td>
-            <th
-          class="border-0 iconSection"
-        >
-          <img
-            :src="script.template.icon.address"
-            class="icon"
-            alt="..."
-          />
-          <span
-            class="ml-3 font-bold"
-          >
-              {{script.name}}
-          </span>
-        </th>
-            <td
-
-            >
-              {{script.content}}
-            </td>
-            <td
-
-            >
-              {{script.wait}}
-            </td>
-            <td>
-              {{script.type}}
-            </td>
+            
+            
             <td>
               {{script.template.name}}
             </td>
-            <td>
-               {{script.howToExecute}}
-            </td>
-            <td>
-              {{script.whereIsProgram}}
-            </td>
-            <td>
-              {{script.whereToUpload}}
-            </td>
+            <td
+          
+        >
+
+        
+              {{script.name}}
+      
+        </td>
             <td
             >
               <button

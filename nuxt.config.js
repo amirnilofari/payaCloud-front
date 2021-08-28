@@ -15,7 +15,7 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-
+  mode: 'spa',
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '~/assets/styles/main.css'
@@ -40,12 +40,22 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/toast',
     'nuxt-purgecss',
+    '@nuxtjs/auth'
   ],
+
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: 'auth/login', method: 'post', propertyName: 'data.token' },
+          logout: false
+        }
+      }
+    }
+  },
+
   axios: {
     baseURL: 'http://sandbox.autovm.net',
-    headers: {
-      token: 'v0JOPrdkJMWnYgFp',
-    }
   },
   toast: {
     position: 'top-center',
@@ -69,4 +79,6 @@ export default {
     }
 }
   }
+
+  //v0JOPrdkJMWnYgFp
 

@@ -100,18 +100,20 @@
     //   }
     // },
     methods: {
-      login() {
-        let token = this.token
-        this.$axios.$post('auth/login', {token})
-          .then(response => {
-            if (response.message) {
-              this.$toast.error(response.message)
-            } else {
-              this.$router.push('/admin/machine')
-              this.close()
-            }
-          })
+      async login() {
+      try {
+        await this.$auth.loginWith('local', {
+          data: {
+          token: this.token
+          }
+        })
+
+        this.$router.push('/admin/machine')
+      } catch (e) {
+        this.error = e.response.data.message
       }
-    },
+    }
+  }
+    
   }
 </script>

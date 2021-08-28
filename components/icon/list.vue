@@ -34,11 +34,6 @@
             <th
               
             >
-              Address
-            </th>
-            <th
-              
-            >
               Action
             </th>
           </tr>
@@ -54,11 +49,6 @@
               
             >
               {{ icon.name }}
-            </td>
-            <td
-            
-            >
-              {{ icon.address }}
             </td>
             <td
             >
