@@ -35,16 +35,6 @@
             <th
               
             >
-              type
-            </th>
-            <th
-              
-            >
-              content
-            </th>
-            <th
-              
-            >
               Action
             </th>
           </tr>
@@ -61,16 +51,7 @@
             >
               {{ layout.name }}
             </td>
-            <td
             
-            >
-              {{ layout.type }}
-            </td>
-            <td
-              
-            >
-              {{ layout.content }}
-            </td>
             <td
             >
               <button
