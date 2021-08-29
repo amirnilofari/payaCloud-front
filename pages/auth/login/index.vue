@@ -45,6 +45,7 @@
                   type="password"
                   class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear border rounded shadow border-secondary placeholder-secondary text-H1 bg-background focus:outline-none focus:ring"
                   placeholder="Token"
+                  @keypress.enter="login()"
                 />
               </div>
               <!-- <div
@@ -71,7 +72,7 @@
                   <button
                     class="w-full px-6 py-3 mb-1 mr-1 text-sm font-bold uppercase transition-all duration-150 ease-linear rounded shadow outline-none bg-primary text-background hover:shadow-lg focus:outline-none"
                     type="button"
-                    @click="login()"
+                    @click.prevent="login()"
                   >
                     Sign In
                   </button>
@@ -100,20 +101,23 @@
     //   }
     // },
     methods: {
-      async login() {
-      try {
-        await this.$auth.loginWith('local', {
-          data: {
-          token: this.token
-          }
-        })
-
-        this.$router.push('/admin/machine')
-      } catch (e) {
-        this.error = e.response.data.message
+      login() {
+        let token = this.token
+        this.$axios.$post('auth/login',{token})
+          .then(response => {
+            if (response.message) {
+              this.$toast.error(response.message)
+            } else {
+              this.$axios.setHeader('token', this.token)
+              this.$router.push('/admin/machine')
+              this.close()
+            }
+      })
+      
       }
     }
-  }
+  } 
+  
     
-  }
+  
 </script>

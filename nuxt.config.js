@@ -40,19 +40,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/toast',
     'nuxt-purgecss',
-    '@nuxtjs/auth'
   ],
-
-  auth: {
-    strategies: {
-      local: {
-        endpoints: {
-          login: { url: 'auth/login', method: 'post', propertyName: 'data.token' },
-          logout: false
-        }
-      }
-    }
-  },
 
   axios: {
     baseURL: 'http://sandbox.autovm.net',
