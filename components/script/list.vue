@@ -32,7 +32,7 @@
             </th>
             
             <th>
-              Action
+              Edit
             </th>
           </tr>
         </thead>

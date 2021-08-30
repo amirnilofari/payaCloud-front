@@ -34,17 +34,12 @@
               <th
 
               >
-                Clue
+                Cluster 
               </th>
               <th
 
               >
-                Cluster Name
-              </th>
-              <th
-
-              >
-                Action
+                Edit
               </th>
             </tr>
           </thead>
@@ -59,11 +54,6 @@
 
               >
                 {{ network.name }}
-              </td>
-              <td
-
-              >
-                {{ network.clue }}
               </td>
               <td
 

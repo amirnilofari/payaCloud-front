@@ -32,35 +32,15 @@
             >
               Name
             </th>
-            <th
-              
+            
+            <th 
             >
-              Network Name
+              Pool 
             </th>
             <th
               
             >
-              Package Name
-            </th>
-            <th
-              
-            >
-              Pool Name
-            </th>
-            <th
-              
-            >
-              Section Name
-            </th>
-            <th
-              
-            >
-              Storage Name
-            </th>
-            <th
-              
-            >
-              Action
+              Edit
             </th>
           </tr>
         </thead>
@@ -76,31 +56,13 @@
             >
               {{ node.name }}
             </td>
-            <td
             
-            >
-              {{ node.network.name }}
-            </td>
-            <td
-              
-            >
-              {{ node.package.name }}
-            </td>
             <td
               
             >
               {{ node.pool.name }}
             </td>
-            <td
-              
-            >
-              {{ node.section.name }}
-            </td>
-            <td
-              
-            >
-              {{ node.storage.name }}
-            </td>
+            
             <td
             >
               <button

@@ -40,20 +40,11 @@
             >
               Address
             </th>
+            
             <th
               class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
             >
-              Username
-            </th>
-            <th
-              class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
-            >
-              Password
-            </th>
-            <th
-              class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
-            >
-
+              Edit
             </th>
           </tr>
           </thead>
@@ -78,16 +69,7 @@
             >
               {{server.address}}
             </td>
-            <td
-              class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
-            >
-              {{server.username}}
-            </td>
-            <td
-              class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
-            >
-              {{server.password}}
-            </td>
+            
             <td
               class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
             >

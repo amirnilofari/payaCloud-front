@@ -43,7 +43,7 @@
             <th
               class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
             >
-              Action
+              Edit
             </th>
           </tr>
           </thead>

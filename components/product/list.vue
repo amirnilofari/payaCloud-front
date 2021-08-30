@@ -31,13 +31,8 @@
             >
               Name
             </th>
-            <th
-              
-            >
-              price
-            </th>
-            <th
-              
+            
+            <th 
             >
               pool
             </th>
@@ -47,19 +42,10 @@
             <th>
               status
             </th>
-            <th>
-              cpuCore
-            </th>
-            <th>
-              diskSize
-            </th>
-            <th>
-              memorySize
-            </th>
             <th
               
             >
-              Action
+              Edit
             </th>
           </tr>
         </thead>
@@ -75,11 +61,7 @@
             >
               {{ product.name }}
             </td>
-            <td
             
-            >
-              {{ product.price }}
-            </td>
             <td
               
             >
@@ -110,15 +92,7 @@
             </svg>
           </button>
         </td>
-            <td>
-              {{product.cpuCore}}
-            </td>
-            <td>
-              {{product.diskSize}}
-            </td>
-            <td>
-              {{product.memorySize}}
-            </td>
+            
             <td
             >
               <button
