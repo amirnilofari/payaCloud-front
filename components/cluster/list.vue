@@ -34,17 +34,12 @@
             <th
               
             >
-              Clue
+              Center 
             </th>
             <th
               
             >
-              Center Name
-            </th>
-            <th
-              
-            >
-              Action
+              Edit
             </th>
           </tr>
         </thead>
@@ -59,11 +54,6 @@
               
             >
               {{ cluster.name }}
-            </td>
-            <td
-            
-            >
-              {{ cluster.clue }}
             </td>
             <td
               

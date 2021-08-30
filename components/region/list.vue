@@ -40,7 +40,7 @@
             <th
               
             >
-              Action
+              Edit
             </th>
           </tr>
         </thead>

@@ -34,22 +34,12 @@
             <th
               
             >
-              gateway
+              package
             </th>
             <th
               
             >
-              netmask
-            </th>
-            <th
-              
-            >
-              package name
-            </th>
-            <th
-              
-            >
-              Action
+              Edit
             </th>
           </tr>
         </thead>
@@ -64,16 +54,6 @@
               
             >
               {{ address.address }}
-            </td>
-            <td
-            
-            >
-              {{ address.gateway }}
-            </td>
-            <td
-              
-            >
-              {{ address.netmask }}
             </td>
             <td
               
