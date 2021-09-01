@@ -1,6 +1,6 @@
 <template>
     <div class="h-screen bg-background">
-    
+
     </div>
 </template>
 

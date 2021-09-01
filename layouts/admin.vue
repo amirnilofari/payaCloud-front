@@ -20,11 +20,15 @@ import Sidebar from "~/components/Sidebar/AdminSidebar.vue";
 import AdminHeader from "~/components/Headers/AdminHeader.vue";
 import FooterAdmin from "~/components/Footers/AdminFooter.vue";
 export default {
+  middleware: 'auth',
   components: {
     AdminNavbar,
     Sidebar,
     AdminHeader,
     FooterAdmin,
   },
+  created() {
+    console.log('this.$auth.loggedIn', this.$auth.loggedIn)
+  }
 };
 </script>

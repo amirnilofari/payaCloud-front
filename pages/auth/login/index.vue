@@ -42,7 +42,6 @@
                 <input
                   v-model="token"
                   required
-                  type="password"
                   class="w-full px-3 py-3 text-sm transition-all duration-150 ease-linear border rounded shadow border-secondary placeholder-secondary text-H1 bg-background focus:outline-none focus:ring"
                   placeholder="Token"
                   @keypress.enter="login()"
@@ -64,11 +63,11 @@
                   placeholder="Password"
                 />
               </div> -->
-              
+
               <div
                 class="mt-6 text-center"
               >
-                
+
                   <button
                     class="w-full px-6 py-3 mb-1 mr-1 text-sm font-bold uppercase transition-all duration-150 ease-linear rounded shadow outline-none bg-primary text-background hover:shadow-lg focus:outline-none"
                     type="button"
@@ -80,7 +79,7 @@
             </form>
           </div>
         </div>
-        
+
       </div>
     </div>
   </div>
@@ -95,29 +94,27 @@
         rememberMe: false
       }
     },
-    // asyncData() {
-    //   return {
-    //     rendering: process.server ? 'server' : 'client'
-    //   }
-    // },
     methods: {
-      login() {
-        let token = this.token
-        this.$axios.$post('auth/login',{token})
-          .then(response => {
-            if (response.message) {
-              this.$toast.error(response.message)
-            } else {
-              this.$axios.setHeader('token', this.token)
-              this.$router.push('/admin/machine')
-              this.close()
-            }
-      })
-      
+      async login() {
+        // v0JOPrdkJMWnYgFp
+        try {
+          let response = await this.$auth.loginWith('local', { data: {
+              token: this.token
+             }
+          })
+          this.$toast.success('Successfully Logged In!')
+          console.log('response', response)
+        } catch (err) {
+          this.$toast.error('Token Was Not Correct!')
+          console.log('err', err)
+        }
       }
+    },
+    created() {
+      console.log('this.$auth.loggedIn\n', this.$auth.loggedIn)
     }
-  } 
-  
-    
-  
+  }
+
+
+
 </script>
