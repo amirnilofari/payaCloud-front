@@ -101,7 +101,7 @@
           })
       },
       getNetworks () {
-        this.$axios.$get('backend/network/index')
+        this.$axios.$get('backend/common/networks/1')
           .then(response => {
             this.networks = response.data
           })
@@ -119,13 +119,13 @@
           })
       },
       getSections () {
-        this.$axios.$get('backend/section/index')
+        this.$axios.$get('backend/common/sections/2')
           .then(response => {
             this.sections = response.data
           })
       },
       getStorages () {
-        this.$axios.$get('backend/storage/index')
+        this.$axios.$get('backend/common/storages/1')
           .then(response => {
             this.storages = response.data
           })

@@ -85,7 +85,7 @@
           })
       },
       getServers () {
-        this.$axios.$get('backend/server/index')
+        this.$axios.$get('backend/common/servers')
           .then(response => {
             this.servers = response.data
           })

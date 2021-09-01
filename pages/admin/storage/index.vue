@@ -85,7 +85,7 @@
           })
       },
       getClusters () {
-        this.$axios.$get('backend/cluster/index')
+        this.$axios.$get('backend/common/clusters/1')
           .then(response => {
             this.clusters = response.data
           })

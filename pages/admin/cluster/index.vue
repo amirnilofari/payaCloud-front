@@ -84,7 +84,7 @@
           })
       },
       getCenters () {
-        this.$axios.$get('backend/center/index')
+        this.$axios.$get('backend/common/centers/1')
           .then(response => {
             this.centers = response.data
           })

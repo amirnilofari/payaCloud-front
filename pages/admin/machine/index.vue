@@ -93,22 +93,22 @@
             this.users = response.data
           })
 
-        this.$axios.$get('backend/section/index')
+        this.$axios.$get('backend/common/sections/1')
           .then(response => {
             this.sections = response.data
           })
 
-        this.$axios.$get('backend/storage/index')
+        this.$axios.$get('backend/common/storages/1')
           .then(response => {
             this.storages = response.data
           })
 
-        this.$axios.$get('backend/profile/index')
+        this.$axios.$get('backend/common/profiles')
           .then(response => {
             this.profiles = response.data
           })
 
-        this.$axios.$get('backend/network/index')
+        this.$axios.$get('backend/common/networks/1')
           .then(response => {
             this.networks = response.data
           })
@@ -118,7 +118,7 @@
             this.addresses = response.data
           })
 
-        this.$axios.$get('backend/template/index')
+        this.$axios.$get('backend/common/templates')
           .then(response => {
             this.templates = response.data
           })

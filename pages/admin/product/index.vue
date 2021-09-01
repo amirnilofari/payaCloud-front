@@ -94,7 +94,7 @@
           })
       },
       getRegions () {
-        this.$axios.$get('backend/region/index')
+        this.$axios.$get('backend/common/regions')
           .then(response => {
             this.regions = response.data
           })

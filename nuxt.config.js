@@ -45,6 +45,9 @@ export default {
   ],
   axios: {
     baseURL: 'http://sandbox.autovm.net',
+    headers: {
+      token: 'kJtTA1kmgXMD84yJ',
+    }
   },
   auth: {
     strategies: {
