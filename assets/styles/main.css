@@ -53,6 +53,11 @@ td {
     @apply p-4 px-6 text-xs text-left align-middle border-t-0 border-l-0 border-r-0 whitespace-nowrap text-H3 ;
 }
 
+.my-disabled{
+  pointer-events: none;
+  opacity: 0.7;
+}
+
 .editBtn {
     @apply p-2 mr-5 text-white rounded-full bg-primary ;
 }

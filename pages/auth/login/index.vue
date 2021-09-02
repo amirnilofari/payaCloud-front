@@ -67,10 +67,11 @@
               <div
                 class="mt-6 text-center"
               >
-
                   <button
                     class="w-full px-6 py-3 mb-1 mr-1 text-sm font-bold uppercase transition-all duration-150 ease-linear rounded shadow outline-none bg-primary text-background hover:shadow-lg focus:outline-none"
                     type="button"
+                    :class="loading ? 'my-disabled' : ''"
+                    :disabled="loading"
                     @click.prevent="login()"
                   >
                     Sign In
@@ -79,7 +80,6 @@
             </form>
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -91,17 +91,35 @@
         email: '',
         password: '',
         token: '',
-        rememberMe: false
+        rememberMe: false,
+        loading: false
       }
     },
     methods: {
-      async login() {
+      login() {
+        // kJtTA1kmgXMD84yJ
+        let formdata = new FormData()
+        formdata.append('token', this.token)
+        this.loading = true
+        this.$axios.$post('auth/login',
+          formdata)
+          .then(response => {
+            if (response.message) {
+              this.loading = false
+              this.$toast.error(response.message)
+            } else {
+              this.loginWithNuxt()
+            }
+          })
+      },
+      loginWithNuxt() {
         // v0JOPrdkJMWnYgFp
         try {
-          let response = await this.$auth.loginWith('local', { data: {
+          let response = this.$auth.loginWith('local', { data: {
               token: this.token
              }
           })
+          this.loading = false
           this.$toast.success('Successfully Logged In!')
           console.log('response', response)
         } catch (err) {

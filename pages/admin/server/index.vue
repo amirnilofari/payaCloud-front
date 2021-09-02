@@ -42,6 +42,8 @@
       createModal
     },
     created () {
+      // this.$axios.setHeader('token', '456')
+
       this.loadData()
 
       this.$nuxt.$on('closeModal', () => {

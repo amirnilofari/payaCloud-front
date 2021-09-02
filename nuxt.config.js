@@ -45,9 +45,9 @@ export default {
   ],
   axios: {
     baseURL: 'http://sandbox.autovm.net',
-    headers: {
-      token: 'kJtTA1kmgXMD84yJ',
-    }
+    // headers: {
+    //   token: 'kJtTA1kmgXMD84yJ',
+    // }
   },
   auth: {
     strategies: {
@@ -62,7 +62,16 @@ export default {
           user: false
         }
       }
-    }
+    },
+    redirect: {
+      login: '/auth/login',
+      // logout: '/test3',
+      callback: '/auth/login',
+      home: '/admin/machine'
+    },
+    watchLoggedIn: true,
+    rewriteRedirects: false,
+    resetOnError: true
   },
   toast: {
     position: 'top-center',
