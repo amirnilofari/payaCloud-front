@@ -53,7 +53,10 @@ export default {
     strategies: {
       local: {
         token: {
-          type: ''
+          property: 'token',
+          global: true,
+          // required: true,
+          // type: 'Bearer'
         },
         user: false,
         endpoints: {
@@ -66,12 +69,9 @@ export default {
     redirect: {
       login: '/auth/login',
       // logout: '/test3',
-      callback: '/auth/login',
+      // callback: '/auth/login',
       home: '/admin/machine'
-    },
-    watchLoggedIn: true,
-    rewriteRedirects: false,
-    resetOnError: true
+    }
   },
   toast: {
     position: 'top-center',
@@ -95,6 +95,3 @@ export default {
     }
 }
   }
-
-  //v0JOPrdkJMWnYgFp
-

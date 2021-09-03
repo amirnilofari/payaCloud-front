@@ -101,7 +101,7 @@
             <td
               class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"
             >
-              {{machine.address.address}}
+              {{machine.address ? machine.address.address : ''}}
             </td>
             <td
               class="p-4 px-6 text-xs align-middle border-t-0 border-l-0 border-r-0 text-H3 whitespace-nowrap"

@@ -28,6 +28,8 @@ export default {
     FooterAdmin,
   },
   created() {
+    this.$axios.setHeader('token', localStorage.getItem('token'))
+    // console.log('token', localStorage.getItem('token'));
     console.log('this.$auth.loggedIn', this.$auth.loggedIn)
   }
 };

@@ -113,7 +113,6 @@
           })
       },
       loginWithNuxt() {
-        // v0JOPrdkJMWnYgFp
         try {
           let response = this.$auth.loginWith('local', { data: {
               token: this.token
@@ -121,7 +120,8 @@
           })
           this.loading = false
           this.$toast.success('Successfully Logged In!')
-          console.log('response', response)
+          localStorage.setItem('token', this.token);
+          this.$axios.setHeader('token', this.token)
         } catch (err) {
           this.$toast.error('Token Was Not Correct!')
           console.log('err', err)

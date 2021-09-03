@@ -54,7 +54,7 @@
     methods: {
       loadData () {
         this.isLoading = true
-        this.$axios.$get('backend/alarm/index?page=' + this.pageIndex)
+        this.$axios.$get('backend/log/index?page=' + this.pageIndex)
           .then(response => {
             this.logs = this.logs.concat(response.data);
             if (response.links.next === null) {
