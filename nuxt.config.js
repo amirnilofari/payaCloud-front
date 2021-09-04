@@ -69,7 +69,7 @@ export default {
     redirect: {
       login: '/auth/login',
       // logout: '/test3',
-      // callback: '/auth/login',
+      callback: '/',
       home: '/admin/machine'
     }
   },

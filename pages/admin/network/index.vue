@@ -75,11 +75,13 @@
         this.isLoading = true
         this.$axios.$get('backend/network/index?page=' + this.pageIndex)
           .then(response => {
-            this.networks = this.networks.concat(response.data);
-            if (response.links.next === null) {
-              this.isEnd = true
-            } else {
-              this.isEnd = false
+            if(response.data){
+              this.networks = this.networks.concat(response.data)
+              if (response.links.next === null) {
+                this.isEnd = true
+              } else {
+                this.isEnd = false
+              }
             }
             this.isLoading = false
           })

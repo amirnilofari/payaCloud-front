@@ -124,12 +124,8 @@
           this.$axios.setHeader('token', this.token)
         } catch (err) {
           this.$toast.error('Token Was Not Correct!')
-          console.log('err', err)
         }
       }
-    },
-    created() {
-      console.log('this.$auth.loggedIn\n', this.$auth.loggedIn)
     }
   }
 

@@ -50,14 +50,11 @@
             >
               Created
             </th>
-            <!-- <th
-              class="px-6 py-3 text-sm font-semibold text-left uppercase align-middle border border-l-0 border-r-0 border-primary text-primary whitespace-nowrap"
-            >
-
-            </th> -->
           </tr>
           </thead>
-          <tbody>
+          <tbody
+            v-if="transes.length > 0"
+          >
           <tr
             v-for="trans in transes"
             :key="trans.id"
@@ -113,7 +110,7 @@
     </div>
     <div class="mt-8 text-center">
       <button
-        v-if="!isEnd"
+        v-if="!isEnd && transes.length > 0"
         @click="getData"
         class="moreBtn"
         type="submit"

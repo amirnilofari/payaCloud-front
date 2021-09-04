@@ -48,7 +48,9 @@
             </th>
           </tr>
           </thead>
-          <tbody>
+          <tbody
+            v-if="centers.length > 0"
+          >
           <tr
             v-for="center in centers"
             :key="center.id"
@@ -94,7 +96,7 @@
     </div>
     <div class="mt-8 text-center">
       <button
-        v-if="!isEnd"
+        v-if="!isEnd && centers.length > 0"
         @click="getData"
         class="moreBtn"
         type="submit"

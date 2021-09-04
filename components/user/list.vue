@@ -47,7 +47,9 @@
             </th>
           </tr>
           </thead>
-          <tbody>
+          <tbody
+            v-if="users.length > 0"
+          >
           <tr
             v-for="users in users"
             :key="users.id"
@@ -87,7 +89,7 @@
     </div>
     <div class="mt-8 text-center">
       <button
-        v-if="!isEnd"
+        v-if="!isEnd && users.length > 0"
         @click="getData"
         class="moreBtn"
         type="submit"

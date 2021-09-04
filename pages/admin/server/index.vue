@@ -42,8 +42,6 @@
       createModal
     },
     created () {
-      // this.$axios.setHeader('token', '456')
-
       this.loadData()
 
       this.$nuxt.$on('closeModal', () => {
@@ -74,11 +72,13 @@
         this.isLoading = true
         this.$axios.$get('backend/server/index?page=' + this.pageIndex)
           .then(response => {
-            this.servers = this.servers.concat(response.data);
-            if (response.links.next === null) {
-              this.isEnd = true
-            } else {
-              this.isEnd = false
+            if(response.data){
+              this.servers = this.servers.concat(response.data)
+              if (response.links.next === null) {
+                this.isEnd = true
+              } else {
+                this.isEnd = false
+              }
             }
             this.isLoading = false
           })

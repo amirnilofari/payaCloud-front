@@ -52,7 +52,9 @@
             </th>
           </tr>
           </thead>
-          <tbody>
+          <tbody
+            v-if="proxies.length > 0"
+          >
           <tr
             v-for="proxy in proxies"
             :key="proxy.id"
@@ -103,7 +105,7 @@
     </div>
     <div class="mt-8 text-center">
       <button
-        v-if="!isEnd"
+        v-if="!isEnd && proxies.length > 0"
         @click="getData"
         class="moreBtn"
         type="submit"

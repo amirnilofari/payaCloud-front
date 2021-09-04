@@ -47,7 +47,9 @@
             </th>
           </tr>
           </thead>
-          <tbody>
+          <tbody
+            v-if="templates.length > 0"
+          >
           <tr
             v-for="template in templates"
             :key="template.id"
@@ -119,7 +121,7 @@
     </div>
     <div class="mt-8 text-center">
       <button
-        v-if="!isEnd"
+        v-if="!isEnd && templates.length > 0"
         @click="getData"
         class="moreBtn"
         type="submit"
