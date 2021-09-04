@@ -132,11 +132,13 @@
         this.isLoading = true
         this.$axios.$get('backend/machine/index?page=' + this.pageIndex)
           .then(response => {
-            this.machines = this.machines.concat(response.data);
-            if (response.links.next === null) {
-              this.isEnd = true
-            } else {
-              this.isEnd = false
+            if(response.data){
+              this.machines = this.machines.concat(response.data)
+              if (response.links.next === null) {
+                this.isEnd = true
+              } else {
+                this.isEnd = false
+              }
             }
             this.isLoading = false
           })

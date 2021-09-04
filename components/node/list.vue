@@ -44,7 +44,9 @@
             </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody
+          v-if="nodes.length > 0"
+        >
           <tr v-for="node in nodes" :key="node.id" class="cursor-pointer hover:bg-background">
             <td
               class="font-bold"
@@ -98,7 +100,7 @@
   </div>
   <div class="mt-8 text-center">
       <button
-        v-if="!isEnd"
+        v-if="!isEnd && nodes.length > 0"
         @click="getData"
         class="moreBtn"
         type="submit"

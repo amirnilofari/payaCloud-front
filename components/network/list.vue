@@ -43,7 +43,9 @@
               </th>
             </tr>
           </thead>
-          <tbody>
+          <tbody
+            v-if="networks.length > 0"
+          >
             <tr v-for="network in networks" :key="network.id" class="cursor-pointer hover:bg-background">
               <td
                 class="font-bold"
@@ -95,7 +97,7 @@
     </div>
     <div class="mt-8 text-center">
       <button
-        v-if="!isEnd"
+        v-if="!isEnd && networks.length > 0"
         @click="getData"
         class="moreBtn"
         type="submit"

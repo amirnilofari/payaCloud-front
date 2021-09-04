@@ -47,7 +47,9 @@
             </th>
           </tr>
           </thead>
-          <tbody>
+          <tbody
+            v-if="storages.length > 0"
+          >
           <tr
             v-for="storage in storages"
             :key="storage.id"
@@ -93,7 +95,7 @@
     </div>
     <div class="mt-8 text-center">
       <button
-        v-if="!isEnd"
+        v-if="!isEnd && storages.length > 0"
         @click="getData"
         class="moreBtn"
         type="submit"

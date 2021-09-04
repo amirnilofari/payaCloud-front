@@ -47,7 +47,9 @@
             </th>
           </tr>
           </thead>
-          <tbody>
+          <tbody
+            v-if="sections.length > 0"
+          >
           <tr
             v-for="section in sections"
             :key="section.id"
@@ -93,7 +95,7 @@
     </div>
     <div class="mt-8 text-center">
       <button
-        v-if="!isEnd"
+        v-if="!isEnd && sections.length > 0"
         @click="getData"
         class="moreBtn"
         type="submit"

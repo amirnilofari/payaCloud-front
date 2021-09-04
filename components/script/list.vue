@@ -36,7 +36,9 @@
             </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody
+          v-if="scripts.length > 0"
+        >
           <tr v-for="script in scripts" :key="script.id" class="cursor-pointer hover:bg-background">
             <td
               class="font-bold"
@@ -48,14 +50,9 @@
             <td>
               {{script.template.name}}
             </td>
-            <td
-          
-        >
-
-        
+            <td >
               {{script.name}}
-      
-        </td>
+            </td>
             <td
             >
               <button
@@ -91,7 +88,7 @@
   </div>
   <div class="mt-8 text-center">
       <button
-        v-if="!isEnd"
+        v-if="!isEnd && scripts.length > 0"
         @click="getData"
         class="moreBtn"
         type="submit"

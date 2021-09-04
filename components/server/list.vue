@@ -48,7 +48,9 @@
             </th>
           </tr>
           </thead>
-          <tbody>
+          <tbody
+            v-if="servers.length > 0"
+          >
           <tr
             v-for="server in servers"
             :key="server.id"
@@ -95,7 +97,7 @@
     </div>
     <div class="mt-8 text-center">
       <button
-        v-if="!isEnd"
+        v-if="!isEnd && servers.length > 0"
         @click="getData"
         class="moreBtn"
         type="submit"

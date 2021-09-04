@@ -43,7 +43,9 @@
             </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody
+          v-if="clusters.length > 0"
+        >
           <tr v-for="cluster in clusters" :key="cluster.id" class="cursor-pointer hover:bg-background">
             <td
               class="font-bold"
@@ -95,7 +97,7 @@
   </div>
   <div class="mt-8 text-center">
       <button
-        v-if="!isEnd"
+        v-if="!isEnd && clusters.length > 0"
         @click="getData"
         class="moreBtn"
         type="submit"

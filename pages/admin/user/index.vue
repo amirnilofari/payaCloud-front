@@ -20,7 +20,7 @@
 </template>
 
 <script>
-  import userList from '/components/user/userList'
+  import userList from '/components/user/list'
   import createModal from '/components/user/create-modal'
   export default {
     data() {
@@ -57,11 +57,13 @@
         this.isLoading = true
         this.$axios.$get('backend/user/index?page=' + this.pageIndex)
           .then(response => {
-            this.users = this.users.concat(response.data);
-            if (response.links.next === null) {
-              this.isEnd = true
-            } else {
-              this.isEnd = false
+            if(response.data){
+              this.users = this.users.concat(response.data)
+              if (response.links.next === null) {
+                this.isEnd = true
+              } else {
+                this.isEnd = false
+              }
             }
             this.isLoading = false
           })

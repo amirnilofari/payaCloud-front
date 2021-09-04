@@ -73,11 +73,13 @@
         this.isLoading = true
         this.$axios.$get('backend/template/index?page=' + this.pageIndex)
           .then(response => {
-            this.templates = this.templates.concat(response.data);
-            if (response.links.next === null) {
-              this.isEnd = true
-            } else {
-              this.isEnd = false
+            if(response.data){
+              this.templates = this.templates.concat(response.data)
+              if (response.links.next === null) {
+                this.isEnd = true
+              } else {
+                this.isEnd = false
+              }
             }
             this.isLoading = false
           })

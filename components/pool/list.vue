@@ -39,7 +39,9 @@
             </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody
+          v-if="pools.length > 0"
+        >
           <tr v-for="pool in pools" :key="pool.id" class="cursor-pointer hover:bg-background">
             <td
               class="font-bold"
@@ -86,7 +88,7 @@
   </div>
   <div class="mt-8 text-center">
       <button
-        v-if="!isEnd"
+        v-if="!isEnd && pools.length > 0"
         @click="getData"
         class="moreBtn"
         type="submit"
